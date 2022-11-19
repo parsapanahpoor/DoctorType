@@ -1,0 +1,290 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <title>@ViewData["Title"] - دکتر تایپ</title>
+
+  
+    <partial name="_MetaTags" />
+
+    @await RenderSectionAsync("MetaTags", false)
+
+    <partial name="_HeaderReferences" />
+
+    @await RenderSectionAsync("Styles", false)
+
+    
+</head>
+
+
+
+<body>
+    <!-- page wrapper start -->
+    <div class="page-wrapper">
+       
+        @await Component.InvokeAsync("SiteSideBar")
+
+        <div>
+            @RenderBody()
+        </div>
+      <!--footer area start-->
+    <footer class="footer_widgets color_three">
+        <div class="footer_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="widgets_container">
+                            <h3>اطلاعات تماس</h3>
+                            <div class="footer_contact">
+                                <div class="footer_contact_inner">
+                                    <div class="contact_icone">
+                                        <img src="assets/img/icon/icon-phone2.png" alt="">
+                                    </div>
+                                    <div class="contact_text">
+                                        <p>تلفن: </br> <strong><a href="tel:02198765432">02198765432</a> </strong></p>
+                                    </div>
+                                </div>
+                                <p>ما تیمی از طراحان و توسعه دهندگان هستیم که قالب HTML با کیفیت بالا ایجاد می کنیم.</p>
+                                <p>مکان آدرس ایمیل شما ... <br> demo@example.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="footer_col_container">
+                            <div class="widgets_container widget_menu">
+                                <h3>اطلاعات</h3>
+                                <div class="footer_menu">
+                                    <ul>
+                                        <li><a href="about.html">درباره ما</a></li>
+                                        <li><a href="#">اطلاعات تحویل</a></li>
+                                        <li><a href="#">محصولات جدید</a></li>
+                                        <li><a href="#">بهترین فروشها</a></li>
+                                        <li><a href="my-account.html">حساب من</a></li>
+                                        <li><a href="#">تاریخچه سفارش</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="widgets_container widget_menu">
+                                <h3>سرویس های مشتری</h3>
+                                <div class="footer_menu">
+                                    <ul>
+                                        <li><a href="my-account.html">حساب من</a></li>
+                                        <li><a href="cart.html">سبد خرید</a></li>
+                                        <li><a href="wishlist.html">لیست علاقمندی ها</a></li>
+                                        <li><a href="#">کاهش قیمت ها</a></li>
+                                        <li><a href="#">تاریخچه سفارش</a></li>
+                                        <li><a href="#">سفارشات بین المللی</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="widgets_container widget_menu">
+                                <h3>حساب من</h3>
+                                <div class="footer_menu">
+                                    <ul>
+                                        <li><a href="#">نقشه سایت</a></li>
+                                        <li><a href="my-account.html">حساب من</a></li>
+                                        <li><a href="#">اطلاعات تحویل</a></li>
+                                        <li><a href="#">تاریخچه سفارش</a></li>
+                                        <li><a href="wishlist.html">لیست علاقمندی ها</a></li>
+                                        <li><a href="#">محصولات ویژه</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="widgets_container widget_menu">
+                                <h3>موارد اضافی</h3>
+                                <div class="footer_menu">
+                                    <ul>
+                                        <li><a href="#">برندها</a></li>
+                                        <li><a href="#">گواهی های هدیه</a></li>
+                                        <li><a href="#">محصولات جدید</a></li>
+                                        <li><a href="#">محصولات ویژه</a></li>
+                                        <li><a href="wishlist.html">لیست علاقمندی ها</a></li>
+                                        <li><a href="#">خبرنامه</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="widgets_container widget_menu">
+                                <h3>پرداخت و روش ها</h3>
+                                <div class="footer_menu">
+                                    <ul>
+                                        <li><a href="#">روش های پرداخت</a></li>
+                                        <li><a href="my-account.html">حساب من</a></li>
+                                        <li><a href="#">مشاهده همه معاملات شگفت انگیز</a></li>
+                                        <li><a href="#">مکان هایی که به آنها ارسال می کنیم</a></li>
+                                        <li><a href="#">سؤالات متداول</a></li>
+                                        <li><a href="#">زمان تخمینی تحویل</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="copyright_area">
+                            <p>&copy; 1400 <a href="#" class="">مزلی</a>. ساخته شده با <i class="fa fa-heart"></i> توسط
+                                <a target="_blank" href="https://www.rtl-theme.com/author/najma/">نجمه بهرمن</a></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="footer_payment text-left">
+                            <img src="assets/img/icon/payment.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--footer area end-->
+
+    <!-- modal area start-->
+    <div class="modal fade" id="modal_box" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="modal_body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-5 col-md-5 col-sm-12">
+                                <div class="modal_tab">
+                                    <div class="tab-content product-details-large">
+                                        <div class="tab-pane fade show active" id="tab1" role="tabpanel">
+                                            <div class="modal_tab_img">
+                                                <a href="#"><img src="assets/img/product/productbig1.jpg" alt=""></a>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="tab2" role="tabpanel">
+                                            <div class="modal_tab_img">
+                                                <a href="#"><img src="assets/img/product/productbig2.jpg" alt=""></a>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="tab3" role="tabpanel">
+                                            <div class="modal_tab_img">
+                                                <a href="#"><img src="assets/img/product/productbig3.jpg" alt=""></a>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="tab4" role="tabpanel">
+                                            <div class="modal_tab_img">
+                                                <a href="#"><img src="assets/img/product/productbig4.jpg" alt=""></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal_tab_button">
+                                        <ul class="nav product_navactive owl-carousel" role="tablist">
+                                            <li>
+                                                <a class="nav-link active" data-bs-toggle="tab" href="#tab1" role="tab"
+                                                    aria-controls="tab1" aria-selected="false"><img
+                                                        src="assets/img/product/product2.jpg" alt=""></a>
+                                            </li>
+                                            <li>
+                                                <a class="nav-link" data-bs-toggle="tab" href="#tab2" role="tab"
+                                                    aria-controls="tab2" aria-selected="false"><img
+                                                        src="assets/img/product/product6.jpg" alt=""></a>
+                                            </li>
+                                            <li>
+                                                <a class="nav-link button_three" data-bs-toggle="tab" href="#tab3"
+                                                    role="tab" aria-controls="tab3" aria-selected="false"><img
+                                                        src="assets/img/product/product9.jpg" alt=""></a>
+                                            </li>
+                                            <li>
+                                                <a class="nav-link" data-bs-toggle="tab" href="#tab4" role="tab"
+                                                    aria-controls="tab4" aria-selected="false"><img
+                                                        src="assets/img/product/product3.jpg" alt=""></a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-7 col-md-7 col-sm-12">
+                                <div class="modal_right">
+                                    <div class="modal_title mb-10">
+                                        <h2>عنوانی برای این محصول</h2>
+                                    </div>
+                                    <div class="modal_price mb-10">
+                                        <span class="new_price">64.99 تومان</span>
+                                        <span class="old_price">78.99 تومان</span>
+                                    </div>
+                                    <div class="modal_description mb-15">
+                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از
+                                            طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
+                                            لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف
+                                            بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و
+                                            آینده، شناخت فراوان جامعه و متخصصان .</p>
+                                    </div>
+                                    <div class="variants_selects">
+                                        <div class="variants_size">
+                                            <h2>اندازه</h2>
+                                            <select class="select_option">
+                                                <option selected value="1">s</option>
+                                                <option value="1">m</option>
+                                                <option value="1">l</option>
+                                                <option value="1">xl</option>
+                                                <option value="1">xxl</option>
+                                            </select>
+                                        </div>
+                                        <div class="variants_color">
+                                            <h2>رنگ</h2>
+                                            <select class="select_option">
+                                                <option selected value="1">بنفش</option>
+                                                <option value="1">یاسی</option>
+                                                <option value="1">مشکی</option>
+                                                <option value="1">صورتی</option>
+                                                <option value="1">نارنجی</option>
+                                            </select>
+                                        </div>
+                                        <div class="modal_add_to_cart">
+                                            <form action="#">
+                                                <input min="1" max="100" step="2" value="1" type="number">
+                                                <button type="submit">افزودن به سبد خرید</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="modal_social">
+                                        <h2>اشتراک گذاری این محصول</h2>
+                                        <ul>
+                                            <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                            <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                            <li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                            <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a>
+                                            </li>
+                                            <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal area end-->
+
+    </div>
+    <!-- page wrapper end -->
+    <!--back-to-top start-->
+    <div class="scroll-top"><a class="smoothscroll" href="#top"><i class="flaticon-top"></i></a></div>
+    <!--back-to-top end-->
+    @* <footer class="border-top footer text-muted">
+        <div class="container">
+        &copy; 2022 - HEALTH HOUSE - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+        </footer>*@
+
+    <partial name="_FooterReferences" />
+
+    
+
+    
+
+    @await RenderSectionAsync("Scripts", false)
+</body>
+</html>

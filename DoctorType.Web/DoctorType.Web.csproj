@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AspNet.Security.OAuth.GitHub" Version="6.0.0" />
+		<PackageReference Include="EPPlus" Version="4.5.2.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.4" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.4" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.4">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.10" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
+		<PackageReference Include="WebEssentials.AspNetCore.PWA" Version="1.0.65" />
+		<PackageReference Include="ZarinPal-SDK" Version="0.0.8" />
+		<PackageReference Include="ZarinpalSandbox" Version="2.0.4" />
+		<PackageReference Include="ZNetCS.AspNetCore.ResumingFileResults" Version="2.2.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\DoctorType.Application\DoctorType.Application.csproj" />
+		<ProjectReference Include="..\DoctorType.Domain\DoctorType.Domain.csproj" />
+		<ProjectReference Include="..\DoctorType.IoC\DoctorType.IoC.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="ActionFilterAttributes\" />
+	  <Folder Include="ViewComponents\" />
+	</ItemGroup>
+	
+</Project>

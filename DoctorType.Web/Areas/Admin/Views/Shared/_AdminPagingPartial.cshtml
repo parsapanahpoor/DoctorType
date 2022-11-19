@@ -1,0 +1,25 @@
+﻿@model DoctorType.Domain.ViewModels.Common.Paging.BasePaging
+
+@if (Model.EndPage > 1)
+{
+    <div class="row mt-4">
+        <div class="col-12 pl-3">
+            <nav class="d-flex justify-content-center">
+                <ul class="pagination pagination-gutter pagination-primary pagination-sm no-bg">
+                    @if (Model.StartPage < Model.PageId)
+                    {
+                        <li class="page-item page-indicator c-pointer"><a class="page-link" onclick="FillPageId(@(Model.PageId - 1))"><i class="la la-angle-right"></i></a></li>
+                    }
+                    @for (int i = Model.StartPage; i <= Model.EndPage; i++)
+                    {
+                        <li class="page-item c-pointer @(Model.PageId == i ? "active" : "")"><a class="page-link" onclick="FillPageId(@i)">@i</a></li>
+                    }
+                    @if (Model.EndPage > Model.PageId)
+                    {
+                        <li class="page-item page-indicator c-pointer"><a class="page-link" onclick="FillPageId(@(Model.PageId + 1))"><i class="la la-angle-left"></i></a></li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </div>
+}

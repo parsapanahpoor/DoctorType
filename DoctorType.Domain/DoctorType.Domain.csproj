@@ -15,7 +15,6 @@
 	  <Folder Include="DTOs\" />
 	  <Folder Include="Enums\" />
 	  <Folder Include="Interfaces\" />
-	  <Folder Include="ViewModels\" />
 	</ItemGroup>
 	
 </Project>

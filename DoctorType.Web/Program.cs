@@ -1,3 +1,4 @@
+using DoctorType.Application.SiteServices;
 using DoctorType.Data.DbContext;
 using DoctorType.IoC;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -112,11 +113,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.UseSession();
 
-//SiteCurrentContext.Configure(app.Services.GetRequiredService<IHttpContextAccessor>());
-
-//app.UseEndpoints(configure => {
-//    configure.MapHub<NotificationHub>("/hub/Notification");
-//});
+SiteCurrentContext.Configure(app.Services.GetRequiredService<IHttpContextAccessor>());
 
 app.MapControllerRoute(
     name: "area",

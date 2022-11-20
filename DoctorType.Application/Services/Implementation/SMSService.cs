@@ -15,10 +15,12 @@ namespace DoctorType.Application.Services.Implementation
     {
         #region Ctor
 
+        private DoctorTypeDbContext _context;
         private readonly IConfiguration _configuration;
 
         public SMSService( IConfiguration configuration)
         {
+            _context = context;
             _configuration = configuration;
         }
 

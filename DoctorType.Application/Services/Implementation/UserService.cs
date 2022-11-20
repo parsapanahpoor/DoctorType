@@ -35,6 +35,8 @@ namespace DoctorType.Application.Services.Implementation
 
         private readonly DoctorTypeDbContext _context;
 
+        private readonly ISiteSettingService _siteSettingService;
+
         private readonly IViewRenderService _viewRenderService;
 
         private readonly IEmailSender _emailSender;
@@ -49,6 +51,7 @@ namespace DoctorType.Application.Services.Implementation
                                 IEmailSender emailSender, IUserRepository userRepository, ISMSService smsservice)
         {
             _context = context;
+            _siteSettingService = siteSettingService;
             _viewRenderService = viewRenderService;
             _emailSender = emailSender;
             _userRepository = userRepository;

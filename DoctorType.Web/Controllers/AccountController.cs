@@ -1,11 +1,22 @@
-﻿using DoctorType.Application.Services.Interfaces;
+﻿using AngleSharp.Css;
+using DoctorType.Application.Extensions;
+using DoctorType.Application.Security;
+using DoctorType.Application.Services.Interfaces;
+using DoctorType.Application.StaticTools;
+using DoctorType.Domain.Entities.Account;
 using DoctorType.Domain.ViewModels.Account;
+using DoctorType.Domain.ViewModels.Common;
 using DoctorType.Domain.ViewModels.Site.Account;
 using DoctorType.Web.HttpManager;
+using DoctorType.Web.Controllers;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Win32;
+using NuGet.Protocol.Plugins;
 using System.Security.Claims;
+using DoctorFAM.Application.Services.Interfaces;
 
 namespace DoctorType.Web.Controllers
 {
@@ -20,6 +31,7 @@ namespace DoctorType.Web.Controllers
         public AccountController(IUserService userService, ISiteSettingService siteSettingService)
         {
             _userService = userService;
+            _smsservice = smsservice;
             _siteSettingService = siteSettingService;
         }
 

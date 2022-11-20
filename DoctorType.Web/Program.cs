@@ -1,5 +1,7 @@
 using DoctorType.Application.SiteServices;
 using DoctorType.Data.DbContext;
+using DoctorType.Data.Repository;
+using DoctorType.Domain.Interfaces;
 using DoctorType.IoC;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.DataProtection;
@@ -16,8 +18,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 #region mvc
 
-builder.Services.AddControllersWithViews();
-
 builder.Services.AddMvc();
 
 #endregion
@@ -31,7 +31,7 @@ builder.Services.AddHttpContextAccessor();
 
 #region PWA
 
-builder.Services.AddProgressiveWebApp("/Manifest/manifest.json");
+//builder.Services.AddProgressiveWebApp("/Site/Manifest/manifest.json");
 
 #endregion
 
@@ -62,7 +62,6 @@ builder.Services.AddAuthentication(options =>
     options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
     options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
 })
-
 // Add Cookie settings
     .AddCookie(options =>
     {
@@ -83,12 +82,6 @@ builder.Services.AddSingleton<HtmlEncoder>(
 #region Register Services
 
 DependencyContainer.RegisterServices(builder.Services);
-
-#endregion
-
-#region SignalR
-
-builder.Services.AddSignalR();
 
 #endregion
 

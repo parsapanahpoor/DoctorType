@@ -30,6 +30,8 @@ namespace DoctorType.Domain.Entities.Account
 
         public Role Parent { get; set; }
 
+        public ICollection<UserRole> UserRoles { get; set; }
+
         #endregion
     }
 }

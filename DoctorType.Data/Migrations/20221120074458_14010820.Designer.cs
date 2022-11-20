@@ -4,6 +4,7 @@ using DoctorType.Data.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DoctorType.Data.Migrations
 {
     [DbContext(typeof(DoctorTypeDbContext))]
-    partial class DoctorTypeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221120074458_14010820")]
+    partial class _14010820
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +23,36 @@ namespace DoctorType.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("Academy.Domain.Entities.SiteSetting.SiteSetting", b =>
+                {
+                    b.Property<decimal>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(20,0)");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"), 1L, 1);
+
+                    b.Property<string>("CopyRightText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("SendSMSTimer")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SiteDomain")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SiteSettings");
+                });
 
             modelBuilder.Entity("DoctorType.Domain.Entities.Account.Role", b =>
                 {
@@ -57,7 +89,7 @@ namespace DoctorType.Data.Migrations
                         new
                         {
                             Id = 1m,
-                            CreateDate = new DateTime(2022, 11, 20, 12, 27, 24, 179, DateTimeKind.Local).AddTicks(2475),
+                            CreateDate = new DateTime(2022, 11, 20, 11, 14, 58, 197, DateTimeKind.Local).AddTicks(8798),
                             IsDelete = false,
                             RoleUniqueName = "Admin",
                             Title = "Admin"
@@ -272,36 +304,6 @@ namespace DoctorType.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("EmailSetting");
-                });
-
-            modelBuilder.Entity("DoctorType.Domain.Entities.SiteSetting.SiteSetting", b =>
-                {
-                    b.Property<decimal>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("decimal(20,0)");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"), 1L, 1);
-
-                    b.Property<string>("CopyRightText")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("SendSMSTimer")
-                        .HasColumnType("int");
-
-                    b.Property<string>("SiteDomain")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("SiteSettings");
                 });
 
             modelBuilder.Entity("DoctorType.Domain.Entities.Account.Role", b =>

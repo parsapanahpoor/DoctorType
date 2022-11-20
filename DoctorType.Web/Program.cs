@@ -28,11 +28,11 @@ builder.Services.AddHttpContextAccessor();
 
 #endregion
 
-#region PWA
+//#region PWA
 
-builder.Services.AddProgressiveWebApp("/Site/Manifest/manifest.json");
+//builder.Services.AddProgressiveWebApp("/Site/Manifest/manifest.json");
 
-#endregion
+//#endregion
 
 #region Add DBContext
 

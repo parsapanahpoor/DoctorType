@@ -4,6 +4,7 @@ using DoctorType.Data.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DoctorType.Data.Migrations
 {
     [DbContext(typeof(DoctorTypeDbContext))]
-    partial class DoctorTypeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221120073706_14010828")]
+    partial class _14010828
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -87,7 +89,7 @@ namespace DoctorType.Data.Migrations
                         new
                         {
                             Id = 1m,
-                            CreateDate = new DateTime(2022, 11, 20, 11, 14, 58, 197, DateTimeKind.Local).AddTicks(8798),
+                            CreateDate = new DateTime(2022, 11, 20, 11, 7, 5, 974, DateTimeKind.Local).AddTicks(6142),
                             IsDelete = false,
                             RoleUniqueName = "Admin",
                             Title = "Admin"

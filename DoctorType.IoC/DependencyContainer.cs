@@ -27,6 +27,7 @@ namespace DoctorType.IoC
             services.AddScoped<ISiteSettingService, SiteSettingService>();
             services.AddScoped<IViewRenderService, ViewRenderService>();
             services.AddScoped<IEmailSender, EmailSender>();
+            services.AddScoped<ISMSService, SMSService>();
 
             #endregion
 

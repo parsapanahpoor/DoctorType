@@ -1,5 +1,4 @@
-﻿using Academy.Domain.Entities.SiteSetting;
-using DoctorType.Domain.Entities;
+﻿using DoctorType.Domain.Entities;
 using DoctorType.Domain.Entities.Account;
 using DoctorType.Domain.Entities.SiteSetting;
 using Microsoft.EntityFrameworkCore;

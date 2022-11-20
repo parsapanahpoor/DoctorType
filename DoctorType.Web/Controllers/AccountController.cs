@@ -16,7 +16,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Win32;
 using NuGet.Protocol.Plugins;
 using System.Security.Claims;
-using DoctorFAM.Application.Services.Interfaces;
 
 namespace DoctorType.Web.Controllers
 {
@@ -31,7 +30,6 @@ namespace DoctorType.Web.Controllers
         public AccountController(IUserService userService, ISiteSettingService siteSettingService)
         {
             _userService = userService;
-            _smsservice = smsservice;
             _siteSettingService = siteSettingService;
         }
 

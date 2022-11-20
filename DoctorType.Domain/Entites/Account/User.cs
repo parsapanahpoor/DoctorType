@@ -86,7 +86,7 @@ namespace DoctorType.Domain.Entities.Account
 
         #region Relations
 
-   
+        public ICollection<UserRole> UserRoles { get; set; }
 
         #endregion
     }

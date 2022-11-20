@@ -18,9 +18,5 @@
 	<ItemGroup>
 		<ProjectReference Include="..\DoctorType.Domain\DoctorType.Domain.csproj" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Repository\" />
-	</ItemGroup>
 	
 </Project>

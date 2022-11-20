@@ -1,5 +1,7 @@
-﻿using DoctorType.Domain.Entities;
+﻿using Academy.Domain.Entities.SiteSetting;
+using DoctorType.Domain.Entities;
 using DoctorType.Domain.Entities.Account;
+using DoctorType.Domain.Entities.SiteSetting;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -31,6 +33,14 @@ namespace DoctorType.Data.DbContext
         public DbSet<RolePermission> RolePermissions { get; set; }
 
         public DbSet<UserRole> UserRoles { get; set; }
+
+        #endregion
+
+        #region Site Setting
+
+        public DbSet<SiteSetting> SiteSettings { get; set; }
+
+        public DbSet<EmailSetting> EmailSetting { get; set; }
 
         #endregion
 

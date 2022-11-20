@@ -23,6 +23,7 @@ namespace DoctorType.IoC
             services.AddScoped<ISMSService, SMSService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ISiteSettingService, SiteSettingService>();
+            services.AddScoped<IPermissionService, PermissionService>();
 
             #endregion
 

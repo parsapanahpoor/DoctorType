@@ -30,7 +30,7 @@ builder.Services.AddHttpContextAccessor();
 
 #region PWA
 
-builder.Services.AddProgressiveWebApp("/Manifest/manifest.json");
+builder.Services.AddProgressiveWebApp("/Site/Manifest/manifest.json");
 
 #endregion
 

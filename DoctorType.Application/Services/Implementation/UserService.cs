@@ -108,15 +108,14 @@ namespace DoctorType.Application.Services.Implementation
 
             #region Send Verification Code SMS
 
-            var result = $"https://api.kavenegar.com/v1/564672526D58694D3477685571796F7372574F576C476B6366785462356D3164683370395A2B61356D6E383D/verify/lookup.json?receptor={user.Mobile}&token={user.MobileActivationCode}&template=Register";
-            var results = client.GetStringAsync(result);
+            //var result = $"https://api.kavenegar.com/v1/564672526D58694D3477685571796F7372574F576C476B6366785462356D3164683370395A2B61356D6E383D/verify/lookup.json?receptor={user.Mobile}&token={user.MobileActivationCode}&template=Register";
+            //var results = client.GetStringAsync(result);
 
-            var message = Messages.SendActivationRegisterSms(user.MobileActivationCode);
+            //var message = Messages.SendActivationRegisterSms(user.MobileActivationCode);
 
-            await _smsservice.SendSimpleSMS(user.Mobile, message);
+            //await _smsservice.SendSimpleSMS(user.Mobile, message);
 
             #endregion
-
         }
 
         public async Task<bool> IsExistUserById(ulong userId)
@@ -185,12 +184,6 @@ namespace DoctorType.Application.Services.Implementation
             if (await IsExistUserByMobile(register.Mobile))
             {
                 return RegisterUserResult.MobileExist;
-            }
-
-            //Field about Accept Site Roles
-            if (register.SiteRoles == false)
-            {
-                return RegisterUserResult.SiteRoleNotAccept;
             }
 
             //Hash Password
@@ -326,9 +319,9 @@ namespace DoctorType.Application.Services.Implementation
 
             #region Send Verification Code SMS
 
-            var message = Messages.SendActivationRegisterSms(user.MobileActivationCode);
+            //var message = Messages.SendActivationRegisterSms(user.MobileActivationCode);
 
-            await _smsservice.SendSimpleSMS(user.Mobile, message);
+            //await _smsservice.SendSimpleSMS(user.Mobile, message);
 
             #endregion
 

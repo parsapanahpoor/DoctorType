@@ -25,14 +25,11 @@ namespace DoctorType.Domain.ViewModels.Account
         [MaxLength(100, ErrorMessage = "تعداد کاراکتر های {0} نمیتواند بیشتر از {1} باشد")]
         [Compare("Password", ErrorMessage = "کلمه های عبور مغایرت دارند .")]
         public string RePassword { get; set; }
-
-        public bool SiteRoles { get; set; }
     }
 
     public enum RegisterUserResult
     {
         Success,       
         MobileExist,
-        SiteRoleNotAccept
     }
 }

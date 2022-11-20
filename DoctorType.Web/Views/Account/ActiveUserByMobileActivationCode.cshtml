@@ -1,0 +1,88 @@
+﻿@model DoctorType.Domain.ViewModels.Site.Account.ActiveMobileByActivationCodeViewModel
+
+@{
+    ViewData["Title"] = "فعالسازی حساب کاربری";
+    var Time = ViewBag.Time;
+}
+
+@section Scripts
+    {
+    <partial name="_JqueryValidation" />
+
+    <script src="~/common/Simple-Countdown-Timer-Plugin-jQuery/jquery.simple.timer.js"></script>
+    <script src="~/common/Simple-Countdown-Timer-Plugin-jQuery/examples/bundle.js"></script>
+    <script src="~/common/Simple-Countdown-Timer-Plugin-jQuery/examples/dojo.js"></script>
+
+    <script>
+        $(function () {
+
+            $("#timer").startTimer({
+                onComplete: function () {
+                    $("#SMS").css({ 'display': 'block' });
+                    $("#timer").css({ 'display': 'none' });
+                }
+            });
+
+        });
+    </script>
+}
+
+    @section styles
+    {
+    <style>
+        .jst-hours {
+            float: left;
+        }
+
+        .jst-minutes {
+            float: left;
+        }
+
+        .jst-seconds {
+            float: left;
+        }
+
+        .jst-clearDiv {
+            clear: both;
+        }
+
+        .jst-timeout {
+            color: red;
+        }
+    </style>
+}
+
+    <div class="login_page_bg">
+        <div class="container">
+            <div class="customer_login">
+                <div class="row">
+                    <!--register area start-->
+                    <div class="col-lg-6 col-md-6 centerRegister">
+                        <div class="account_form register">
+                            <h2>فعالسازی حساب کاربری</h2>
+                            <form method="post" asp-area="" asp-controller="Account" asp-action="ActiveUserByMobileActivationCode">
+                                <input type="hidden" asp-for="Mobile" value=@ViewBag.Mobile />
+
+                                <p>
+                                    <label asp-for="Mobile">کد فعالسازی  <span>*</span></label>
+                                    <input asp-for="MobileActiveCode" class="form-control" placeholder="کد فعالسازی ارسال شده" />
+                                    <span class="text-danger" asp-validation-for="MobileActiveCode"></span>
+                                </p>
+
+                                <div class="remember-me-wrap" >
+                                <p class="timerCounter" data-seconds-left="@Time" id="timer"></p>
+                                </div>
+
+                                <div class="login_submit">
+                                    <button type="submit">ارسال</button>
+                                    <a id="SMS" asp-area="" asp-controller="Account" asp-action="ActiveUserByMobileActivationCode" asp-route-Mobile="@ViewBag.Mobile" asp-route-Resend="true" class="btn btn-primary" style="display: none"><span> ارسال مجدد کد  </span></a>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!--register area end-->
+                </div>
+            </div>
+        </div>
+    </div>

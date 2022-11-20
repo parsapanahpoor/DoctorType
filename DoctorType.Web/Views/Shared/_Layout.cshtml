@@ -5,7 +5,6 @@
 <head>
     <title>@ViewData["Title"] - دکتر تایپ</title>
 
-
     <partial name="_MetaTags" />
 
     @await RenderSectionAsync("MetaTags", false)
@@ -14,10 +13,7 @@
 
     @await RenderSectionAsync("Styles", false)
 
-
 </head>
-
-
 
 <body>
     <!-- page wrapper start -->
@@ -344,6 +340,10 @@
     </footer>*@
 
     <partial name="_FooterReferences" />
+
+    <partial name="_Notification" />
+
+    <partial name="_Modals" />
 
     @await RenderSectionAsync("Scripts", false)
 </body>

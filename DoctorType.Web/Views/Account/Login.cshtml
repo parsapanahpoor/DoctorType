@@ -1,0 +1,54 @@
+﻿@model DoctorType.Domain.ViewModels.Account.LoginUserViewModel
+
+@{
+    ViewData["Title"] = " ورود";
+}
+
+@section Scripts
+    {
+    <partial name="_JqueryValidation" />
+}
+
+    <div class="login_page_bg">
+        <div class="container">
+            <div class="customer_login">
+                <div class="row">
+                    <!--register area start-->
+                    <div class="col-lg-6 col-md-6 centerRegister">
+                        <div class="account_form register">
+                            <h2>ورود به سایت</h2>
+                            <form asp-action="Login" asp-controller="Account" method="post">
+                                <input type="hidden" asp-for="ReturnUrl" />           
+                                
+                                <p>
+                                    <label asp-for="Mobile">تلفن همراه <span>*</span></label>
+                                    <input asp-for="Mobile" class="form-control" placeholder="تلفن همراه" >
+                                    <span class="text-danger" asp-validation-for="Mobile"></span>
+                                </p>
+
+                                <p>
+                                    <label asp-for="Password">رمز عبور <span>*</span></label>
+                                    <input  asp-for="Password" type="password" class="form-control" placeholder="کلمه عبور" >
+                                    <span class="text-danger" asp-validation-for="Password"></span>
+                                </p>
+
+                                <div class="login_submit">
+
+                                    <a asp-action="ForgotPassword" asp-controller="Account">رمز عبور خود را فراموش کرده اید؟</a>
+
+                                    <label for="remember">
+                                        <input type="checkbox" id="test1" asp-for="RememberMe">
+                                        مرا به خاطر بسپار
+                                    </label>
+
+                                    <button type="submit">ورود</button>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!--register area end-->
+                </div>
+            </div>
+        </div>
+    </div>

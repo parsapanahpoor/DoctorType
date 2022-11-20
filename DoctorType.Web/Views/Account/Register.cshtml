@@ -1,0 +1,46 @@
+﻿@model DoctorType.Domain.ViewModels.Account.RegisterUserViewModel
+
+@{
+    ViewData["Title"] = "ثبت نام";
+}
+
+@section Scripts
+    {
+    <partial name="_JqueryValidation" />
+}
+
+    <div class="login_page_bg">
+        <div class="container">
+            <div class="customer_login">
+                <div class="row">
+                    <!--register area start-->
+                    <div class="col-lg-6 col-md-6 centerRegister">
+                        <div class="account_form register">
+                            <h2>ایجاد حساب کاربری</h2>
+                            <form asp-action="Register" asp-controller="Account" method="post">
+                                <p>
+                                    <label asp-for="Mobile">تلفن همراه <span>*</span></label>
+                                    <input asp-for="Mobile" class="form-control" placeholder="تلفن همراه" >
+                                    <span class="text-danger" asp-validation-for="Mobile"></span>
+                                </p>
+                                <p>
+                                    <label asp-for="Password">رمز عبور <span>*</span></label>
+                                    <input  asp-for="Password" type="password" class="form-control" placeholder="کلمه عبور" >
+                                    <span class="text-danger" asp-validation-for="Password"></span>
+                                </p>
+                                <p>
+                                    <label asp-for="RePassword">تکرار کلمه ی عبور <span>*</span></label>
+                                    <input asp-for="RePassword" type="password" class="form-control" placeholder="تکرار کلمه ی عبور ">
+                                    <span class="text-danger" asp-validation-for="RePassword"></span>
+                                </p>
+                                <div class="login_submit">
+                                    <button type="submit">ثبت نام</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!--register area end-->
+                </div>
+            </div>
+        </div>
+    </div>

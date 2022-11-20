@@ -83,10 +83,6 @@ namespace DoctorType.Web.Controllers
                     ModelState.AddModelError("Mobile", "تلفن همراه وارد شده تکراری می باشد");
                     break;
 
-                case RegisterUserResult.SiteRoleNotAccept:
-                    TempData[ErrorMessage] = "قوانین سایت باید پذیرفته شوند ";
-                    break;
-
                 case RegisterUserResult.Success:
                     TempData[SuccessMessage] = "ثبت نام شما با موفقیت انجام شد .";
                     TempData[InfoMessage] = $"پیامی  حاوی کد فعالسازی حساب کاربری به {register.Mobile} ارسال شد .";
@@ -253,14 +249,6 @@ namespace DoctorType.Web.Controllers
 
                     #endregion
 
-                    #region Send Wellcome SMS
-
-                    //var message = Messages.SendSMSForLogin();
-
-                    //await _smsservice.SendSimpleSMS(login.Mobile, message);
-
-                    #endregion
-
                     TempData[SuccessMessage] = $"خوش آمدید {user.Username}";
 
                     #region Return To URL
@@ -412,6 +400,14 @@ namespace DoctorType.Web.Controllers
         [HttpPost("reset-pass/{mobile}"), ValidateAntiForgeryToken]
         public async Task<IActionResult> ResetPassword(string mobile, ResetPasswordViewModel reset)
         {
+            #region Get User By Mobile 
+
+            ViewBag.Mobile = mobile;
+
+            var user = await _userService.GetUserByMobile(mobile);
+
+            #endregion
+
             if (ModelState.IsValid)
             {
                 var res = await _userService.ResetUserPassword(reset, mobile);
@@ -429,6 +425,28 @@ namespace DoctorType.Web.Controllers
                         return RedirectToAction("Login", "Account", new { area = "" });
                 }
             }
+
+            #region Resend Timer
+
+            if (await _siteSettingService.IsExistSiteSetting())
+            {
+                var SiteSettingSMSTimer = await _siteSettingService.GetSMSTimer();
+
+                if (SiteSettingSMSTimer == null)
+                {
+                    TempData[WarningMessage] = "لطفا با پشتیبان تماس بگیرید .";
+                    return RedirectToAction(nameof(Login));
+                }
+
+                DateTime expireMinut = user.ExpireMobileSMSDateTime.Value.AddMinutes(SiteSettingSMSTimer);
+
+                var TimerMinut = expireMinut - DateTime.Now;
+
+                ViewBag.Time = TimerMinut.TotalMinutes * 60;
+            }
+
+            #endregion
+
             return View(reset);
         }
 

@@ -1,36 +1,215 @@
 ﻿    <!--header area start-->
-
-    <!--offcanvas menu area start-->
-    <div class="off_canvars_overlay">
-
-    </div>
-    <div class="offcanvas_menu offcanvas_three">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="canvas_open">
-                        <a href="javascript:void(0)"><i class="ion-navicon"></i></a>
+<!--offcanvas menu area start-->
+<div class="off_canvars_overlay">
+</div>
+<div class="offcanvas_menu offcanvas_three">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="canvas_open">
+                    <a href="javascript:void(0)"><i class="ion-navicon"></i></a>
+                </div>
+                <div class="offcanvas_menu_wrapper">
+                    <div class="canvas_close">
+                        <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
                     </div>
-                    <div class="offcanvas_menu_wrapper">
-                        <div class="canvas_close">
-                            <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
-                        </div>
-                        <div class="call_support">
-                            <p><i class="icon-phone-call" aria-hidden="true"></i> <span>تماس با ما : <a
-                                        href="tel:02198765432">02198765432</a></span></p>
+                    <div class="call_support">
+                        <p>
+                            <i class="icon-phone-call" aria-hidden="true"></i> <span>
+                                تماس با ما : <a href="tel:02198765432">02198765432</a>
+                            </span>
+                        </p>
 
-                        </div>
+                    </div>
+                    <div class="header_account">
+                        <ul>
+                            <li class="language">
+                                <a href="#">
+                                    <img src="~/SiteContent/img/logo/language.png" alt=""> فارسی
+                                    <i class="ion-chevron-down"></i>
+                                </a>
+                                <ul class="dropdown_language">
+                                    <li><a href="#">فارسی</a></li>
+                                    <li><a href="#">انگلیسی</a></li>
+                                    <li><a href="#">عربی</a></li>
+                                </ul>
+                            </li>
+                            <li class="currency">
+                                <a href="#">تومان <i class="ion-chevron-down"></i></a>
+                                <ul class="dropdown_currency">
+                                    <li><a href="#">دینار</a></li>
+                                    <li><a href="#">تومان</a></li>
+                                    <li><a href="#">دلار</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="header_top_links">
+                        <ul>
+                                 @if (!User.Identity.IsAuthenticated)
+                            {
+                                <li><a asp-action="Login" asp-area="" asp-controller="Account">ورود</a></li>
+                                <li><a asp-action="Register" asp-area="" asp-controller="Account">ثبت نام</a></li>
+                            }
+                            else
+                            {
+                                <li><a asp-action="Logout" asp-area="" asp-controller="Account">خروج</a></li>
+                            }
+                            <li><a href="cart.html">سبد خرید</a></li>
+                            <li><a href="checkout.html">بررسی</a></li>
+                        </ul>
+                    </div>
+                    <div class="search_container">
+                        <form action="#">
+                            <div class="hover_category">
+                                <select class="select_option" name="select" id="categori1">
+                                    <option selected value="1">همه دسته بندی ها</option>
+                                    <option value="2">لوازم جانبی</option>
+                                    <option value="3">لوازم جانبی و موارد دیگر</option>
+                                    <option value="4">کره و تخم مرغ</option>
+                                    <option value="5">دوربین و ویدئو</option>
+                                    <option value="6">صفحه نمایش</option>
+                                    <option value="7">تبلت</option>
+                                    <option value="8">لبتاب</option>
+                                    <option value="9">کیف های دستی</option>
+                                    <option value="10">هدفون و بلندگو</option>
+                                    <option value="11">گیاهان و گیاهان دارویی</option>
+                                    <option value="12">سبزیجات</option>
+                                    <option value="13">خرید</option>
+                                    <option value="14">لبتاب و دسکتاپ</option>
+                                    <option value="15">ساعت</option>
+                                    <option value="16">الکترونیک</option>
+                                </select>
+                            </div>
+                            <div class="search_box">
+                                <input placeholder="جستجوی محصول ..." type="text">
+                                <button type="submit">محصول</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="menu" class="text-left ">
+                        <ul class="offcanvas_main_menu">
+                            <li class="menu-item-has-children active">
+                                <a href="#">خانه</a>
+                                <ul class="sub-menu">
+                                    <li><a href="index.html">خانه 1</a></li>
+                                    <li><a href="index-2.html">خانه 2</a></li>
+                                    <li><a href="index-3.html">خانه 3</a></li>
+                                    <li><a href="index-4.html">خانه 4</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">خرید</a>
+                                <ul class="sub-menu">
+                                    <li class="menu-item-has-children">
+                                        <a href="#">طرح‌بندی فروشگاه</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="shop.html">خرید</a></li>
+                                            <li><a href="shop-fullwidth.html">عرض کامل</a></li>
+                                            <li><a href="shop-fullwidth-list.html">لیست با عرض کامل</a></li>
+                                            <li><a href="shop-right-sidebar.html">سایدبار سمت چپ </a></li>
+                                            <li>
+                                                <a href="shop-right-sidebar-list.html"> لیست با سایدبار سمت چپ</a>
+                                            </li>
+                                            <li><a href="shop-list.html">نمای فهرست</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#">صفحات دیگر</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="cart.html">سبد خرید</a></li>
+                                            <li><a href="wishlist.html">لیست علاقمندی ها</a></li>
+                                            <li><a href="checkout.html">بررسی</a></li>
+                                            <li><a href="my-account.html">حساب من</a></li>
+                                            <li><a href="404.html"> خطای 404</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#">انواع محصول</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="product-details.html">جزئیات محصول</a></li>
+                                            <li><a href="product-sidebar.html">معرفی محصول با سایدبار</a></li>
+                                            <li><a href="product-grouped.html">معرفی محصول با گروه بندی</a></li>
+                                            <li><a href="variable-product.html">معرفی محصول با متغیر</a></li>
+                                            <li><a href="product-countdown.html">معرفی محصول با شمارنده</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">وبلاگ</a>
+                                <ul class="sub-menu">
+                                    <li><a href="blog.html">وبلاگ</a></li>
+                                    <li><a href="blog-details.html">جزئیات وبلاگ</a></li>
+                                    <li><a href="blog-fullwidth.html">وبلاگ با عرض کامل</a></li>
+                                    <li><a href="blog-sidebar.html">وبلاگ با نوار کناری</a></li>
+                                    <li><a href="blog-no-sidebar.html">وبلاگ بدون نوار کناری</a></li>
+                                </ul>
+
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">صفحات </a>
+                                <ul class="sub-menu">
+                                    <li><a href="about.html">درباره ما</a></li>
+                                    <li><a href="faq.html">سوالات متداول</a></li>
+                                    <li><a href="contact.html">تماس</a></li>
+                                    <li><a href="login.html">ورود</a></li>
+                                    <li><a href="404.html"> خطای 404</a></li>
+                                    <li><a href="compare.html">مقایسه</a></li>
+                                    <li><a href="privacy-policy.html">حریم خصوصی</a></li>
+                                    <li><a href="coming-soon.html">به زودی</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="my-account.html">حساب من</a>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="about.html">درباره ما</a>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="contact.html"> تماس با ما</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="offcanvas_footer">
+                        <span><a href="#"><i class="fa fa-envelope-o"></i> info@yourdomain.com</a></span>
+                        <ul>
+                            <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li class="pinterest"><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                            <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--offcanvas menu area end-->
+
+<header>
+    <div class="main_header header_three color_three">
+        <!--header top start-->
+        <div class="header_top h_top_three">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 col-md-5">
                         <div class="header_account">
                             <ul>
-                                <li class="language"><a href="#"><img src="~/SiteContent/img/logo/language.png" alt=""> فارسی
-                                        <i class="ion-chevron-down"></i></a>
+                                <li class="language">
+                                    <a href="#">
+                                        <img src="~/SiteContent/img/logo/language.png" alt="">
+                                        فارسی <i class="ion-chevron-down"></i>
+                                    </a>
                                     <ul class="dropdown_language">
                                         <li><a href="#">فارسی</a></li>
                                         <li><a href="#">انگلیسی</a></li>
                                         <li><a href="#">عربی</a></li>
                                     </ul>
                                 </li>
-                                <li class="currency"><a href="#">تومان <i class="ion-chevron-down"></i></a>
+                                <li class="currency">
+                                    <a href="#">تومان <i class="ion-chevron-down"></i></a>
                                     <ul class="dropdown_currency">
                                         <li><a href="#">دینار</a></li>
                                         <li><a href="#">تومان</a></li>
@@ -39,390 +218,260 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="header_top_links">
+                    </div>
+                    <div class="col-lg-8 col-md-7">
+                        <div class="header_top_links text-right">
                             <ul>
-                                <li><a href="login.html">ثبت نام</a></li>
-                                <li><a href="login.html">ورود</a></li>
+                                @if (!User.Identity.IsAuthenticated)
+                            {
+                                <li><a asp-action="Login" asp-area="" asp-controller="Account">ورود</a></li>
+                                <li><a asp-action="Register" asp-area="" asp-controller="Account">ثبت نام</a></li>
+                            }
+                            else
+                            {
+                                <li><a asp-action="Logout" asp-area="" asp-controller="Account">خروج</a></li>
+                            }
                                 <li><a href="cart.html">سبد خرید</a></li>
                                 <li><a href="checkout.html">بررسی</a></li>
                             </ul>
                         </div>
-                        <div class="search_container">
-                            <form action="#">
-                                <div class="hover_category">
-                                    <select class="select_option" name="select" id="categori1">
-                                        <option selected value="1">همه دسته بندی ها</option>
-                                        <option value="2">لوازم جانبی</option>
-                                        <option value="3">لوازم جانبی و موارد دیگر</option>
-                                        <option value="4">کره و تخم مرغ</option>
-                                        <option value="5">دوربین و ویدئو</option>
-                                        <option value="6">صفحه نمایش</option>
-                                        <option value="7">تبلت</option>
-                                        <option value="8">لبتاب</option>
-                                        <option value="9">کیف های دستی</option>
-                                        <option value="10">هدفون و بلندگو</option>
-                                        <option value="11">گیاهان و گیاهان دارویی</option>
-                                        <option value="12">سبزیجات</option>
-                                        <option value="13">خرید</option>
-                                        <option value="14">لبتاب و دسکتاپ</option>
-                                        <option value="15">ساعت</option>
-                                        <option value="16">الکترونیک</option>
-                                    </select>
-                                </div>
-                                <div class="search_box">
-                                    <input placeholder="جستجوی محصول ..." type="text">
-                                    <button type="submit">محصول</button>
-                                </div>
-                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--header top start-->
+        <!--header middel start-->
+        <div class="header_middle h_middle_three">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-2 col-md-4 col-sm-4 col-4">
+                        <div class="logo">
+                            <a href="index.html"><img src="~/SiteContent/img/logo/logo.png" alt=""></a>
                         </div>
-                        <div id="menu" class="text-left ">
-                            <ul class="offcanvas_main_menu">
-                                <li class="menu-item-has-children active">
-                                    <a href="#">خانه</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="index.html">خانه 1</a></li>
-                                        <li><a href="index-2.html">خانه 2</a></li>
-                                        <li><a href="index-3.html">خانه 3</a></li>
-                                        <li><a href="index-4.html">خانه 4</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">خرید</a>
-                                    <ul class="sub-menu">
-                                        <li class="menu-item-has-children">
-                                            <a href="#">طرح‌بندی فروشگاه</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="shop.html">خرید</a></li>
-                                                <li><a href="shop-fullwidth.html">عرض کامل</a></li>
-                                                <li><a href="shop-fullwidth-list.html">لیست با عرض کامل</a></li>
-                                                <li><a href="shop-right-sidebar.html">سایدبار سمت چپ </a></li>
-                                                <li><a href="shop-right-sidebar-list.html"> لیست با سایدبار سمت چپ</a>
+                    </div>
+                    <div class="col-lg-10 col-md-6 col-sm-6 col-6">
+                        <div class="header_right_box">
+                            <div class="search_container">
+                                <form action="#">
+                                    <div class="hover_category">
+                                        <select class="select_option" name="select" id="categori2" style="display: none;">
+                                            <option selected="" value="1">همه دسته بندی ها</option>
+                                            <option value="2">لوازم جانبی</option>
+                                            <option value="3">لوازم جانبی و موارد دیگر</option>
+                                            <option value="4">کره و تخم مرغ</option>
+                                            <option value="5">دوربین و ویدئو</option>
+                                            <option value="6">صفحه نمایش</option>
+                                            <option value="7">تبلت</option>
+                                            <option value="8">لبتاب</option>
+                                            <option value="9">کیف های دستی</option>
+                                            <option value="10">هدفون و بلندگو</option>
+                                            <option value="11">گیاهان و گیاهان دارویی</option>
+                                            <option value="12">سبزیجات</option>
+                                            <option value="13">خرید</option>
+                                            <option value="14">لبتاب و دسکتاپ</option>
+                                            <option value="15">ساعت</option>
+                                            <option value="16">الکترونیک</option>
+                                        </select><div class="nice-select select_option" tabindex="0"><span class="current">همه دسته بندی ها</span><ul class="list"><li data-value="1" class="option selected">همه دسته بندی ها</li><li data-value="2" class="option">لوازم جانبی</li><li data-value="3" class="option">لوازم جانبی و موارد دیگر</li><li data-value="4" class="option">کره و تخم مرغ</li><li data-value="5" class="option">دوربین و ویدئو</li><li data-value="6" class="option">صفحه نمایش</li><li data-value="7" class="option">تبلت</li><li data-value="8" class="option">لبتاب</li><li data-value="9" class="option">کیف های دستی</li><li data-value="10" class="option">هدفون و بلندگو</li><li data-value="11" class="option">گیاهان و گیاهان دارویی</li><li data-value="12" class="option">سبزیجات</li><li data-value="13" class="option">خرید</li><li data-value="14" class="option">لبتاب و دسکتاپ</li><li data-value="15" class="option">ساعت</li><li data-value="16" class="option">الکترونیک</li></ul></div>
+                                    </div>
+                                    <div class="search_box">
+                                        <input placeholder="جستجوی محصول ..." type="text">
+                                        <button type="submit">محصول</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="header_configure_area">
+                                <div class="header_wishlist">
+                                    <a href="wishlist.html">
+                                        <i class="icon-heart"></i>
+                                        <span class="wishlist_count">3</span>
+                                    </a>
+                                </div>
+                                <div class="mini_cart_wrapper">
+                                    <a href="javascript:void(0)">
+                                        <i class="icon-shopping-bag2"></i>
+                                        <span class="cart_price">152.00 تومان <i class="ion-ios-arrow-down"></i></span>
+                                        <span class="cart_count">2</span>
+                                    </a>
+                                    <!--mini cart-->
+                                    <div class="mini_cart">
+                                        <div class="mini_cart_inner">
+                                            <div class="cart_close">
+                                                <div class="cart_text">
+                                                    <h3>سبد خرید</h3>
+                                                </div>
+                                                <div class="mini_cart_close">
+                                                    <a href="javascript:void(0)"><i class="icon-x"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="cart_item">
+                                                <div class="cart_img">
+                                                    <a href="#"><img src="~/SiteContent/img/s-product/product.jpg" alt=""></a>
+                                                </div>
+                                                <div class="cart_info">
+                                                    <a href="#">عنوان محصول</a>
+                                                    <p> تعداد: 1 عدد <span> 60.00 تومان </span></p>
+                                                </div>
+                                                <div class="cart_remove">
+                                                    <a href="#"><i class="ion-android-close"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="cart_item">
+                                                <div class="cart_img">
+                                                    <a href="#"><img src="~/SiteContent/img/s-product/product2.jpg" alt=""></a>
+                                                </div>
+                                                <div class="cart_info">
+                                                    <a href="#">عنوان محصول</a>
+                                                    <p> تعداد: 1 عدد <span> 60.00 تومان </span></p>
+                                                </div>
+                                                <div class="cart_remove">
+                                                    <a href="#"><i class="ion-android-close"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="mini_cart_table">
+                                                <div class="cart_total">
+                                                    <span>مجموع فرعی:</span>
+                                                    <span class="price">138.00 تومان</span>
+                                                </div>
+                                                <div class="cart_total mt-10">
+                                                    <span>جمع کل:</span>
+                                                    <span class="price">138.00 تومان</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mini_cart_footer">
+                                            <div class="cart_button">
+                                                <a href="cart.html">مشاهده سبد خرید</a>
+                                            </div>
+                                            <div class="cart_button">
+                                                <a class="active" href="checkout.html">بررسی</a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!--mini cart end-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--header middel end-->
+        <!--header bottom satrt-->
+        <div class="header_bottom h_bottom_three sticky-header">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-7">
+                        <div class="main_menu menu_three menu_position text-left">
+                            <nav>
+                                <ul>
+                                    <li>
+                                        <a class="active" href="index.html">خانه<i class="fa fa-angle-down"></i></a>
+                                        <ul class="sub_menu">
+                                            <li><a href="index.html">خانه 1</a></li>
+                                            <li><a href="index-2.html">خانه 2</a></li>
+                                            <li><a href="index-3.html">خانه 3</a></li>
+                                            <li><a href="index-4.html">خانه 4</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="mega_items">
+                                        <a href="shop.html">خرید</a>
+                                        <div class="mega_menu">
+                                            <ul class="mega_menu_inner">
+                                                <li>
+                                                    <a href="#">طرح‌بندی فروشگاه</a>
+                                                    <ul>
+                                                        <li><a href="shop-fullwidth.html">عرض کامل</a></li>
+                                                        <li>
+                                                            <a href="shop-fullwidth-list.html">لیست با عرض کامل</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="shop-right-sidebar.html">سایدبار سمت چپ </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="shop-right-sidebar-list.html">
+                                                                لیست با سایدبار
+                                                                سمت چپ
+                                                            </a>
+                                                        </li>
+                                                        <li><a href="shop-list.html">نمای فهرست</a></li>
+                                                    </ul>
                                                 </li>
-                                                <li><a href="shop-list.html">نمای فهرست</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children">
-                                            <a href="#">صفحات دیگر</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="cart.html">سبد خرید</a></li>
-                                                <li><a href="wishlist.html">لیست علاقمندی ها</a></li>
-                                                <li><a href="checkout.html">بررسی</a></li>
-                                                <li><a href="my-account.html">حساب من</a></li>
-                                                <li><a href="404.html"> خطای 404</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children">
-                                            <a href="#">انواع محصول</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="product-details.html">جزئیات محصول</a></li>
-                                                <li><a href="product-sidebar.html">معرفی محصول با سایدبار</a></li>
-                                                <li><a href="product-grouped.html">معرفی محصول با گروه بندی</a></li>
-                                                <li><a href="variable-product.html">معرفی محصول با متغیر</a></li>
-                                                <li><a href="product-countdown.html">معرفی محصول با شمارنده</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">وبلاگ</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog.html">وبلاگ</a></li>
-                                        <li><a href="blog-details.html">جزئیات وبلاگ</a></li>
-                                        <li><a href="blog-fullwidth.html">وبلاگ با عرض کامل</a></li>
-                                        <li><a href="blog-sidebar.html">وبلاگ با نوار کناری</a></li>
-                                        <li><a href="blog-no-sidebar.html">وبلاگ بدون نوار کناری</a></li>
-                                    </ul>
+                                                <li>
+                                                    <a href="#">صفحات دیگر</a>
+                                                    <ul>
+                                                        <li><a href="cart.html">سبد خرید</a></li>
+                                                        <li><a href="wishlist.html">لیست علاقمندی ها</a></li>
+                                                        <li><a href="checkout.html">بررسی</a></li>
+                                                        <li><a href="my-account.html">حساب من</a></li>
+                                                        <li><a href="404.html"> خطای 404</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">انواع محصول</a>
+                                                    <ul>
+                                                        <li><a href="product-details.html">جزئیات محصول</a></li>
+                                                        <li>
+                                                            <a href="product-sidebar.html">
+                                                                معرفی محصول با
+                                                                سایدبار
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="product-grouped.html">
+                                                                معرفی محصول با گروه
+                                                                بندی
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="variable-product.html">معرفی محصول با متغیر</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="product-countdown.html">
+                                                                معرفی محصول با
+                                                                شمارنده
+                                                            </a>
+                                                        </li>
 
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">صفحات </a>
-                                    <ul class="sub-menu">
-                                        <li><a href="about.html">درباره ما</a></li>
-                                        <li><a href="faq.html">سوالات متداول</a></li>
-                                        <li><a href="contact.html">تماس</a></li>
-                                        <li><a href="login.html">ورود</a></li>
-                                        <li><a href="404.html"> خطای 404</a></li>
-                                        <li><a href="compare.html">مقایسه</a></li>
-                                        <li><a href="privacy-policy.html">حریم خصوصی</a></li>
-                                        <li><a href="coming-soon.html">به زودی</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="my-account.html">حساب من</a>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="about.html">درباره ما</a>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="contact.html"> تماس با ما</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="offcanvas_footer">
-                            <span><a href="#"><i class="fa fa-envelope-o"></i> info@yourdomain.com</a></span>
-                            <ul>
-                                <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li class="pinterest"><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                                <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            </ul>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="blog.html">وبلاگ<i class="fa fa-angle-down"></i></a>
+                                        <ul class="sub_menu pages">
+                                            <li><a href="blog-details.html">جزئیات وبلاگ</a></li>
+                                            <li><a href="blog-fullwidth.html">وبلاگ با عرض کامل</a></li>
+                                            <li><a href="blog-sidebar.html">وبلاگ با نوار کناری</a></li>
+                                            <li><a href="blog-no-sidebar.html">وبلاگ بدون نوار کناری</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">صفحات <i class="fa fa-angle-down"></i></a>
+                                        <ul class="sub_menu pages">
+                                            <li><a href="about.html">درباره ما</a></li>
+                                            <li><a href="faq.html">سوالات متداول</a></li>
+                                            <li><a href="contact.html">تماس</a></li>
+                                            <li><a href="login.html">ورود</a></li>
+                                            <li><a href="404.html"> خطای 404</a></li>
+                                            <li><a href="compare.html">مقایسه</a></li>
+                                            <li><a href="privacy-policy.html">حریم خصوصی</a></li>
+                                            <li><a href="coming-soon.html">به زودی</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li><a href="about.html">درباره ما</a></li>
+                                    <li><a href="contact.html"> تماس با ما</a></li>
+                                </ul>
+                            </nav>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!--header bottom end-->
     </div>
-    <!--offcanvas menu area end-->
-
-<header>
-        <div class="main_header header_three color_three">
-            <!--header top start-->
-            <div class="header_top h_top_three">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-4 col-md-5">
-                            <div class="header_account">
-                                <ul>
-                                    <li class="language"><a href="#"><img src="~/SiteContent/img/logo/language.png" alt="">
-                                            فارسی <i class="ion-chevron-down"></i></a>
-                                        <ul class="dropdown_language">
-                                            <li><a href="#">فارسی</a></li>
-                                            <li><a href="#">انگلیسی</a></li>
-                                            <li><a href="#">عربی</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="currency"><a href="#">تومان <i class="ion-chevron-down"></i></a>
-                                        <ul class="dropdown_currency">
-                                            <li><a href="#">دینار</a></li>
-                                            <li><a href="#">تومان</a></li>
-                                            <li><a href="#">دلار</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-8 col-md-7">
-                            <div class="header_top_links text-right">
-                                <ul>
-                                    <li><a href="login.html">ثبت نام</a></li>
-                                    <li><a href="login.html">ورود</a></li>
-                                    <li><a href="cart.html">سبد خرید</a></li>
-                                    <li><a href="checkout.html">بررسی</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--header top start-->
-
-            <!--header middel start-->
-            <div class="header_middle h_middle_three">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-2 col-md-4 col-sm-4 col-4">
-                            <div class="logo">
-                                <a href="index.html"><img src="~/SiteContent/img/logo/logo.png" alt=""></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-10 col-md-6 col-sm-6 col-6">
-                            <div class="header_right_box">
-                                <div class="search_container">
-                                    <form action="#">
-                                        <div class="hover_category">
-                                            <select class="select_option" name="select" id="categori2" style="display: none;">
-                                                <option selected="" value="1">همه دسته بندی ها</option>
-                                                <option value="2">لوازم جانبی</option>
-                                                <option value="3">لوازم جانبی و موارد دیگر</option>
-                                                <option value="4">کره و تخم مرغ</option>
-                                                <option value="5">دوربین و ویدئو</option>
-                                                <option value="6">صفحه نمایش</option>
-                                                <option value="7">تبلت</option>
-                                                <option value="8">لبتاب</option>
-                                                <option value="9">کیف های دستی</option>
-                                                <option value="10">هدفون و بلندگو</option>
-                                                <option value="11">گیاهان و گیاهان دارویی</option>
-                                                <option value="12">سبزیجات</option>
-                                                <option value="13">خرید</option>
-                                                <option value="14">لبتاب و دسکتاپ</option>
-                                                <option value="15">ساعت</option>
-                                                <option value="16">الکترونیک</option>
-                                            </select><div class="nice-select select_option" tabindex="0"><span class="current">همه دسته بندی ها</span><ul class="list"><li data-value="1" class="option selected">همه دسته بندی ها</li><li data-value="2" class="option">لوازم جانبی</li><li data-value="3" class="option">لوازم جانبی و موارد دیگر</li><li data-value="4" class="option">کره و تخم مرغ</li><li data-value="5" class="option">دوربین و ویدئو</li><li data-value="6" class="option">صفحه نمایش</li><li data-value="7" class="option">تبلت</li><li data-value="8" class="option">لبتاب</li><li data-value="9" class="option">کیف های دستی</li><li data-value="10" class="option">هدفون و بلندگو</li><li data-value="11" class="option">گیاهان و گیاهان دارویی</li><li data-value="12" class="option">سبزیجات</li><li data-value="13" class="option">خرید</li><li data-value="14" class="option">لبتاب و دسکتاپ</li><li data-value="15" class="option">ساعت</li><li data-value="16" class="option">الکترونیک</li></ul></div>
-                                        </div>
-                                        <div class="search_box">
-                                            <input placeholder="جستجوی محصول ..." type="text">
-                                            <button type="submit">محصول</button>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="header_configure_area">
-                                    <div class="header_wishlist">
-                                        <a href="wishlist.html"><i class="icon-heart"></i>
-                                            <span class="wishlist_count">3</span>
-                                        </a>
-                                    </div>
-                                    <div class="mini_cart_wrapper">
-                                        <a href="javascript:void(0)">
-                                            <i class="icon-shopping-bag2"></i>
-                                            <span class="cart_price">152.00 تومان <i class="ion-ios-arrow-down"></i></span>
-                                            <span class="cart_count">2</span>
-                                        </a>
-                                        <!--mini cart-->
-                                        <div class="mini_cart">
-                                            <div class="mini_cart_inner">
-                                                <div class="cart_close">
-                                                    <div class="cart_text">
-                                                        <h3>سبد خرید</h3>
-                                                    </div>
-                                                    <div class="mini_cart_close">
-                                                        <a href="javascript:void(0)"><i class="icon-x"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="cart_item">
-                                                    <div class="cart_img">
-                                                        <a href="#"><img src="~/SiteContent/img/s-product/product.jpg" alt=""></a>
-                                                    </div>
-                                                    <div class="cart_info">
-                                                        <a href="#">عنوان محصول</a>
-                                                        <p> تعداد: 1 عدد <span> 60.00 تومان </span></p>
-                                                    </div>
-                                                    <div class="cart_remove">
-                                                        <a href="#"><i class="ion-android-close"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="cart_item">
-                                                    <div class="cart_img">
-                                                        <a href="#"><img src="~/SiteContent/img/s-product/product2.jpg" alt=""></a>
-                                                    </div>
-                                                    <div class="cart_info">
-                                                        <a href="#">عنوان محصول</a>
-                                                        <p> تعداد: 1 عدد <span> 60.00 تومان </span></p>
-                                                    </div>
-                                                    <div class="cart_remove">
-                                                        <a href="#"><i class="ion-android-close"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="mini_cart_table">
-                                                    <div class="cart_total">
-                                                        <span>مجموع فرعی:</span>
-                                                        <span class="price">138.00 تومان</span>
-                                                    </div>
-                                                    <div class="cart_total mt-10">
-                                                        <span>جمع کل:</span>
-                                                        <span class="price">138.00 تومان</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="mini_cart_footer">
-                                                <div class="cart_button">
-                                                    <a href="cart.html">مشاهده سبد خرید</a>
-                                                </div>
-                                                <div class="cart_button">
-                                                    <a class="active" href="checkout.html">بررسی</a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <!--mini cart end-->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--header middel end-->
-
-            <!--header bottom satrt-->
-            <div class="header_bottom h_bottom_three sticky-header">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-7">
-                            <div class="main_menu menu_three menu_position text-left">
-                                <nav>
-                                    <ul>
-                                        <li><a class="active" href="index.html">خانه<i class="fa fa-angle-down"></i></a>
-                                            <ul class="sub_menu">
-                                                <li><a href="index.html">خانه 1</a></li>
-                                                <li><a href="index-2.html">خانه 2</a></li>
-                                                <li><a href="index-3.html">خانه 3</a></li>
-                                                <li><a href="index-4.html">خانه 4</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="mega_items"><a href="shop.html">خرید</a>
-                                            <div class="mega_menu">
-                                                <ul class="mega_menu_inner">
-                                                    <li><a href="#">طرح‌بندی فروشگاه</a>
-                                                        <ul>
-                                                            <li><a href="shop-fullwidth.html">عرض کامل</a></li>
-                                                            <li><a href="shop-fullwidth-list.html">لیست با عرض کامل</a>
-                                                            </li>
-                                                            <li><a href="shop-right-sidebar.html">سایدبار سمت چپ </a>
-                                                            </li>
-                                                            <li><a href="shop-right-sidebar-list.html"> لیست با سایدبار
-                                                                    سمت چپ</a></li>
-                                                            <li><a href="shop-list.html">نمای فهرست</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="#">صفحات دیگر</a>
-                                                        <ul>
-                                                            <li><a href="cart.html">سبد خرید</a></li>
-                                                            <li><a href="wishlist.html">لیست علاقمندی ها</a></li>
-                                                            <li><a href="checkout.html">بررسی</a></li>
-                                                            <li><a href="my-account.html">حساب من</a></li>
-                                                            <li><a href="404.html"> خطای 404</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="#">انواع محصول</a>
-                                                        <ul>
-                                                            <li><a href="product-details.html">جزئیات محصول</a></li>
-                                                            <li><a href="product-sidebar.html">معرفی محصول با
-                                                                    سایدبار</a></li>
-                                                            <li><a href="product-grouped.html">معرفی محصول با گروه
-                                                                    بندی</a></li>
-                                                            <li><a href="variable-product.html">معرفی محصول با متغیر</a>
-                                                            </li>
-                                                            <li><a href="product-countdown.html">معرفی محصول با
-                                                                    شمارنده</a></li>
-
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li><a href="blog.html">وبلاگ<i class="fa fa-angle-down"></i></a>
-                                            <ul class="sub_menu pages">
-                                                <li><a href="blog-details.html">جزئیات وبلاگ</a></li>
-                                                <li><a href="blog-fullwidth.html">وبلاگ با عرض کامل</a></li>
-                                                <li><a href="blog-sidebar.html">وبلاگ با نوار کناری</a></li>
-                                                <li><a href="blog-no-sidebar.html">وبلاگ بدون نوار کناری</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">صفحات <i class="fa fa-angle-down"></i></a>
-                                            <ul class="sub_menu pages">
-                                                <li><a href="about.html">درباره ما</a></li>
-                                                <li><a href="faq.html">سوالات متداول</a></li>
-                                                <li><a href="contact.html">تماس</a></li>
-                                                <li><a href="login.html">ورود</a></li>
-                                                <li><a href="404.html"> خطای 404</a></li>
-                                                <li><a href="compare.html">مقایسه</a></li>
-                                                <li><a href="privacy-policy.html">حریم خصوصی</a></li>
-                                                <li><a href="coming-soon.html">به زودی</a></li>
-                                            </ul>
-                                        </li>
-
-                                        <li><a href="about.html">درباره ما</a></li>
-                                        <li><a href="contact.html"> تماس با ما</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--header bottom end-->
-        </div>
-    </header>
+</header>
 
 <!--header area end-->

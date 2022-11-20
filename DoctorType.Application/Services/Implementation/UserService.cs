@@ -373,6 +373,12 @@ namespace DoctorType.Application.Services.Implementation
 
         #region Admin
 
+        //Get The List Of Simple Users For Show In Data Tables In Admin Panel 
+        public async Task<List<User>> GetTheListOfSimpleUsersForShowInDataTablesInAdminPanel()
+        {
+            return await _userRepository.GetTheListOfSimpleUsersForShowInDataTablesInAdminPanel();
+        }
+
         //Get List Of Admins About Send Notification For Arrival New Nurses Inormations
         public async Task<List<string>?> GetListOfAdminsAboutSendNotificationForArrivalNewNursesInormations()
         {

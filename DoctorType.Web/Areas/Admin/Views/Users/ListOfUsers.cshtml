@@ -1,7 +1,112 @@
-﻿
+﻿@model List<DoctorType.Domain.Entities.Account.User>
+@using DoctorType.Application.Convertors
+@using DoctorType.Application.Extensions
+
 @{
-    ViewData["Title"] = "ListOfUsers";
+    ViewData["Title"] = "لیست کاربران وب سایت";
 }
 
-<h1>ListOfUsers</h1>
+@section styles{
+    <!-- Datatable -->
+    <link href="/AdminContent/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!-- Custom Stylesheet -->
+    <link href="/AdminContent/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+}
 
+    @section scripts{
+    <script src="js/deznav-init.js"></script>
+    <!-- Datatable -->
+    <script src="/AdminContent/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="/AdminContent/js/plugins-init/datatables.init.js"></script>
+}
+
+    @section Breadcrumbs{
+    <div class="col-sm-6 p-md-0">
+        <div class="welcome-text">
+            <h4>لیست کاربران وب سایت</h4>
+        </div>
+    </div>
+    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-area="Admin" asp-controller="Home"> داشبورد ادمین </a></li>
+            <li class="breadcrumb-item"><a asp-action="ListOfUsers" asp-area="Admin" asp-controller="Users"> مدیریت کاربران </a></li>
+            <li class="breadcrumb-item active"><a asp-action="ListOfUsers" asp-area="Admin" asp-controller="Users">لیست کاربران </a></li>
+        </ol>
+    </div>
+}
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">کاربران</h4>
+                </div>
+                <div class="card-body">
+                @if (Model != null && Model.Any())
+                {
+                    <div class="table-responsive">
+                        <div id="example5_wrapper" class="dataTables_wrapper no-footer">
+
+                            <table id="example5" class="display dataTable no-footer" style="min-width: 845px" role="grid" aria-describedby="example5_info">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="sorting_asc" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" style="width: 51.1333px;" aria-sort="ascending" aria-label=": فعال کنید تا ستون نزولی مرتب شود"></th>
+                                        <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" style="width: 108.817px;" aria-label="نام: فعال کنید تا ستون صعودی مرتب شود">نام</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" style="width: 132.45px;" aria-label="موبایل: فعال کنید تا ستون صعودی مرتب شود">موبایل</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" style="width: 177.083px;" aria-label="ایمیل: فعال کنید تا ستون صعودی مرتب شود">ایمیل</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" style="width: 108.817px;" aria-label="نام: فعال کنید تا ستون صعودی مرتب شود">وضعیت</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" style="width: 104.883px;" aria-label="تاریخ عضو: فعال کنید تا ستون صعودی مرتب شود">تاریخ عضو</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" style="width: 84.4px;" aria-label="اقدامات: فعال کنید تا ستون صعودی مرتب شود">اقدامات</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var user in Model)
+                                    {
+                                        <tr role="row" class="odd" remove-ajax-item="@user.Id">
+                                            <td class="sorting_1">
+                                                @if (string.IsNullOrEmpty(user.Avatar))
+                                                {
+                                                    <img class="rounded-circle" src="/AdminContent/images/profile/pic1.png" alt="" width="35">
+                                                }
+                                                else
+                                                {
+                                                    <img class="rounded-circle" src="@user.GetUserAvatar()" alt="" width="35">
+                                                }
+                                            </td>
+                                            <td>@user.Username</td>
+                                            <td><a href="javascript:void(0);"><strong>@user.Mobile</strong></a></td>
+                                            <td><a href="javascript:void(0);"><strong>@((string.IsNullOrEmpty(user.Email) ? "وارد نشده" : user.Email))</strong></a></td>
+                                            @if (user.IsMobileConfirm)
+                                            {
+                                                <td><span class="badge light badge-success">فعال</span></td>
+                                            }
+                                            else
+                                            {
+                                                <td><span class="badge light badge-danger">غیرفعال</span></td>
+                                            }
+                                            <td>@user.CreateDate.ToShamsi()</td>
+                                            <td>
+                                                <div class="d-flex">
+                                                    <a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+                                                    <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+
+                }
+                else
+                {
+                    <partial name="_NoItemFoundPartial" />
+                }
+            </div>
+        </div>
+    </div>
+</div>

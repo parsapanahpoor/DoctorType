@@ -67,6 +67,12 @@ namespace DoctorType.Data.Repository
 
         #region Admin Side
 
+        //Get The List Of Simple Users For Show In Data Tables In Admin Panel 
+        public async Task<List<User>> GetTheListOfSimpleUsersForShowInDataTablesInAdminPanel()
+        {
+            return await _context.Users.Where(p=> !p.IsDelete).OrderByDescending(p=> p.CreateDate).ToListAsync();
+        }
+
         //Get List Of Admins 
         public async Task<List<User>?> GetListOfAdmins()
         {

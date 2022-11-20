@@ -36,6 +36,9 @@ namespace DoctorType.Domain.Interfaces
 
         #region Admin Side 
 
+        //Get The List Of Simple Users For Show In Data Tables In Admin Panel 
+        Task<List<User>> GetTheListOfSimpleUsersForShowInDataTablesInAdminPanel();
+
         //Get List Of Admins and Supporters User Id For Send Notification For Death Certificate
         Task<List<string>?> GetAdminsAndSupportersNotificationForSendNotificationInDeathCertificate();
 

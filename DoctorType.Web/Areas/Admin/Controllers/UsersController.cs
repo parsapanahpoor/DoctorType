@@ -20,7 +20,7 @@ namespace DoctorType.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> ListOfUsers()
         {
-            return View();
+            return View(await _userService.GetTheListOfSimpleUsersForShowInDataTablesInAdminPanel());
         }
 
         #endregion

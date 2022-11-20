@@ -22,11 +22,11 @@
             <a href="/" class="brand-logo">
 
 
-@*                <img class="brand-title" src="/AdminContent/images/Agahi.png" alt="">
-*@
+                @*                <img class="brand-title" src="/AdminContent/images/Agahi.png" alt="">
+                *@
                 @*<img class="logo-abbr" src="/AdminContent/images/logo-white.png" alt="">
-                    <img class="logo-compact" src="/AdminContent/images/logo-text-white.png" alt="">
-                    <img class="brand-title" src="/AdminContent/images/logo-text-white.png" alt="">*@
+                <img class="logo-compact" src="/AdminContent/images/logo-text-white.png" alt="">
+                <img class="brand-title" src="/AdminContent/images/logo-text-white.png" alt="">*@
             </a>
 
             <div class="nav-control">
@@ -44,12 +44,19 @@
 
         <div class="content-body">
             <!-- row -->
-            @RenderBody()
+            <div class="container-fluid">
+                <div class="row page-titles mx-0">
+                    @await RenderSectionAsync("Breadcrumbs", true)
+                </div>
+
+                @RenderBody()
+
+            </div>
         </div>
 
     </div>
 
-    <partial name="_SharedModal"/>
+    <partial name="_SharedModal" />
     <partial name="_AdminFooterReferences" />
     @RenderSection("scripts", false)
     <partial name="_SiteMessages" />

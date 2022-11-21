@@ -45,14 +45,17 @@ namespace DoctorType.Application.Services.Implementation
 
         private static readonly HttpClient client = new HttpClient();
 
+        private readonly IRoleService _roleService;
+
         public UserService(DoctorTypeDbContext context, IViewRenderService viewRenderService,
-                                IEmailSender emailSender, IUserRepository userRepository, ISMSService smsservice)
+                                IEmailSender emailSender, IUserRepository userRepository, ISMSService smsservice, IRoleService roleService)
         {
             _context = context;
             _viewRenderService = viewRenderService;
             _emailSender = emailSender;
             _userRepository = userRepository;
             _smsservice = smsservice;
+            _roleService = roleService;
         }
 
         #endregion
@@ -661,7 +664,7 @@ namespace DoctorType.Application.Services.Implementation
             return model;
         }
 
-        public async Task<AdminEditUserInfoResult> EditUserInfo(AdminEditUserInfoViewModel edit, IFormFile? UserAvatar)
+        public async Task<AdminEditUserInfoResult> EditUserInfo(AdminEditUserInfoViewModel edit, IFormFile? UserAvatar, List<ulong> Roles)
         {
             #region Data Valdiation
 
@@ -750,10 +753,8 @@ namespace DoctorType.Application.Services.Implementation
 
             var userRoles = await _userRepository.GetUserRoles(user.Id);
 
-            if (userRoles != null && userRoles.Any())
-            {
-             
-            }
+            await _roleService.DeleteAllUserRole(user.Id);
+            await _roleService.AddRoleToUser(user.Id, Roles);
 
             #endregion
 

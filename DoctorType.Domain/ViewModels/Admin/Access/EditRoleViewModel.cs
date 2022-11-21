@@ -25,10 +25,4 @@ namespace DoctorType.Domain.ViewModels.Access
         public ulong? ParentId { get; set; }
     }
 
-    public enum EditRoleResult
-    {
-        Success,
-        RoleNotFound,
-        UniqueNameExists
-    }
 }

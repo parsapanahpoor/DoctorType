@@ -21,6 +21,8 @@ namespace DoctorType.Domain.Entities.Account
 
         public Role Role { get; set; }
 
+        public Permission Permission { get; set; }
+
         #endregion
     }
 }

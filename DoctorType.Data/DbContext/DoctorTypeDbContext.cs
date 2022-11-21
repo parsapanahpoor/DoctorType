@@ -33,6 +33,8 @@ namespace DoctorType.Data.DbContext
 
         public DbSet<UserRole> UserRoles { get; set; }
 
+        public DbSet<Permission> Permissions { get; set; }
+
         #endregion
 
         #region Site Setting 

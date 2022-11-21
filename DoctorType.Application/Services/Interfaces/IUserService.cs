@@ -118,7 +118,7 @@ namespace DoctorType.Application.Services.Interfaces
 
         Task<bool> IsValidEmailForUserEditByAdmin(string email, ulong userId);
 
-        Task<AdminEditUserInfoResult> EditUserInfo(AdminEditUserInfoViewModel edit, IFormFile? UserAvatar);
+        Task<AdminEditUserInfoResult> EditUserInfo(AdminEditUserInfoViewModel edit, IFormFile? UserAvatar, List<ulong> Roles;
 
         //Get List Of Admins About Send Notification For Arrival New Consultant Inormations
         Task<List<string>?> GetListOfAdminsAboutSendNotificationForArrivalNewConsultantInormations();

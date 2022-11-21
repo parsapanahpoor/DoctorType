@@ -223,7 +223,7 @@ namespace DoctorType.Application.Services.Implementation
 
             if (!await IsRoleNameValid(edit.RoleUniqueName, edit.Id))
             {
-                return EditRoleResult.UniqueNameExists;
+                return EditRoleResult.RoleTitleExists;
             }
 
             role.Title = edit.Title;

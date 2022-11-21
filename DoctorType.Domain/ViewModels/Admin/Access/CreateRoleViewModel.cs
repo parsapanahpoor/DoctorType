@@ -22,4 +22,17 @@ namespace DoctorType.Domain.ViewModels.Access
 
         public ulong? ParentId { get; set; }
     }
+
+    public enum CreateRoleResult
+    {
+        Success,
+        RoleTitleExists,
+        ErrorPermission
+    }
+    public enum EditRoleResult
+    {
+        Success,
+        RoleTitleExists,
+        RoleNotFound
+    }
 }

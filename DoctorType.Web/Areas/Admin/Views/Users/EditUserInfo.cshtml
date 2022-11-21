@@ -1,0 +1,259 @@
+﻿@model DoctorType.Domain.ViewModels.Admin.Account.AdminEditUserInfoViewModel
+@{
+    ViewData["Title"] = "ویرایش کاربر ";
+
+    List<ulong> UserRole = ViewBag.UserRole;
+
+    List<DoctorType.Domain.Entities.Account.Role> ListOfRoles = ViewBag.ListOfRoles as List<DoctorType.Domain.Entities.Account.Role>;
+}
+
+@using DoctorType.Application.Utils
+@using DoctorType.Domain.ViewModels.Admin
+@using DoctorType.Domain.Entities.Account
+
+@section scripts{
+    <partial name="_JqueryValidators" />
+    <script>
+
+        $(document).ready(function () {
+            var inputEmail = $('#inputEmail').val();
+            if (inputEmail === '') {
+                $('#activeNotActiveEmail').addClass('d-none');
+            } else {
+                $('#activeNotActiveEmail').removeClass('d-none');
+                $('#activeNotActiveEmail').addClass('d-block');
+            }
+        });
+
+        $('#inputEmail').on('propertychange input', function (e) {
+            console.log(e);
+            if (!this.value) {
+                $('#activeNotActiveEmail').removeClass('d-block');
+                $('#activeNotActiveEmail').addClass('d-none');
+                //$("#UserEmailState").removeAttr('selected');
+                $("#UserEmailState option:first").attr('selected', 'selected');
+            }
+            else {
+                $('#activeNotActiveEmail').removeClass('d-none');
+                $('#activeNotActiveEmail').addClass('d-block');
+            }
+        });
+
+    </script>
+}
+
+    @section Breadcrumbs{
+    <div class="col-sm-6 p-md-0">
+        <div class="welcome-text">
+            <h4>@ViewData["Title"]</h4>
+        </div>
+    </div>
+    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-area="Admin" asp-controller="Home"> داشبورد ادمین </a></li>
+            <li class="breadcrumb-item"><a asp-action="ListOfUsers" asp-area="Admin" asp-controller="Users"> مدیریت کاربران </a></li>
+        </ol>
+    </div>
+}
+
+    <div class="row">
+
+        <div class="col-xl-12 col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title"> اطلاعات کاربر </h4>
+                </div>
+                <div class="card-body">
+                    <div class="basic-form">
+                        <form asp-controller="Users" asp-area="Admin" asp-action="EditUserInfo" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="UserId" />
+                            <input type="hidden" asp-for="AvatarName" />
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label> نام کاربری </label>
+                                    <input asp-for="username" type="text" class="form-control" placeholder=" نام کاربری را وارد کنید ">
+                                    <span asp-validation-for="username" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>ایمیل</label>
+                                    <input type="email" id="inputEmail" asp-for="Email" class="form-control" placeholder="ایمیل کاربر را وراد کنید ">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>موبایل</label>
+                                    <input type="text" asp-for="Mobile" class="form-control" placeholder="موبایل کاربر را وراد کنید ">
+                                    <span asp-validation-for="Mobile" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label> نام  </label>
+                                    <input asp-for="FirstName" type="text" class="form-control" placeholder=" نام را وارد کنید ">
+                                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>  نام خانوادگی  </label>
+                                    <input asp-for="LastName" type="text" class="form-control" placeholder=" نام خانوادگی را وارد کنید ">
+                                    <span asp-validation-for="LastName" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>  نام پدر  </label>
+                                    <input asp-for="FatherName" type="text" class="form-control" placeholder=" نام پدر را وارد کنید ">
+                                    <span asp-validation-for="FatherName" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>  کدملی  </label>
+                                    <input asp-for="NationalId" type="text" class="form-control" placeholder=" کدملی را وارد کنید ">
+                                    <span asp-validation-for="NationalId" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>  موبایل ثانویه   </label>
+                                    <input asp-for="ExtraPhoneNumber" type="text" class="form-control" placeholder=" موبایل ثانویه را وارد کنید ">
+                                    <span asp-validation-for="ExtraPhoneNumber" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>  تلفن منزل   </label>
+                                    <input asp-for="HomePhoneNumber" type="text" class="form-control" placeholder=" تلفن منزل را وارد کنید ">
+                                    <span asp-validation-for="HomePhoneNumber" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>  آدرس   </label>
+                                    <input asp-for="WorkAddress" type="text" class="form-control" placeholder=" آدرس را وارد کنید ">
+                                    <span asp-validation-for="WorkAddress" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>وضعیت کاربر</label>
+                                    <div class="dropdown bootstrap-select form-control dropup">
+                                        <select asp-for="IsBan" class="form-control">
+
+                                        @if (!Model.IsBan)
+                                        {
+                                            <option value="1" selected="selected">فعال</option>
+                                            <option value="0">غیر فعال</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="0" selected="selected">غیر فعال</option>
+                                            <option value="1">فعال</option>
+                                        }
+
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label>وضعیت موبایل</label>
+                                <div class="dropdown bootstrap-select form-control dropup">
+                                    <select asp-for="IsMobileConfirm" class="form-control">
+
+                                        @if (Model.IsMobileConfirm)
+                                        {
+                                            <option value="1" selected="selected">فعال</option>
+                                            <option value="0">غیر فعال</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="0" selected="selected">غیر فعال</option>
+                                            <option value="1">فعال</option>
+                                        }
+
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                    <label>مدیریت نقش ها </label>
+                                <div class="dropdown bootstrap-select form-control dropup">
+               
+                                    <div class="dropdown bootstrap-select show-tick form-control dropup">
+                                        @if (ListOfRoles != null && ListOfRoles.Any())
+                                        {
+                                            <select name="Roles" class="form-control" multiple="" id="sel2" tabindex="-98">
+
+                                                @if (ListOfRoles != null && ListOfRoles.Any())
+                                                {
+                                                    @foreach (var item in ListOfRoles)
+                                                    {
+                                                        if (UserRole.Contains(item.Id))
+                                                        {
+                                                            <option selected value="@item.Id">@item.Title </option>
+                                                        }
+                                                        else
+                                                        {
+                                                            <option value="@item.Id">@item.Title </option>
+                                                        }
+                                                    }
+                                                }
+                                            </select>
+                                        }
+                                        else
+                                        {
+                                            <select class="form-control">
+                                                <option value="">انتخاب کنید</option>
+                                            </select>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="form-group col-md-6">
+                                    <label>ادمین کل سیستم   </label>
+                                    <div class="dropdown bootstrap-select form-control dropup">
+                    
+                                        <select asp-for="IsAdmin" class="form-control">
+                                            @if (Model.IsAdmin)
+                                            {
+                                                <option value="false">ادمین نباشد </option>
+                                                <option value="true" selected>ادمین باشد </option>
+                                            }
+                                            else
+                                            {
+                                                <option value="false" selected>ادمین نباشد </option>
+                                                <option value="true">ادمین باشد </option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>وضعیت تیکت</label>
+                                    <div class="dropdown bootstrap-select form-control dropup">
+                                        <select asp-for="BanForTicket" class="form-control">
+
+                                            @if (!Model.BanForTicket)
+                                            {
+                                                <option value="1" selected="selected">فعال</option>
+                                                <option value="0">غیر فعال</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="0" selected="selected">غیر فعال</option>
+                                                <option value="1">فعال</option>
+                                            }
+
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                            
+
+
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-primary">ثبت </button>
+                        <a asp-action="ListOfUsers" asp-area="Admin" asp-controller="Users" class="btn btn-outline-warning">لیست کاربران </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

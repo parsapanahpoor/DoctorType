@@ -77,6 +77,10 @@ namespace DoctorType.Domain.ViewModels.Admin.Account
 
         [Display(Name = "انتخاب نقش های کاربر")]
         public List<ulong>? UserRoles { get; set; }
+
+        [Display(Name = " ادمین کل سیستم ")]
+        [Required]
+        public bool SuperAdmin { get; set; }
     }
 
     public enum AdminEditUserInfoResult

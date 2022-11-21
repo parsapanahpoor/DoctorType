@@ -1,0 +1,122 @@
+﻿@using DoctorType.Domain.Entities.Account
+@model DoctorType.Domain.Entities.Account.Role
+
+@{
+    ViewData["Title"] = "ویرایش نقش";
+    List<Permission> AllPermissions = ViewData["AllPermissions"] as List<Permission>;
+    List<ulong> PermissionsOfRole = ViewData["PermissionsOfRole"] as List<ulong>;
+}
+
+@section scripts{
+    <partial name="_JqueryValidators" />
+}
+
+    @section Breadcrumbs{
+    <div class="col-sm-6 p-md-0">
+        <div class="welcome-text">
+            <h4>@ViewData["Title"] </h4>
+        </div>
+    </div>
+    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-area="Admin" asp-controller="Home"> داشبورد ادمین </a></li>
+            <li class="breadcrumb-item"><a asp-action="ListOfRoles" asp-area="Admin" asp-controller="Role"> مدیریت نقش </a></li>
+            <li class="breadcrumb-item active"><a asp-action="ListOfRoles" asp-area="Admin" asp-controller="Role">@ViewData["Title"] </a></li>
+        </ol>
+    </div>
+}
+
+    <form asp-area="Admin" asp-controller="Role" asp-action="EditRole" method="post">
+
+        <div class="row">
+
+            <div class="col-xl-7 col-lg-7">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title"> اطلاعات نقش </h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="basic-form">
+
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="Id" />
+                            <input type="hidden" asp-for="CreateDate" />
+                            <input type="hidden" asp-for="IsDelete" />
+
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label> عنوان یکتا نقش </label>
+                                    <input asp-for="RoleUniqueName" type="text" class="form-control" placeholder=" عنوان یکتا نقش را وارد کنید ">
+                                    <span asp-validation-for="RoleUniqueName" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label> عنوان فارسی </label>
+                                    <input asp-for="Title" type="text" class="form-control" placeholder=" عنوان فارسی را وارد کنید ">
+                                    <span asp-validation-for="Title" class="text-danger"></span>
+                                </div>
+                            </div>
+
+
+                            <button type="submit" class="btn btn-outline-primary">@ViewData["Title"]</button>
+                            <a asp-area="Admin" asp-controller="Role" asp-action="ListOfRoles" class="btn btn-outline-warning">لیست نقش ها </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-5 col-lg-5">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title"> دسترسی های نقش </h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-body">
+                            <div class="basic-form">
+                                <div class="form-group">
+                                @if (AllPermissions != null && AllPermissions.Any())
+                                {
+                                    @foreach (var permission in AllPermissions.Where(s => s.ParentId == null))
+                                    {
+                                        <div class="form-check mb-2">
+                                            <input @((PermissionsOfRole.Any(s => s == permission.Id) ? "checked" : "")) name="SelectedPermissions" type="checkbox" class="form-check-input" @*id="check/@permission.Id"*@ value="@permission.Id">
+                                            <label class="form-check-label" @*for="check/@permission.Id"*@>@permission.Title</label>
+                                            @if (AllPermissions.Any(s => s.ParentId == permission.Id))
+                                            {
+                                                @foreach (var subPermission in AllPermissions.Where(s => s.ParentId == permission.Id))
+                                                {
+                                                    <div class="form-check mb-2">
+                                                        <input @((PermissionsOfRole.Any(s => s == subPermission.Id) ? "checked" : "")) name="SelectedPermissions" type="checkbox" class="form-check-input" @*id="check1"*@ value="@subPermission.Id">
+                                                        <label class="form-check-label" @*for="check1"*@>@subPermission.Title</label>
+
+                                                        @if (AllPermissions.Any(s => s.ParentId == subPermission.Id))
+                                                        {
+                                                            @foreach (var secondSubPermission in AllPermissions.Where(s => s.ParentId == subPermission.Id))
+                                                            {
+                                                                <div class="form-check mb-2">
+                                                                    <input @((PermissionsOfRole.Any(s => s == secondSubPermission.Id) ? "checked" : "")) name="SelectedPermissions" type="checkbox" class="form-check-input" @*id="check1"*@ value="@secondSubPermission.Id">
+                                                                    <label class="form-check-label" @*for="check1"*@>@secondSubPermission.Title</label>
+                                                                </div>
+                                                            }
+                                                        }
+
+                                                    </div>
+                                                }
+                                            }
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</form>
+

@@ -23,14 +23,14 @@
     @section Breadcrumbs{
     <div class="col-sm-6 p-md-0">
         <div class="welcome-text">
-            <h4>لیست کاربران وب سایت</h4>
+            <h4>@ViewData["Title"]</h4>
         </div>
     </div>
     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a asp-action="Index" asp-area="Admin" asp-controller="Home"> داشبورد ادمین </a></li>
             <li class="breadcrumb-item"><a asp-action="ListOfUsers" asp-area="Admin" asp-controller="Users"> مدیریت کاربران </a></li>
-            <li class="breadcrumb-item active"><a asp-action="ListOfUsers" asp-area="Admin" asp-controller="Users">لیست کاربران </a></li>
+            <li class="breadcrumb-item active"><a asp-action="ListOfUsers" asp-area="Admin" asp-controller="Users">@ViewData["Title"] </a></li>
         </ol>
     </div>
 }
@@ -88,7 +88,7 @@
                                             <td>@user.CreateDate.ToShamsi()</td>
                                             <td>
                                                 <div class="d-flex">
-                                                    <a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+                                                    <a asp-action="EditUserInfo" asp-area="Admin" asp-controller="Users" asp-route-id="@user.Id" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
                                                     <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
                                                 </div>
                                             </td>

@@ -2,6 +2,7 @@
 using DoctorType.Application.Services.Interfaces;
 using DoctorType.Data.Repository;
 using DoctorType.Domain.Interfaces;
+using DoctorType.Domain.Interfaces.EfCore;
 using Microsoft.AspNetCore.DataProtection.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -24,6 +25,7 @@ namespace DoctorType.IoC
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ISiteSettingService, SiteSettingService>();
             services.AddScoped<IPermissionService, PermissionService>();
+            services.AddScoped<IRoleService, RoleService>();
 
             #endregion
 
@@ -31,6 +33,7 @@ namespace DoctorType.IoC
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ISiteSettingRepository, SiteSettingRepository>();
+            services.AddScoped<IRoleRepository, RoleRepository>();
 
             #endregion
         }

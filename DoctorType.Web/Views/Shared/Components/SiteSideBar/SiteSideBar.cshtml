@@ -46,7 +46,7 @@
                     </div>
                     <div class="header_top_links">
                         <ul>
-                                 @if (!User.Identity.IsAuthenticated)
+                            @if (!User.Identity.IsAuthenticated)
                             {
                                 <li><a asp-action="Login" asp-area="" asp-controller="Account">ورود</a></li>
                                 <li><a asp-action="Register" asp-area="" asp-controller="Account">ثبت نام</a></li>
@@ -54,6 +54,8 @@
                             else
                             {
                                 <li><a asp-action="Logout" asp-area="" asp-controller="Account">خروج</a></li>
+                                <li><a asp-action="Index" asp-area="UserPanel" asp-controller="Home">ورورد به پنل کاربری</a></li>
+                                <li><a href="#">@User.Identity.Name خوش آمدید</a></li>
                             }
                             <li><a href="cart.html">سبد خرید</a></li>
                             <li><a href="checkout.html">بررسی</a></li>
@@ -223,16 +225,16 @@
                         <div class="header_top_links text-right">
                             <ul>
                                 @if (!User.Identity.IsAuthenticated)
-                            {
-                                <li><a asp-action="Login" asp-area="" asp-controller="Account">ورود</a></li>
-                                <li><a asp-action="Register" asp-area="" asp-controller="Account">ثبت نام</a></li>
-                            }
-                            else
-                            {
-                                <li><a asp-action="Logout" asp-area="" asp-controller="Account">خروج</a></li>
-                            }
-                                <li><a href="cart.html">سبد خرید</a></li>
-                                <li><a href="checkout.html">بررسی</a></li>
+                                {
+                                    <li><a asp-action="Login" asp-area="" asp-controller="Account">ورود</a></li>
+                                    <li><a asp-action="Register" asp-area="" asp-controller="Account">ثبت نام</a></li>
+                                }
+                                else
+                                {
+                                    <li><a style="color:yellow" href="#">@User.Identity.Name خوش آمدید</a></li>
+                                    <li><a asp-action="Index" asp-area="UserPanel" asp-controller="Home">ورورد به پنل کاربری</a></li>
+                                    <li><a asp-action="Logout" asp-area="" asp-controller="Account">خروج</a></li>
+                                }
                             </ul>
                         </div>
                     </div>

@@ -29,24 +29,20 @@ namespace DoctorType.Domain.ViewModels.UserPanel.Account
         public string? Email { get; set; }
 
         [Display(Name = "First Name")]
-        [Required(ErrorMessage = "Please Enter {0}")]
         [MaxLength(150, ErrorMessage = "Please Enter {0} Less Than {1} Character")]
-        public string FirstName { get; set; }
+        public string? FirstName { get; set; }
 
         [Display(Name = "LastName")]
-        [Required(ErrorMessage = "Please Enter {0}")]
         [MaxLength(150, ErrorMessage = "Please Enter {0} Less Than {1} Character")]
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
 
         [Display(Name = "BirthDay")]
-        [Required(ErrorMessage = "Please Enter {0}")]
         [RegularExpression(@"^\d{4}\/(0?[1-9]|1[012])\/(0?[1-9]|[12][0-9]|3[01])$", ErrorMessage = "The information entered is not valid.")]
-        public string BithDay { get; set; }
+        public string? BithDay { get; set; }
 
         [Display(Name = "Father Name")]
-        [Required(ErrorMessage = "Please Enter {0}")]
         [MaxLength(150, ErrorMessage = "Please Enter {0} Less Than {1} Character")]
-        public string FatherName { get; set; }
+        public string? FatherName { get; set; }
 
         [Display(Name = "NationalId")]
         [Required(ErrorMessage = "Please Enter {0}")]
@@ -59,10 +55,9 @@ namespace DoctorType.Domain.ViewModels.UserPanel.Account
         public string? ExtraPhoneNumber { get; set; }
 
         [Display(Name = "Home Phone Number")]
-        [Required(ErrorMessage = "Please Enter {0}")]
         [MaxLength(150, ErrorMessage = "Please Enter {0} Less Than {1} Character")]
         [RegularExpression(@"^[0-9]*$", ErrorMessage = "The information entered is not valid.")]
-        public string HomePhoneNumber { get; set; }
+        public string? HomePhoneNumber { get; set; }
 
         [Display(Name = "Work Address")]
         public string? WorkAddress { get; set; }

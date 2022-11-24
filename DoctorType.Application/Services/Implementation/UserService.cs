@@ -929,8 +929,6 @@ namespace DoctorType.Application.Services.Implementation
             user.Email = edit.Email.SanitizeText();
             user.FirstName = edit.FirstName.SanitizeText();
             user.LastName = edit.LastName.SanitizeText();
-            user.BithDay = edit.BithDay.ToMiladiDateTime();
-            user.FatherName = edit.FatherName.SanitizeText();
             user.NationalId = edit.NationalId;
             user.ExtraPhoneNumber = edit.ExtraPhoneNumber.SanitizeText();
             user.HomePhoneNumber = edit.HomePhoneNumber.SanitizeText();

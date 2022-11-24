@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DoctorType.Application.Extensions;
+using DoctorType.Application.Services.Interfaces;
+using DoctorType.Domain.Entities.Account;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -21,9 +24,20 @@ namespace DoctorType.Web.Areas.UserPanel.ViewComponents
 
     public class UserPanelHeaderViewComponent : ViewComponent
     {
+        #region Ctor 
+
+        private readonly IUserService _userService;
+
+        public UserPanelHeaderViewComponent(IUserService userService)
+        {
+            _userService = userService;
+        }
+
+        #endregion
+
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View("UserPanelHeader");
+            return View("UserPanelHeader", await _userService.GetUserById(User.GetUserId())) ;
         }
     }
 

@@ -66,6 +66,9 @@ namespace DoctorType.Application.Services.Interfaces
 
         #region Admin
 
+        //Delete Users From Admin Side 
+        Task<bool> SoftDeleteUserByAdmin(ulong userId);
+
         //Get The List Of Simple Users For Show In Data Tables In Admin Panel 
         Task<List<User>> GetTheListOfSimpleUsersForShowInDataTablesInAdminPanel();
 
@@ -118,7 +121,7 @@ namespace DoctorType.Application.Services.Interfaces
 
         Task<bool> IsValidEmailForUserEditByAdmin(string email, ulong userId);
 
-        Task<AdminEditUserInfoResult> EditUserInfo(AdminEditUserInfoViewModel edit, IFormFile? UserAvatar, List<ulong> Roles;
+        Task<AdminEditUserInfoResult> EditUserInfo(AdminEditUserInfoViewModel edit, IFormFile? UserAvatar, List<ulong> Roles);
 
         //Get List Of Admins About Send Notification For Arrival New Consultant Inormations
         Task<List<string>?> GetListOfAdminsAboutSendNotificationForArrivalNewConsultantInormations();

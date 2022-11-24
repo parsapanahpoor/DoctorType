@@ -26,6 +26,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Net.WebRequestMethods;
+using DoctorType.Application.SiteServices;
+using DoctorType.Data.Repository;
 
 namespace DoctorType.Application.Services.Implementation
 {
@@ -778,6 +780,21 @@ namespace DoctorType.Application.Services.Implementation
             #endregion
 
             return AdminEditUserInfoResult.Success;
+        }
+
+        public async Task<bool> SoftDeleteUserByAdmin(ulong userId)
+        {
+            var user = await GetUserById(userId);
+            if (user != null)
+            {
+                user.IsDelete = true;
+
+                await _userRepository.EditUser(user);
+             
+                return true;
+            }
+
+            return false;
         }
 
         public async Task<bool> IsValidMobileForUserEditByAdmin(string mobile, ulong userId)

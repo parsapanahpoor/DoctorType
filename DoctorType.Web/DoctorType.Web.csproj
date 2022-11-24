@@ -31,6 +31,8 @@
 
 	<ItemGroup>
 	  <Folder Include="ActionFilterAttributes\" />
+	  <Folder Include="Areas\UserPanel\Data\" />
+	  <Folder Include="Areas\UserPanel\Models\" />
 	  <Folder Include="ViewComponents\" />
 	</ItemGroup>
 	

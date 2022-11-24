@@ -89,7 +89,7 @@
                                             <td>
                                                 <div class="d-flex">
                                                     <a asp-action="EditUserInfo" asp-area="Admin" asp-controller="Users" asp-route-id="@user.Id" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
-                                                    <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                                    <a ajax-url-button="@user.Id" title="حذف" asp-area="Admin" asp-controller="Users" asp-action="DeleteUser" asp-route-userId="@user.Id" class="btn btn-danger shadow btn-xs sharp "><i class="fa fa-trash"></i></a>
                                                 </div>
                                             </td>
                                         </tr>

@@ -1,6 +1,7 @@
 ﻿using DoctorType.Application.Services.Implementation;
 using DoctorType.Application.Services.Interfaces;
 using DoctorType.Domain.ViewModels.Admin.Account;
+using DoctorType.Web.HttpManager;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DoctorType.Web.Areas.Admin.Controllers
@@ -53,7 +54,7 @@ namespace DoctorType.Web.Areas.Admin.Controllers
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditUserInfo(AdminEditUserInfoViewModel edit, List<long> Roles, IFormFile? UserAvatar)
+        public async Task<IActionResult> EditUserInfo(AdminEditUserInfoViewModel edit, List<ulong> Roles, IFormFile? UserAvatar)
         {
             #region Model State Validation
 
@@ -74,7 +75,7 @@ namespace DoctorType.Web.Areas.Admin.Controllers
 
             #region Edit User Method
 
-            var result = await _userService.EditUserInfo(edit, UserAvatar);
+            var result = await _userService.EditUserInfo(edit, UserAvatar, Roles);
 
             switch (result)
             {
@@ -83,11 +84,11 @@ namespace DoctorType.Web.Areas.Admin.Controllers
                     break;
                 case AdminEditUserInfoResult.UserNotFound:
                     TempData[ErrorMessage] = "کاربر مورد نظر یافت نشده است.";
-                    return RedirectToAction("FilterUsers", "Account", new { area = "Admin" });
+                    return RedirectToAction("ListOfUsers", "Users", new { area = "Admin" });
 
                 case AdminEditUserInfoResult.Success:
                     TempData[SuccessMessage] = "عملیات باموفقیت انجام شده است.";
-                    return RedirectToAction("AccountDetail", "Account", new { area = "Admin", id = edit.UserId });
+                    return RedirectToAction("ListOfUsers", "Users", new { area = "Admin"});
 
                 case AdminEditUserInfoResult.NotValidEmail:
                     TempData[ErrorMessage] = "ایمیل ولرد شده معتبر نمی باشد.";
@@ -110,6 +111,24 @@ namespace DoctorType.Web.Areas.Admin.Controllers
             #endregion
 
             return View(edit);
+        }
+
+        #endregion
+
+        #region Delete User
+
+        public async Task<IActionResult> DeleteUser(ulong userId)
+        {
+            var result = await _userService.SoftDeleteUserByAdmin(userId);
+
+            if (result)
+            {
+                return JsonResponseStatus.Success(null, "عملیات باموفقیت انجام شده است .");
+            }
+            else
+            {
+                return JsonResponseStatus.Error(null, "عملیات باشکست روبرو شده است .");
+            }
         }
 
         #endregion

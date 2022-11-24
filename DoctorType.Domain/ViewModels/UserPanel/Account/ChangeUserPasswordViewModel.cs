@@ -11,19 +11,19 @@ namespace DoctorType.Domain.ViewModels.UserPanel.Account
     public class ChangeUserPasswordViewModel
     {
 
-        [DisplayName("Current Password")]
+        [DisplayName("کلمه ی عبور فعلی")]
         [Required(ErrorMessage = "Please Enter {0}")]
         [DataType(DataType.Password)]
         public string CurrentPassword { get; set; }
 
         [Required(ErrorMessage = "Please Enter {0}")]
-        [DisplayName("New Password")]
+        [DisplayName("کلمه ی عبور جدید")]
         [MaxLength(200, ErrorMessage = "Please Enter {0} Less Than {1} Character")]
         [DataType(DataType.Password)]
         public string NewPassword { get; set; }
 
         [Required(ErrorMessage = "Please Enter {0}")]
-        [DisplayName("Re New Password")]
+        [DisplayName("تکرار کلمه ی عبور جدید")]
         [MaxLength(200, ErrorMessage = "Please Enter {0} Less Than {1} Character")]
         [Compare("NewPassword", ErrorMessage = "Password And Re Password Does Not Match")]
         [DataType(DataType.Password)]

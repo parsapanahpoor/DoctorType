@@ -1,6 +1,6 @@
 ﻿    <!--header area start-->
 <!--offcanvas menu area start-->
-<div class="off_canvars_overlay">
+<div cblackass="off_canvars_overlay">
 </div>
 <div class="offcanvas_menu offcanvas_three">
     <div class="container">
@@ -11,33 +11,37 @@
                 </div>
                 <div class="offcanvas_menu_wrapper">
                     <div class="canvas_close">
+
+
+
                         <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
-                    </div>
-                    <div class="call_support">
-                        <p>
-                            <i class="icon-phone-call" aria-hidden="true"></i> <span>
-                                تماس با ما : <a href="tel:02198765432">02198765432</a>
-                            </span>
-                        </p>
 
                     </div>
+                    @* <div class="call_support text-center">
+                        <p>
+                        <i class="icon-phone-call" aria-hidden="true"></i> <span>
+                        تماس با ما : <a href="tel:01133304030">01133304030</a>
+                        </span>
+                        </p>
+
+                        </div>*@
+
+
                     <div class="header_account">
                         <ul>
                             <li class="language">
                                 <a href="#">
-                                    <img src="~/SiteContent/img/logo/language.png" alt=""> فارسی
+                                    فارسی
                                     <i class="ion-chevron-down"></i>
                                 </a>
                                 <ul class="dropdown_language">
                                     <li><a href="#">فارسی</a></li>
                                     <li><a href="#">انگلیسی</a></li>
-                                    <li><a href="#">عربی</a></li>
                                 </ul>
                             </li>
                             <li class="currency">
                                 <a href="#">تومان <i class="ion-chevron-down"></i></a>
                                 <ul class="dropdown_currency">
-                                    <li><a href="#">دینار</a></li>
                                     <li><a href="#">تومان</a></li>
                                     <li><a href="#">دلار</a></li>
                                 </ul>
@@ -46,17 +50,19 @@
                     </div>
                     <div class="header_top_links">
                         <ul>
-                                 @if (!User.Identity.IsAuthenticated)
+                            @if (!User.Identity.IsAuthenticated)
                             {
                                 <li><a asp-action="Login" asp-area="" asp-controller="Account">ورود</a></li>
                                 <li><a asp-action="Register" asp-area="" asp-controller="Account">ثبت نام</a></li>
                             }
                             else
                             {
+                                <li><a asp-action="Index" asp-area="Admin" asp-controller="Home">@User.Identity.Name</a></li>
                                 <li><a asp-action="Logout" asp-area="" asp-controller="Account">خروج</a></li>
                             }
-                            <li><a href="cart.html">سبد خرید</a></li>
-                            <li><a href="checkout.html">بررسی</a></li>
+
+                            <li><a href="cart.html"> ایجاد پروژه  </a></li>
+                            <li><a href="checkout.html">فریلنسر شو</a></li>
                         </ul>
                     </div>
                     <div class="search_container">
@@ -64,115 +70,112 @@
                             <div class="hover_category">
                                 <select class="select_option" name="select" id="categori1">
                                     <option selected value="1">همه دسته بندی ها</option>
-                                    <option value="2">لوازم جانبی</option>
-                                    <option value="3">لوازم جانبی و موارد دیگر</option>
-                                    <option value="4">کره و تخم مرغ</option>
-                                    <option value="5">دوربین و ویدئو</option>
-                                    <option value="6">صفحه نمایش</option>
-                                    <option value="7">تبلت</option>
-                                    <option value="8">لبتاب</option>
-                                    <option value="9">کیف های دستی</option>
-                                    <option value="10">هدفون و بلندگو</option>
-                                    <option value="11">گیاهان و گیاهان دارویی</option>
-                                    <option value="12">سبزیجات</option>
-                                    <option value="13">خرید</option>
-                                    <option value="14">لبتاب و دسکتاپ</option>
-                                    <option value="15">ساعت</option>
-                                    <option value="16">الکترونیک</option>
+                                    <option value="2">تایپ</option>
+                                    <option value="3">ترجمه</option>
+                                    <option value="4">تایپ و ترجمه</option>
+                                    <option value="5">طراحی لوگو</option>
+                                    <option value="6">پاورپوینت</option>
+                                    <option value="7">مقاله</option>
+                                    <option value="8">پایان نامه</option>
+                                    <option value="9">پروپوزال</option>
+                                    <option value="10">برنامه نویسی</option>
+                                    <option value="11">طراحی سایت</option>
+                                    <option value="12">طراحی اپلیکیشن</option>
+                                    <option value="13">پروژه نرم افزاری</option>
                                 </select>
                             </div>
                             <div class="search_box">
-                                <input placeholder="جستجوی محصول ..." type="text">
-                                <button type="submit">محصول</button>
+                                <input placeholder="جستجوی پروژه ..." type="text">
+                                <button type="submit">جستجو</button>
                             </div>
                         </form>
                     </div>
                     <div id="menu" class="text-left ">
                         <ul class="offcanvas_main_menu">
-                            <li class="menu-item-has-children active">
-                                <a href="#">خانه</a>
-                                <ul class="sub-menu">
-                                    <li><a href="index.html">خانه 1</a></li>
-                                    <li><a href="index-2.html">خانه 2</a></li>
-                                    <li><a href="index-3.html">خانه 3</a></li>
-                                    <li><a href="index-4.html">خانه 4</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">خرید</a>
-                                <ul class="sub-menu">
-                                    <li class="menu-item-has-children">
-                                        <a href="#">طرح‌بندی فروشگاه</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="shop.html">خرید</a></li>
-                                            <li><a href="shop-fullwidth.html">عرض کامل</a></li>
-                                            <li><a href="shop-fullwidth-list.html">لیست با عرض کامل</a></li>
-                                            <li><a href="shop-right-sidebar.html">سایدبار سمت چپ </a></li>
-                                            <li>
-                                                <a href="shop-right-sidebar-list.html"> لیست با سایدبار سمت چپ</a>
-                                            </li>
-                                            <li><a href="shop-list.html">نمای فهرست</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="#">صفحات دیگر</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="cart.html">سبد خرید</a></li>
-                                            <li><a href="wishlist.html">لیست علاقمندی ها</a></li>
-                                            <li><a href="checkout.html">بررسی</a></li>
-                                            <li><a href="my-account.html">حساب من</a></li>
-                                            <li><a href="404.html"> خطای 404</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="#">انواع محصول</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="product-details.html">جزئیات محصول</a></li>
-                                            <li><a href="product-sidebar.html">معرفی محصول با سایدبار</a></li>
-                                            <li><a href="product-grouped.html">معرفی محصول با گروه بندی</a></li>
-                                            <li><a href="variable-product.html">معرفی محصول با متغیر</a></li>
-                                            <li><a href="product-countdown.html">معرفی محصول با شمارنده</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">وبلاگ</a>
-                                <ul class="sub-menu">
-                                    <li><a href="blog.html">وبلاگ</a></li>
-                                    <li><a href="blog-details.html">جزئیات وبلاگ</a></li>
-                                    <li><a href="blog-fullwidth.html">وبلاگ با عرض کامل</a></li>
-                                    <li><a href="blog-sidebar.html">وبلاگ با نوار کناری</a></li>
-                                    <li><a href="blog-no-sidebar.html">وبلاگ بدون نوار کناری</a></li>
-                                </ul>
+                            <li class="active">
+                                <a href="/Home">خانه</a>
 
                             </li>
                             <li class="menu-item-has-children">
-                                <a href="#">صفحات </a>
+                                <a href="#">خدمات</a>
                                 <ul class="sub-menu">
-                                    <li><a href="about.html">درباره ما</a></li>
-                                    <li><a href="faq.html">سوالات متداول</a></li>
-                                    <li><a href="contact.html">تماس</a></li>
-                                    <li><a href="login.html">ورود</a></li>
-                                    <li><a href="404.html"> خطای 404</a></li>
-                                    <li><a href="compare.html">مقایسه</a></li>
-                                    <li><a href="privacy-policy.html">حریم خصوصی</a></li>
-                                    <li><a href="coming-soon.html">به زودی</a></li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#">تایپ و ترجمه</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="shop-fullwidth.html">تایپ</a></li>
+                                            <li>
+                                                <a href="shop-fullwidth-list.html">ترجمه</a>
+                                            </li>
+                                            <li>
+                                                <a href="shop-right-sidebar.html">تبدیل  pdf به word </a>
+                                            </li>
+                                            <li>
+                                                <a href="shop-right-sidebar-list.html">
+                                                    تایپ از روی دست نوشته
+                                                </a>
+                                            </li>
+                                            <li><a href="shop-list.html">تایپ متون قدیمی(تجدید تایپ)</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#">طراحی</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="cart.html">طراحی لوگو</a></li>
+                                            <li><a href="wishlist.html">طراحی آرم</a></li>
+                                            <li><a href="checkout.html">گرافیک</a></li>
+                                            <li><a href="my-account.html">موشن گرافی</a></li>
+                                            <li><a href="404.html"> طراحی اختصاصی</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#">سایت و اپلیکیشن</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="product-details.html">طراحی سایت</a></li>
+                                            <li>
+                                                <a href="product-sidebar.html">
+                                                    طراحی اپلیکیشن
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="product-grouped.html">
+                                                    طراحی فروشگاه اینترنتی
+
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="variable-product.html">برنامه نویسی نرم افزارهای اختصاصی</a>
+                                            </li>
+                                            <li>
+                                                <a href="product-countdown.html">
+                                                    دیجیتال مارکتینگ
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="menu-item-has-children">
-                                <a href="my-account.html">حساب من</a>
+                                <a href="#">آموزش</a>
+                                <ul class="sub-menu">
+                                    <li><a href="blog-details.html">دستیار شو</a></li>
+                                    <li><a href="blog-fullwidth.html">برنامه نویس شو</a></li>
+                                    <li><a href="blog-sidebar.html">تایپیست حرفه ای شو</a></li>
+                                    <li><a href="blog-no-sidebar.html">گرافیست شو</a></li>
+                                </ul>
+
+                            </li>                        
+                            <li class="menu-item-has-children">
+                                <a href="/Home/About">درباره ما</a>
                             </li>
                             <li class="menu-item-has-children">
-                                <a href="about.html">درباره ما</a>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="contact.html"> تماس با ما</a>
+                                <a href="/Home/Contact"> تماس با ما</a>
                             </li>
                         </ul>
                     </div>
                     <div class="offcanvas_footer">
-                        <span><a href="#"><i class="fa fa-envelope-o"></i> info@yourdomain.com</a></span>
+                        <img src="~/SiteContent/img/brand/uspett1.png" class="Slogan" alt="">
+                        <hr />
+                        <span><a href="#"><i class="fa fa-envelope-o"></i> info@DoctorType.ir</a></span>
                         <ul>
                             <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
                             <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -194,24 +197,22 @@
         <div class="header_top h_top_three">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-4 col-md-5">
+                    <div class="col-lg-4 col-md-4">
                         <div class="header_account">
                             <ul>
                                 <li class="language">
                                     <a href="#">
-                                        <img src="~/SiteContent/img/logo/language.png" alt="">
+
                                         فارسی <i class="ion-chevron-down"></i>
                                     </a>
                                     <ul class="dropdown_language">
                                         <li><a href="#">فارسی</a></li>
                                         <li><a href="#">انگلیسی</a></li>
-                                        <li><a href="#">عربی</a></li>
                                     </ul>
                                 </li>
                                 <li class="currency">
                                     <a href="#">تومان <i class="ion-chevron-down"></i></a>
                                     <ul class="dropdown_currency">
-                                        <li><a href="#">دینار</a></li>
                                         <li><a href="#">تومان</a></li>
                                         <li><a href="#">دلار</a></li>
                                     </ul>
@@ -219,20 +220,24 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-8 col-md-7">
+                    <div class="col-lg-4 col-md-4 text-center">
+                        <img src="~/SiteContent/img/brand/uspett1.png" class="SloganBig" alt="">
+                    </div>
+                    <div class="col-lg-4 col-md-4">
                         <div class="header_top_links text-right">
                             <ul>
                                 @if (!User.Identity.IsAuthenticated)
-                            {
-                                <li><a asp-action="Login" asp-area="" asp-controller="Account">ورود</a></li>
-                                <li><a asp-action="Register" asp-area="" asp-controller="Account">ثبت نام</a></li>
-                            }
-                            else
-                            {
-                                <li><a asp-action="Logout" asp-area="" asp-controller="Account">خروج</a></li>
-                            }
-                                <li><a href="cart.html">سبد خرید</a></li>
-                                <li><a href="checkout.html">بررسی</a></li>
+                                {
+                                    <li><a asp-action="Login" asp-area="" asp-controller="Account">ورود</a></li>
+                                    <li><a asp-action="Register" asp-area="" asp-controller="Account">ثبت نام</a></li>
+                                }
+                                else
+                                {
+                                    <li><a asp-action="Index" asp-area="Admin" asp-controller="Home">@User.Identity.Name</a></li>
+                                    <li><a asp-action="Logout" asp-area="" asp-controller="Account">خروج</a></li>
+                                }
+                                <li><a href="cart.html"><i class="fa fa-plus"></i> ایجاد پروژه  </a></li>
+                                <li><a href="checkout.html">فریلنسر شو</a></li>
                             </ul>
                         </div>
                     </div>
@@ -246,51 +251,52 @@
                 <div class="row align-items-center">
                     <div class="col-lg-2 col-md-4 col-sm-4 col-4">
                         <div class="logo">
-                            <a href="index.html"><img src="~/SiteContent/img/logo/logo.png" alt=""></a>
+                            <a href="/Home"><img src="~/SiteContent/img/logo/LogoAsli1.png" alt=""></a>
                         </div>
                     </div>
-                    <div class="col-lg-10 col-md-6 col-sm-6 col-6">
+                    <div class="col-lg-10 col-md-8 col-sm-8 col-8">
                         <div class="header_right_box">
                             <div class="search_container">
                                 <form action="#">
                                     <div class="hover_category">
-                                        <select class="select_option" name="select" id="categori2" style="display: none;">
-                                            <option selected="" value="1">همه دسته بندی ها</option>
-                                            <option value="2">لوازم جانبی</option>
-                                            <option value="3">لوازم جانبی و موارد دیگر</option>
-                                            <option value="4">کره و تخم مرغ</option>
-                                            <option value="5">دوربین و ویدئو</option>
-                                            <option value="6">صفحه نمایش</option>
-                                            <option value="7">تبلت</option>
-                                            <option value="8">لبتاب</option>
-                                            <option value="9">کیف های دستی</option>
-                                            <option value="10">هدفون و بلندگو</option>
-                                            <option value="11">گیاهان و گیاهان دارویی</option>
-                                            <option value="12">سبزیجات</option>
-                                            <option value="13">خرید</option>
-                                            <option value="14">لبتاب و دسکتاپ</option>
-                                            <option value="15">ساعت</option>
-                                            <option value="16">الکترونیک</option>
-                                        </select><div class="nice-select select_option" tabindex="0"><span class="current">همه دسته بندی ها</span><ul class="list"><li data-value="1" class="option selected">همه دسته بندی ها</li><li data-value="2" class="option">لوازم جانبی</li><li data-value="3" class="option">لوازم جانبی و موارد دیگر</li><li data-value="4" class="option">کره و تخم مرغ</li><li data-value="5" class="option">دوربین و ویدئو</li><li data-value="6" class="option">صفحه نمایش</li><li data-value="7" class="option">تبلت</li><li data-value="8" class="option">لبتاب</li><li data-value="9" class="option">کیف های دستی</li><li data-value="10" class="option">هدفون و بلندگو</li><li data-value="11" class="option">گیاهان و گیاهان دارویی</li><li data-value="12" class="option">سبزیجات</li><li data-value="13" class="option">خرید</li><li data-value="14" class="option">لبتاب و دسکتاپ</li><li data-value="15" class="option">ساعت</li><li data-value="16" class="option">الکترونیک</li></ul></div>
+                                        <select class="select_option" name="select" id="categori2">
+                                            <option selected value="1">همه دسته بندی ها</option>
+                                            <option value="2">تایپ</option>
+                                            <option value="3">ترجمه</option>
+                                            <option value="4">تایپ و ترجمه</option>
+                                            <option value="5">طراحی لوگو</option>
+                                            <option value="6">پاورپوینت</option>
+                                            <option value="7">مقاله</option>
+                                            <option value="8">پایان نامه</option>
+                                            <option value="9">پروپوزال</option>
+                                            <option value="10">برنامه نویسی</option>
+                                            <option value="11">طراحی سایت</option>
+                                            <option value="12">طراحی اپلیکیشن</option>
+                                            <option value="13">پروژه نرم افزاری</option>
+                                        </select>
                                     </div>
                                     <div class="search_box">
-                                        <input placeholder="جستجوی محصول ..." type="text">
-                                        <button type="submit">محصول</button>
+                                        <input placeholder="جستجوی پروژه ..." type="text">
+                                        <button type="submit">جستجو</button>
                                     </div>
                                 </form>
                             </div>
                             <div class="header_configure_area">
                                 <div class="header_wishlist">
-                                    <a href="wishlist.html">
+                                    <a href="">
                                         <i class="icon-heart"></i>
-                                        <span class="wishlist_count">3</span>
+                                        <span class="wishlist_count">0</span>
                                     </a>
                                 </div>
                                 <div class="mini_cart_wrapper">
                                     <a href="javascript:void(0)">
                                         <i class="icon-shopping-bag2"></i>
-                                        <span class="cart_price">152.00 تومان <i class="ion-ios-arrow-down"></i></span>
-                                        <span class="cart_count">2</span>
+
+                                        <span class="cart_price">
+                                            سبد خرید خالی است
+                                            <i class="ion-ios-arrow-left"></i>
+                                        </span>
+                                        <span class="cart_count">0</span>
                                     </a>
                                     <!--mini cart-->
                                     <div class="mini_cart">
@@ -300,50 +306,56 @@
                                                     <h3>سبد خرید</h3>
                                                 </div>
                                                 <div class="mini_cart_close">
-                                                    <a href="javascript:void(0)"><i class="icon-x"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ion-ios-arrow-left"></i></a>
                                                 </div>
                                             </div>
-                                            <div class="cart_item">
+                                            @* <div class="cart_item">
                                                 <div class="cart_img">
-                                                    <a href="#"><img src="~/SiteContent/img/s-product/product.jpg" alt=""></a>
+                                                <a href="#">
+                                                <img src="assets/img/s-product/product.jpg"
+                                                alt="">
+                                                </a>
                                                 </div>
                                                 <div class="cart_info">
-                                                    <a href="#">عنوان محصول</a>
-                                                    <p> تعداد: 1 عدد <span> 60.00 تومان </span></p>
+                                                <a href="#">عنوان محصول</a>
+                                                <p> تعداد: 1 عدد <span> 60.00 تومان </span></p>
                                                 </div>
                                                 <div class="cart_remove">
-                                                    <a href="#"><i class="ion-android-close"></i></a>
+                                                <a href="#"><i class="ion-android-close"></i></a>
                                                 </div>
-                                            </div>
-                                            <div class="cart_item">
+                                                </div>*@
+                                            @*<div class="cart_item">
                                                 <div class="cart_img">
-                                                    <a href="#"><img src="~/SiteContent/img/s-product/product2.jpg" alt=""></a>
+                                                <a href="#">
+                                                <img src="assets/img/s-product/product2.jpg"
+                                                alt="">
+                                                </a>
                                                 </div>
                                                 <div class="cart_info">
-                                                    <a href="#">عنوان محصول</a>
-                                                    <p> تعداد: 1 عدد <span> 60.00 تومان </span></p>
+                                                <a href="#">عنوان محصول</a>
+                                                <p> تعداد: 1 عدد <span> 60.00 تومان </span></p>
                                                 </div>
                                                 <div class="cart_remove">
-                                                    <a href="#"><i class="ion-android-close"></i></a>
+                                                <a href="#"><i class="ion-android-close"></i></a>
                                                 </div>
-                                            </div>
-                                            <div class="mini_cart_table">
+                                                </div>*@
+                                            @* <div class="mini_cart_table">
                                                 <div class="cart_total">
-                                                    <span>مجموع فرعی:</span>
-                                                    <span class="price">138.00 تومان</span>
+                                                <span>مجموع فرعی:</span>
+                                                <span class="price">138.00 تومان</span>
                                                 </div>
                                                 <div class="cart_total mt-10">
-                                                    <span>جمع کل:</span>
-                                                    <span class="price">138.00 تومان</span>
+                                                <span>جمع کل:</span>
+                                                <span class="price">138.00 تومان</span>
                                                 </div>
-                                            </div>
+                                                </div>*@
                                         </div>
                                         <div class="mini_cart_footer">
                                             <div class="cart_button">
-                                                <a href="cart.html">مشاهده سبد خرید</a>
+                                                <a href="">مشاهده سبد خرید</a>
                                             </div>
                                             <div class="cart_button">
-                                                <a class="active" href="checkout.html">بررسی</a>
+                                                <a class="active" href="">سبد خرید شما خالی است</a>
                                             </div>
 
                                         </div>
@@ -366,70 +378,61 @@
                             <nav>
                                 <ul>
                                     <li>
-                                        <a class="active" href="index.html">خانه<i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub_menu">
-                                            <li><a href="index.html">خانه 1</a></li>
-                                            <li><a href="index-2.html">خانه 2</a></li>
-                                            <li><a href="index-3.html">خانه 3</a></li>
-                                            <li><a href="index-4.html">خانه 4</a></li>
-                                        </ul>
+                                        <a class="active" href="/Home">خانه</a>
                                     </li>
                                     <li class="mega_items">
-                                        <a href="shop.html">خرید</a>
+                                        <a href="shop.html">خدمات<i class="fa fa-angle-down"></i></a>
                                         <div class="mega_menu">
                                             <ul class="mega_menu_inner">
                                                 <li>
-                                                    <a href="#">طرح‌بندی فروشگاه</a>
+                                                    <a href="#">تایپ و ترجمه</a>
                                                     <ul>
-                                                        <li><a href="shop-fullwidth.html">عرض کامل</a></li>
+                                                        <li><a href="shop-fullwidth.html">تایپ</a></li>
                                                         <li>
-                                                            <a href="shop-fullwidth-list.html">لیست با عرض کامل</a>
+                                                            <a href="shop-fullwidth-list.html">ترجمه</a>
                                                         </li>
                                                         <li>
-                                                            <a href="shop-right-sidebar.html">سایدبار سمت چپ </a>
+                                                            <a href="shop-right-sidebar.html">تبدیل  pdf به word </a>
                                                         </li>
                                                         <li>
                                                             <a href="shop-right-sidebar-list.html">
-                                                                لیست با سایدبار
-                                                                سمت چپ
+                                                                تایپ از روی دست نوشته
                                                             </a>
                                                         </li>
-                                                        <li><a href="shop-list.html">نمای فهرست</a></li>
+                                                        <li><a href="shop-list.html">تایپ متون قدیمی(تجدید تایپ)</a></li>
                                                     </ul>
                                                 </li>
                                                 <li>
-                                                    <a href="#">صفحات دیگر</a>
+                                                    <a href="#">طراحی</a>
                                                     <ul>
-                                                        <li><a href="cart.html">سبد خرید</a></li>
-                                                        <li><a href="wishlist.html">لیست علاقمندی ها</a></li>
-                                                        <li><a href="checkout.html">بررسی</a></li>
-                                                        <li><a href="my-account.html">حساب من</a></li>
-                                                        <li><a href="404.html"> خطای 404</a></li>
+                                                        <li><a href="cart.html">طراحی لوگو</a></li>
+                                                        <li><a href="wishlist.html">طراحی آرم</a></li>
+                                                        <li><a href="checkout.html">گرافیک</a></li>
+                                                        <li><a href="my-account.html">موشن گرافی</a></li>
+                                                        <li><a href="404.html"> طراحی اختصاصی</a></li>
                                                     </ul>
                                                 </li>
                                                 <li>
-                                                    <a href="#">انواع محصول</a>
+                                                    <a href="#">سایت و اپلیکیشن</a>
                                                     <ul>
-                                                        <li><a href="product-details.html">جزئیات محصول</a></li>
+                                                        <li><a href="product-details.html">طراحی سایت</a></li>
                                                         <li>
                                                             <a href="product-sidebar.html">
-                                                                معرفی محصول با
-                                                                سایدبار
+                                                                طراحی اپلیکیشن
                                                             </a>
                                                         </li>
                                                         <li>
                                                             <a href="product-grouped.html">
-                                                                معرفی محصول با گروه
-                                                                بندی
+                                                                طراحی فروشگاه اینترنتی
+
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="variable-product.html">معرفی محصول با متغیر</a>
+                                                            <a href="variable-product.html">برنامه نویسی نرم افزارهای اختصاصی</a>
                                                         </li>
                                                         <li>
                                                             <a href="product-countdown.html">
-                                                                معرفی محصول با
-                                                                شمارنده
+                                                                دیجیتال مارکتینگ
                                                             </a>
                                                         </li>
 
@@ -439,30 +442,18 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <a href="blog.html">وبلاگ<i class="fa fa-angle-down"></i></a>
+                                        <a href="blog.html">آموزش<i class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu pages">
-                                            <li><a href="blog-details.html">جزئیات وبلاگ</a></li>
-                                            <li><a href="blog-fullwidth.html">وبلاگ با عرض کامل</a></li>
-                                            <li><a href="blog-sidebar.html">وبلاگ با نوار کناری</a></li>
-                                            <li><a href="blog-no-sidebar.html">وبلاگ بدون نوار کناری</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#">صفحات <i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub_menu pages">
-                                            <li><a href="about.html">درباره ما</a></li>
-                                            <li><a href="faq.html">سوالات متداول</a></li>
-                                            <li><a href="contact.html">تماس</a></li>
-                                            <li><a href="login.html">ورود</a></li>
-                                            <li><a href="404.html"> خطای 404</a></li>
-                                            <li><a href="compare.html">مقایسه</a></li>
-                                            <li><a href="privacy-policy.html">حریم خصوصی</a></li>
-                                            <li><a href="coming-soon.html">به زودی</a></li>
+                                            <li><a href="blog-details.html">دستیار شو</a></li>
+                                            <li><a href="blog-fullwidth.html">برنامه نویس شو</a></li>
+                                            <li><a href="blog-sidebar.html">تایپیست حرفه ای شو</a></li>
+                                            <li><a href="blog-no-sidebar.html">گرافیست شو</a></li>
                                         </ul>
                                     </li>
 
-                                    <li><a href="about.html">درباره ما</a></li>
-                                    <li><a href="contact.html"> تماس با ما</a></li>
+
+                                    <li><a href="/Home/About">درباره ما</a></li>
+                                    <li><a href="/Home/Contact"> تماس با ما</a></li>
                                 </ul>
                             </nav>
                         </div>

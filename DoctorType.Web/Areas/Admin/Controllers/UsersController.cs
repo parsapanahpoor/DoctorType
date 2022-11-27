@@ -53,7 +53,7 @@ namespace DoctorType.Web.Areas.Admin.Controllers
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditUserInfo(AdminEditUserInfoViewModel edit, List<long> Roles, IFormFile? UserAvatar)
+        public async Task<IActionResult> EditUserInfo(AdminEditUserInfoViewModel edit, List<ulong> Roles, IFormFile? UserAvatar)
         {
             #region Model State Validation
 
@@ -74,7 +74,7 @@ namespace DoctorType.Web.Areas.Admin.Controllers
 
             #region Edit User Method
 
-            var result = await _userService.EditUserInfo(edit, UserAvatar);
+            var result = await _userService.EditUserInfo(edit, UserAvatar, Roles);
 
             switch (result)
             {

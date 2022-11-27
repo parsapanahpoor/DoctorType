@@ -136,13 +136,13 @@
 
                                         @if (!Model.IsBan)
                                         {
-                                            <option value="1" selected="selected">فعال</option>
-                                            <option value="0">غیر فعال</option>
+                                            <option value="@true" selected="selected">فعال</option>
+                                            <option value="@false">غیر فعال</option>
                                         }
                                         else
                                         {
-                                            <option value="0" selected="selected">غیر فعال</option>
-                                            <option value="1">فعال</option>
+                                            <option value="@false" selected="selected">غیر فعال</option>
+                                            <option value="@true">فعال</option>
                                         }
 
                                     </select>
@@ -156,13 +156,13 @@
 
                                         @if (Model.IsMobileConfirm)
                                         {
-                                            <option value="1" selected="selected">فعال</option>
-                                            <option value="0">غیر فعال</option>
+                                            <option value="@true" selected="selected">فعال</option>
+                                            <option value="@false">غیر فعال</option>
                                         }
                                         else
                                         {
-                                            <option value="0" selected="selected">غیر فعال</option>
-                                            <option value="1">فعال</option>
+                                            <option value="@false" selected="selected">غیر فعال</option>
+                                            <option value="@true">فعال</option>
                                         }
 
                                     </select>
@@ -170,9 +170,9 @@
                             </div>
 
                             <div class="form-group col-md-6">
-                                    <label>مدیریت نقش ها </label>
+                                <label>مدیریت نقش ها </label>
                                 <div class="dropdown bootstrap-select form-control dropup">
-               
+
                                     <div class="dropdown bootstrap-select show-tick form-control dropup">
                                         @if (ListOfRoles != null && ListOfRoles.Any())
                                         {
@@ -203,47 +203,47 @@
                                     </div>
                                 </div>
                             </div>
-                                <div class="form-group col-md-6">
-                                    <label>ادمین کل سیستم   </label>
-                                    <div class="dropdown bootstrap-select form-control dropup">
-                    
-                                        <select asp-for="IsAdmin" class="form-control">
-                                            @if (Model.IsAdmin)
-                                            {
-                                                <option value="false">ادمین نباشد </option>
-                                                <option value="true" selected>ادمین باشد </option>
-                                            }
-                                            else
-                                            {
-                                                <option value="false" selected>ادمین نباشد </option>
-                                                <option value="true">ادمین باشد </option>
-                                            }
-                                        </select>
-                                    </div>
+                            <div class="form-group col-md-6">
+                                <label>ادمین کل سیستم   </label>
+                                <div class="dropdown bootstrap-select form-control dropup">
+
+                                    <select asp-for="IsAdmin" class="form-control">
+                                        @if (Model.IsAdmin)
+                                        {
+                                            <option value="@true" selected="selected">فعال</option>
+                                            <option value="@false">غیر فعال</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@false" selected="selected">غیر فعال</option>
+                                            <option value="@true">فعال</option>
+                                        }
+                                    </select>
                                 </div>
+                            </div>
 
-                                <div class="form-group col-md-6">
-                                    <label>وضعیت تیکت</label>
-                                    <div class="dropdown bootstrap-select form-control dropup">
-                                        <select asp-for="BanForTicket" class="form-control">
+                            <div class="form-group col-md-6">
+                                <label>وضعیت تیکت</label>
+                                <div class="dropdown bootstrap-select form-control dropup">
+                                    <select asp-for="BanForTicket" class="form-control">
 
-                                            @if (!Model.BanForTicket)
-                                            {
-                                                <option value="1" selected="selected">فعال</option>
-                                                <option value="0">غیر فعال</option>
-                                            }
-                                            else
-                                            {
-                                                <option value="0" selected="selected">غیر فعال</option>
-                                                <option value="1">فعال</option>
-                                            }
+                                        @if (!Model.BanForTicket)
+                                        {
+                                            <option value="@true" selected="selected">فعال</option>
+                                            <option value="@false">غیر فعال</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@false" selected="selected">غیر فعال</option>
+                                            <option value="@true">فعال</option>
+                                        }
 
-                                        </select>
-                                    </div>
+                                    </select>
                                 </div>
+                            </div>
 
 
-                            
+
 
 
                         </div>

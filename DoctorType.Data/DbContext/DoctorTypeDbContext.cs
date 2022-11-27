@@ -1,6 +1,8 @@
 ﻿using DoctorType.Domain.Entities;
 using DoctorType.Domain.Entities.Account;
 using DoctorType.Domain.Entities.SiteSetting;
+using DoctorType.Domain.Entities.Tariff;
+using DoctorType.Domain.Entities.Wallet;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -23,6 +25,14 @@ namespace DoctorType.Data.DbContext
 
         #region DbSets
 
+        #region Wallet
+
+        public DbSet<Wallet> Wallets { get; set; }
+
+        public DbSet<WalletData> WalletData { get; set; }
+
+        #endregion
+
         #region Account 
 
         public DbSet<User> Users { get; set; }
@@ -42,6 +52,14 @@ namespace DoctorType.Data.DbContext
         public DbSet<SiteSetting> SiteSettings { get; set; }
 
         public DbSet<EmailSetting> EmailSetting { get; set; }
+
+        #endregion
+
+        #region Tariff
+
+        public DbSet<Tariff> Tariffs { get; set; }
+
+        public DbSet<UserSelectedTariff> UserSelectedTariffs { get; set; }
 
         #endregion
 

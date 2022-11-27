@@ -1,4 +1,5 @@
 ﻿using DoctorType.Domain.Entities.Common;
+using DoctorType.Domain.Entities.Tariff;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -87,6 +88,10 @@ namespace DoctorType.Domain.Entities.Account
         #region Relations
 
         public ICollection<UserRole> UserRoles { get; set; }
+
+        public List<UserSelectedTariff> UserSelectedTariff { get; set; }
+
+        public List<Wallet.Wallet> Wallets { get; set; }
 
         #endregion
     }

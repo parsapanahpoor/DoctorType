@@ -1,0 +1,80 @@
+﻿@using DoctorType.Domain.Entities.Account
+@model DoctorType.Domain.ViewModels.Admin.Tariff.CreateTariffViewModel
+
+@{
+    ViewData["Title"] = "افزودن تعرفه ها";
+}
+
+@section scripts{
+    <partial name="_JqueryValidators" />
+}
+
+    @section Breadcrumbs{
+    <div class="col-sm-6 p-md-0">
+        <div class="welcome-text">
+            <h4>@ViewData["Title"]</h4>
+        </div>
+    </div>
+    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-area="Admin" asp-controller="Home"> داشبورد ادمین </a></li>
+            <li class="breadcrumb-item"><a asp-action="FilterTariff" asp-area="Admin" asp-controller="Tariff"> میدیریت تعرفه ها </a></li>
+            <li class="breadcrumb-item active"><a asp-action="CreateTariff" asp-area="Admin" asp-controller="Tariff">@ViewData["Title"]</a></li>
+        </ol>
+    </div>
+}
+
+    <form asp-area="Admin" asp-controller="Tariff" asp-action="CreateTariff" method="post">
+
+        <div class="row">
+
+            <div class="col-xl-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title"> اطلاعات تعرفه ها </h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="basic-form">
+
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label> عنوان تعرفه </label>
+                                    <input asp-for="TariffName" type="text" class="form-control" placeholder=" عنوان تعرفه را وارد کنید ">
+                                    <span asp-validation-for="TariffName" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label> مبلغ تعرفه </label>
+                                    <input asp-for="TariffPrice" type="text" class="form-control" placeholder=" مبلغ تعرفه را وارد کنید ">
+                                    <span asp-validation-for="TariffPrice" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label> تعداد آگهی های قابل پذیرفتن </label>
+                                    <input asp-for="CountOfAcceptRequest" type="text" class="form-control" placeholder=" تعداد آگهی های قابل پذیرفتن را وارد کنید ">
+                                    <span asp-validation-for="CountOfAcceptRequest" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label> مدت زمان تعرفه </label>
+                                    <input asp-for="TariffDuration" type="text" class="form-control" placeholder=" مدت زمان تعرفه را وارد کنید ">
+                                    <span asp-validation-for="TariffDuration" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-outline-success">@ViewData["Title"]</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+</form>

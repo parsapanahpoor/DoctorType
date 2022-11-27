@@ -66,6 +66,9 @@ namespace DoctorType.Application.Services.Interfaces
 
         #region Admin
 
+        //Delete Users From Admin Side 
+        Task<bool> SoftDeleteUserByAdmin(ulong userId);
+
         //Get The List Of Simple Users For Show In Data Tables In Admin Panel 
         Task<List<User>> GetTheListOfSimpleUsersForShowInDataTablesInAdminPanel();
 

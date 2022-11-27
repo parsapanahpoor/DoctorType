@@ -1,0 +1,95 @@
+﻿@model List<DoctorType.Domain.Entities.Tariff.Tariff>
+@using DoctorType.Application.Convertors
+@using DoctorType.Application.Extensions
+
+@{
+    ViewData["Title"] = "لیست تعرفه ها";
+}
+
+@section styles{
+    <!-- Datatable -->
+    <link href="/AdminContent/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!-- Custom Stylesheet -->
+    <link href="/AdminContent/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+}
+
+    @section scripts{
+    <script src="js/deznav-init.js"></script>
+    <!-- Datatable -->
+    <script src="/AdminContent/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="/AdminContent/js/plugins-init/datatables.init.js"></script>
+}
+
+    @section Breadcrumbs{
+    <div class="col-sm-6 p-md-0">
+        <div class="welcome-text">
+            <h4>@ViewData["Title"]</h4>
+        </div>
+    </div>
+    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-area="Admin" asp-controller="Home"> داشبورد ادمین </a></li>
+            <li class="breadcrumb-item"><a asp-action="ListOfRoles" asp-area="Admin" asp-controller="Role"> مدیریت تعرفه </a></li>
+        </ol>
+    </div>
+}
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">تعرفه ها</h4>
+
+                    <a asp-area="Admin" asp-controller="Role" asp-action="CreateRole" title="افزودن" class="btn btn-rounded btn-primary"><span class="btn-icon-left text-primary"><i class="fa fa-plus color-primary"></i></span>افزودن</a>
+                </div>
+                <div class="card-body">
+                @if (Model != null && Model.Any())
+                {
+                    <div class="table-responsive">
+                        <div id="example5_wrapper" class="dataTables_wrapper no-footer">
+
+                            <table id="example5" class="display dataTable no-footer" style="min-width: 845px" role="grid" aria-describedby="example5_info">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="sorting_asc" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" style="width: 51.1333px;" aria-sort="ascending" aria-label=":  ">عنوان تعرفه</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" style="width: 108.817px;" aria-label="نام: فعال کنید تا ستون صعودی مرتب شود">مبلغ تعرفه </th>
+                                        <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" style="width: 108.817px;" aria-label="نام: فعال کنید تا ستون صعودی مرتب شود">مدا زمان اعتبار </th>
+                                        <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" style="width: 84.4px;" aria-label="اقدامات: فعال کنید تا ستون صعودی مرتب شود">اقدامات</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var tariff in Model)
+                                    {
+                                        <tr role="row" class="odd" remove-ajax-item="@tariff.Id">
+
+                                            <td>@tariff.TariffName</td>
+
+                                            <td>@tariff.TariffPrice.ToString("#,0") ریال </td>
+
+                                            <td>@tariff.tariffDuration روز</td>
+
+                                            <td>
+                                                <div class="d-flex">
+                                                    <a title="ویرایش" asp-area="Admin" asp-controller="Role" asp-action="EditRole" asp-route-roleId="@tariff.Id" class="btn btn-warning shadow btn-xs sharp m-1"><i class="fa fa-edit"></i></a>
+                                                    <a ajax-url-button="@tariff.Id" title="حذف" asp-area="Admin" asp-controller="Role" asp-action="DeleteRole" asp-route-roleId="@tariff.Id" class="btn btn-danger shadow btn-xs sharp m-1"><i class="fa fa-trash"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+
+                }
+                else
+                {
+                    <partial name="_NoItemFoundPartial" />
+                }
+            </div>
+        </div>
+    </div>
+</div>

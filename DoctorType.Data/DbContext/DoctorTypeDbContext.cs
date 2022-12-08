@@ -70,6 +70,10 @@ namespace DoctorType.Data.DbContext
 
         public DbSet<ExpertsSelectedSkils> ExpertsSelectedSkils { get; set; }
 
+        public DbSet<AdvertisementSelectedSkill> AdvertisementSelectedSkills { get; set; }
+
+        public DbSet<Advertisemenet> Advertisemenets { get; set; }
+
         #endregion
 
         #endregion

@@ -4,6 +4,7 @@ using DoctorType.Data.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DoctorType.Data.Migrations
 {
     [DbContext(typeof(DoctorTypeDbContext))]
-    partial class DoctorTypeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221208122049_Update-AdvertisementSelectedSkill-Table")]
+    partial class UpdateAdvertisementSelectedSkillTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -105,6 +107,9 @@ namespace DoctorType.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"), 1L, 1);
 
+                    b.Property<decimal>("AdvertisemenetId")
+                        .HasColumnType("decimal(20,0)");
+
                     b.Property<decimal>("AdvertisementCategoryId")
                         .HasColumnType("decimal(20,0)");
 
@@ -119,9 +124,9 @@ namespace DoctorType.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AdvertisementCategoryId");
+                    b.HasIndex("AdvertisemenetId");
 
-                    b.HasIndex("AdvertisementId");
+                    b.HasIndex("AdvertisementCategoryId");
 
                     b.ToTable("AdvertisementSelectedSkills");
                 });
@@ -222,7 +227,7 @@ namespace DoctorType.Data.Migrations
                         new
                         {
                             Id = 1m,
-                            CreateDate = new DateTime(2022, 12, 8, 18, 1, 32, 139, DateTimeKind.Local).AddTicks(9876),
+                            CreateDate = new DateTime(2022, 12, 8, 15, 50, 48, 726, DateTimeKind.Local).AddTicks(7441),
                             IsDelete = false,
                             RoleUniqueName = "Admin",
                             Title = "Admin"
@@ -651,19 +656,19 @@ namespace DoctorType.Data.Migrations
 
             modelBuilder.Entity("DoctorType.Domain.Entites.Adevrtisement.AdvertisementSelectedSkill", b =>
                 {
+                    b.HasOne("DoctorType.Domain.Entites.Adevrtisement.Advertisemenet", "Advertisemenet")
+                        .WithMany("AdvertisementSelectedSkills")
+                        .HasForeignKey("AdvertisemenetId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("DoctorType.Domain.Entites.Adevrtisement.AdvertisementCategory", "AdvertisementCategory")
                         .WithMany("AdvertisementSelectedSkills")
                         .HasForeignKey("AdvertisementCategoryId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("DoctorType.Domain.Entites.Adevrtisement.Advertisemenet", "Advertisement")
-                        .WithMany("AdvertisementSelectedSkills")
-                        .HasForeignKey("AdvertisementId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Advertisement");
+                    b.Navigation("Advertisemenet");
 
                     b.Navigation("AdvertisementCategory");
                 });

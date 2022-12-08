@@ -40,5 +40,17 @@ namespace DoctorType.Application.StaticTools
         public static readonly string DefaultUserAvatar = "/content/images/user/DefaultAvatar.png";
 
         #endregion
+
+        #region ADvertisement File
+
+        public static readonly string AdvertisementPath = "/content/images/Advertisement/";
+        public static readonly string AdvertisementPathServer = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/content/images/Advertisement/");
+
+        public static readonly string AdvertisementPathThumb = "/content/images/Advertisement/";
+        public static readonly string AdvertisementPathThumbServer = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/content/images/Advertisement/");
+
+        public static readonly string DefaultAdvertisement = "/content/images/Advertisement/DefaultAdvertisement.png";
+
+        #endregion
     }
 }

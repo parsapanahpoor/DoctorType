@@ -19,7 +19,7 @@ namespace DoctorType.Domain.Entites.Adevrtisement
 
         #region relation 
 
-        public Advertisemenet Advertisemenet{ get; set; }
+        public Advertisemenet Advertisement { get; set; }
 
         public AdvertisementCategory AdvertisementCategory { get; set; }
 

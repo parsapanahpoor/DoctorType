@@ -28,6 +28,7 @@ namespace DoctorType.IoC
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<ITariffService, TariffService>();
             services.AddScoped<IAdvertisementCategoryService, AdvertisementCategoryService>();
+            services.AddScoped<IAdvertisementService, AdvertisementService>();
 
             #endregion
 

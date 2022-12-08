@@ -1,6 +1,6 @@
-﻿using DoctorType.Domain.Entities.Account;
-using DoctorType.Domain.Entities.Common;
+﻿using DoctorType.Domain.Entites.Adevrtisement;
 using DoctorType.Domain.Enums.Advertisement;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,9 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace DoctorType.Domain.Entites.Adevrtisement
+namespace DoctorType.Domain.ViewModels.UserPanel.Advertisement
 {
-    public class Advertisemenet : BaseEntity
+    public class CreateAdvertisementUserPanelSideViewModel
     {
         #region properties
 
@@ -22,22 +22,14 @@ namespace DoctorType.Domain.Entites.Adevrtisement
 
         public ulong UserId { get; set; }
 
-        public AdvertismenetState AdvertismenetState { get; set; }
-
-        public string? Price { get; set; }
-
         [Display(Name = " توضیح کامل ")]
         public string? Description { get; set; }
 
-        public string File { get; set; }
+        public IFormFile File{ get; set; }
 
-        #endregion
+        public List<ulong> AdvertisementSelectedSkills { get; set; }
 
-        #region relation
-
-        public User User { get; set; }
-
-        public ICollection<AdvertisementSelectedSkill> AdvertisementSelectedSkills { get; set; }
+        public List<AdvertisementCategory>? AdvertisementCategories { get; set; }
 
         #endregion
     }

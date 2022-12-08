@@ -34,6 +34,8 @@ namespace DoctorType.Domain.Entites.Adevrtisement
 
         public List<ExpertsSelectedSkils> ExpertsSelectedSkils { get; set; }
 
+        public ICollection<AdvertisementSelectedSkill> AdvertisementSelectedSkills { get; set; }
+
         #endregion
     }
 }

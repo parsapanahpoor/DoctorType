@@ -96,6 +96,8 @@ namespace DoctorType.Domain.Entities.Account
 
         public List<ExpertsSelectedSkils> ExpertsSelectedSkils { get; set; }
 
+        public List<Advertisemenet> Advertismenets { get; set; }
+
         public List<Wallet.Wallet> Wallets { get; set; }
 
         #endregion

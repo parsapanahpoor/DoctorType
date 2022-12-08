@@ -4,6 +4,7 @@ using DoctorType.Data.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DoctorType.Data.Migrations
 {
     [DbContext(typeof(DoctorTypeDbContext))]
-    partial class DoctorTypeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221208093043_Initial-ExpertsSelectedSkils-Table")]
+    partial class InitialExpertsSelectedSkilsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

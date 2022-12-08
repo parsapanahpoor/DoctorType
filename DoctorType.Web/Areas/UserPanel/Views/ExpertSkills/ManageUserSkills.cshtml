@@ -1,0 +1,97 @@
+﻿@using DoctorType.Domain.Entities.Account
+@model DoctorType.Domain.ViewModels.UserPanel.ExpertSkills.ManageUserSkillsViewModel
+
+@{
+    ViewData["Title"] = "مدیریت تخصص های شما ";
+}
+
+@section scripts{
+    <partial name="_JqueryValidators" />
+}
+
+    @section Breadcrumbs{
+    <div class="col-sm-6 p-md-0">
+        <div class="welcome-text">
+            <h4>@ViewData["Title"]</h4>
+        </div>
+    </div>
+    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-area="UserPanel" asp-controller="Home"> داشبورد  </a></li>
+        </ol>
+    </div>
+}
+
+    <div class="row">
+
+        <div class="col-xl-6 col-xxl-6">
+            <div class="card">
+                <div class="card-header d-block">
+                    <h4 class="card-title">تخصص هایی که می توانید انتخاب کنید </h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                    @if (Model.SiteCategories != null && Model.SiteCategories.Any())
+                    {
+                        foreach (var item in Model.SiteCategories)
+                        {
+                            <div class="col-xl-12">
+                                <div class="alert alert-success left-icon-big alert-dismissible fade show">
+                                    <a asp-action="AddSkillToTheUserSkills" asp-area="UserPanel" asp-controller="ExpertSkills" asp-route-skillId="@item.Id" class="close">
+                                        <span><i class="mdi mdi-check"></i></span>
+                                    </a>
+                                    <div class="media">
+                                        <div class="alert-left-icon-big">
+                                            <span><i class="mdi mdi-check-circle-outline"></i></span>
+                                        </div>
+                                        <div class="media-body">
+                                            <h5 class="mt-1 mb-2">@item.Title</h5>
+                                            <p class="mb-0">شما می توانید این آیتم را به تخصص های خود اضافه کنید .</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-6 col-xxl-6">
+        <div class="card">
+            <div class="card-header d-block">
+                <h4 class="card-title">تخصص هایی که انتخاب کرده اید. </h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    @if (Model.SiteCategories != null && Model.SiteCategories.Any())
+                    {
+                        foreach (var item in Model.UserSkills)
+                        {
+                            <div class="col-xl-12">
+                                <div class="alert alert-warning left-icon-big alert-dismissible fade show">
+                                    <a asp-action="RemoveSkillFromUserSkills" asp-area="UserPanel" asp-controller="ExpertSkills" asp-route-skillId="@item.Id" class="close" >
+                                        <span><i class="mdi mdi-close"></i></span>
+                                    </a>
+                                    <div class="media">
+                                        <div class="alert-left-icon-big">
+                                            <span><i class="mdi mdi-help-circle-outline"></i></span>
+                                        </div>
+                                        <div class="media-body">
+                                            <h5 class="mt-1 mb-2">@item.Title</h5>
+                                            <p class="mb-0">با کلیک بر روی  ضربدر تخصص مورد نظر از لیست شما پاک میگردد.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

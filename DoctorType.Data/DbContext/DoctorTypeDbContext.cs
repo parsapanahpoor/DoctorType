@@ -68,6 +68,8 @@ namespace DoctorType.Data.DbContext
 
         public DbSet<AdvertisementCategory> AdvertisementCategory { get; set; }
 
+        public DbSet<ExpertsSelectedSkils> ExpertsSelectedSkils { get; set; }
+
         #endregion
 
         #endregion

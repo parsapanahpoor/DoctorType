@@ -1,8 +1,13 @@
 ﻿using DoctorType.Application.Services.Interfaces;
+using DoctorType.Data.DbContext;
 using DoctorType.Domain.Entites.Adevrtisement;
 using DoctorType.Domain.Interfaces.EfCore;
 using DoctorType.Domain.ViewModels.Advertisement.AdvertisementCategory;
+using DoctorType.Domain.ViewModels.UserPanel.ExpertSkills;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +21,14 @@ namespace DoctorType.Application.Services.Implementation
         #region Ctor
 
         private readonly IAdvertisementCategoryRepository _adsCategory;
+        private readonly DoctorTypeDbContext _context;
+        private readonly IUserService _userService;
 
-        public AdvertisementCategoryService(IAdvertisementCategoryRepository adsCategory)
+        public AdvertisementCategoryService(IAdvertisementCategoryRepository adsCategory, DoctorTypeDbContext context, IUserService userService)
         {
             _adsCategory = adsCategory;
+            _context = context;
+            _userService = userService;
         }
 
         #endregion
@@ -121,6 +130,8 @@ namespace DoctorType.Application.Services.Implementation
 
         #endregion
 
+        #region User Panle 
+
         public async Task<AdvertisementCategoriesForNavbar> GetAdvertisementCategoriesForNavbar()
         {
             return await _adsCategory.GetAdvertisementCategoriesForNavbar();
@@ -130,5 +141,106 @@ namespace DoctorType.Application.Services.Implementation
         {
             return await _adsCategory.GetChildCategoriesByParentID(Id);
         }
+
+        #region Expert Skills 
+
+        public async Task<ManageUserSkillsViewModel?> FillManageUserSkillsViewModel(ulong userId)
+        {
+            #region Get User 
+
+            var user = await _userService.GetUserById(userId);
+            if (user == null) return null;
+
+            #endregion
+
+            #region Fill Model 
+
+            ManageUserSkillsViewModel model = new ManageUserSkillsViewModel()
+            {
+                SiteCategories = await _context.AdvertisementCategory.Where(p => !p.IsDelete && p.ParentId == null).OrderByDescending(p => p.CreateDate).ToListAsync(),
+                UserSkills = await _context.ExpertsSelectedSkils.Include(p => p.AdvertisementCategory).Where(p => !p.IsDelete && p.UserId == userId).Select(p => p.AdvertisementCategory).ToListAsync()
+            } ;
+
+            #endregion
+
+            return model;
+        }
+
+        //Add Skill To The User Skills
+        public async Task<bool> AddSkillToTheUserSkills(ulong skillId, ulong userId)
+        {
+            #region Get Skill
+
+            var skill = await _context.AdvertisementCategory.FirstOrDefaultAsync(p => !p.IsDelete);
+            if(skill == null) return false;
+
+            #endregion
+
+            #region Get User 
+
+            var user = await _userService.GetUserById(userId) ;
+            if (user == null) return false;
+
+            #endregion
+
+            #region Check User Selected Skills 
+
+            var isExist = await _context.ExpertsSelectedSkils.AnyAsync(p => !p.IsDelete && p.UserId == user.Id && p.AdvertisementCategoryId == skillId);
+            if (isExist) return false;
+
+            #endregion
+
+            #region Add Skill To The User Skills 
+
+            await _context.ExpertsSelectedSkils.AddAsync(new ExpertsSelectedSkils()
+            {
+                AdvertisementCategoryId = skillId,
+                UserId = userId
+            });
+
+            await _context.SaveChangesAsync();
+
+            #endregion
+
+            return true; 
+        }
+
+        //Remove Skill From User Skills
+        public async Task<bool> RemoveSkillFromUserSkills(ulong skillId, ulong userId)
+        {
+            #region Get Skill
+
+            var skill = await _context.AdvertisementCategory.FirstOrDefaultAsync(p => !p.IsDelete);
+            if (skill == null) return false;
+
+            #endregion
+
+            #region Get User 
+
+            var user = await _userService.GetUserById(userId);
+            if (user == null) return false;
+
+            #endregion
+
+            #region Check User Selected Skills 
+
+            var slectedSkill = await _context.ExpertsSelectedSkils.FirstOrDefaultAsync(p => !p.IsDelete && p.UserId == user.Id && p.AdvertisementCategoryId == skillId);
+            if (slectedSkill == null) return false;
+
+            #endregion
+
+            #region Add Skill To The User Skills 
+
+            _context.ExpertsSelectedSkils.Remove(slectedSkill) ;
+            await _context.SaveChangesAsync();
+
+            #endregion
+
+            return true;
+        }
+
+        #endregion
+
+        #endregion
     }
 }

@@ -18,29 +18,35 @@
                         <div class="account_form register">
                             <h2>ایجاد حساب کاربری</h2>
                             <form asp-action="Register" asp-controller="Account" method="post">
-                                <p>
-                                    <label asp-for="Mobile">تلفن همراه <span>*</span></label>
-                                    <input asp-for="Mobile" class="form-control" placeholder="تلفن همراه" >
-                                    <span class="text-danger" asp-validation-for="Mobile"></span>
-                                </p>
-                                <p>
-                                    <label asp-for="Password">رمز عبور <span>*</span></label>
-                                    <input  asp-for="Password" type="password" class="form-control" placeholder="کلمه عبور" >
-                                    <span class="text-danger" asp-validation-for="Password"></span>
-                                </p>
-                                <p>
-                                    <label asp-for="RePassword">تکرار کلمه ی عبور <span>*</span></label>
-                                    <input asp-for="RePassword" type="password" class="form-control" placeholder="تکرار کلمه ی عبور ">
-                                    <span class="text-danger" asp-validation-for="RePassword"></span>
-                                </p>
-                                <div class="login_submit">
-                                    <button type="submit">ثبت نام</button>
-                                </div>
-                            </form>
-                        </div>
+
+                            @if (ViewBag.IsUserExpert != null && ViewBag.IsUserExpert == true)
+                            {
+                                <input type="hidden" name="IsUserExpert" value="true"/>
+                            }
+
+                            <p>
+                                <label asp-for="Mobile">تلفن همراه <span>*</span></label>
+                                <input asp-for="Mobile" class="form-control" placeholder="تلفن همراه">
+                                <span class="text-danger" asp-validation-for="Mobile"></span>
+                            </p>
+                            <p>
+                                <label asp-for="Password">رمز عبور <span>*</span></label>
+                                <input asp-for="Password" type="password" class="form-control" placeholder="کلمه عبور">
+                                <span class="text-danger" asp-validation-for="Password"></span>
+                            </p>
+                            <p>
+                                <label asp-for="RePassword">تکرار کلمه ی عبور <span>*</span></label>
+                                <input asp-for="RePassword" type="password" class="form-control" placeholder="تکرار کلمه ی عبور ">
+                                <span class="text-danger" asp-validation-for="RePassword"></span>
+                            </p>
+                            <div class="login_submit">
+                                <button type="submit">ثبت نام</button>
+                            </div>
+                        </form>
                     </div>
-                    <!--register area end-->
                 </div>
+                <!--register area end-->
             </div>
         </div>
     </div>
+</div>

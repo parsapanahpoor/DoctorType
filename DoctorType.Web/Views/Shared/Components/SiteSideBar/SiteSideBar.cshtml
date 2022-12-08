@@ -18,13 +18,13 @@
 
                     </div>
                     @* <div class="call_support text-center">
-                        <p>
-                        <i class="icon-phone-call" aria-hidden="true"></i> <span>
-                        تماس با ما : <a href="tel:01133304030">01133304030</a>
-                        </span>
-                        </p>
+                    <p>
+                    <i class="icon-phone-call" aria-hidden="true"></i> <span>
+                    تماس با ما : <a href="tel:01133304030">01133304030</a>
+                    </span>
+                    </p>
 
-                        </div>*@
+                    </div>*@
 
 
                     <div class="header_account">
@@ -54,6 +54,7 @@
                             {
                                 <li><a asp-action="Login" asp-area="" asp-controller="Account">ورود</a></li>
                                 <li><a asp-action="Register" asp-area="" asp-controller="Account">ثبت نام</a></li>
+                                <li><a  asp-action="Register" asp-area="" asp-controller="Account" asp-route-IsUserExpert="@true">فریلنسر شو</a></li>
                             }
                             else
                             {
@@ -64,7 +65,6 @@
                             }
 
                             <li><a href="cart.html"> ایجاد پروژه  </a></li>
-                            <li><a href="checkout.html">فریلنسر شو</a></li>
                         </ul>
                     </div>
                     <div class="search_container">
@@ -165,7 +165,7 @@
                                     <li><a href="blog-no-sidebar.html">گرافیست شو</a></li>
                                 </ul>
 
-                            </li>                        
+                            </li>
                             <li class="menu-item-has-children">
                                 <a href="/Home/About">درباره ما</a>
                             </li>
@@ -232,6 +232,7 @@
                                 {
                                     <li><a asp-action="Login" asp-area="" asp-controller="Account">ورود</a></li>
                                     <li><a asp-action="Register" asp-area="" asp-controller="Account">ثبت نام</a></li>
+                                                                    <li><a  asp-action="Register" asp-area="" asp-controller="Account" asp-route-IsUserExpert="@true">فریلنسر شو</a></li>
                                 }
                                 else
                                 {
@@ -239,7 +240,6 @@
                                     <li><a asp-action="Logout" asp-area="" asp-controller="Account">خروج</a></li>
                                 }
                                 <li><a href="cart.html"><i class="fa fa-plus"></i> ایجاد پروژه  </a></li>
-                                <li><a href="checkout.html">فریلنسر شو</a></li>
                             </ul>
                         </div>
                     </div>
@@ -312,45 +312,45 @@
                                                 </div>
                                             </div>
                                             @* <div class="cart_item">
-                                                <div class="cart_img">
-                                                <a href="#">
-                                                <img src="assets/img/s-product/product.jpg"
-                                                alt="">
-                                                </a>
-                                                </div>
-                                                <div class="cart_info">
-                                                <a href="#">عنوان محصول</a>
-                                                <p> تعداد: 1 عدد <span> 60.00 تومان </span></p>
-                                                </div>
-                                                <div class="cart_remove">
-                                                <a href="#"><i class="ion-android-close"></i></a>
-                                                </div>
-                                                </div>*@
+                                            <div class="cart_img">
+                                            <a href="#">
+                                            <img src="assets/img/s-product/product.jpg"
+                                            alt="">
+                                            </a>
+                                            </div>
+                                            <div class="cart_info">
+                                            <a href="#">عنوان محصول</a>
+                                            <p> تعداد: 1 عدد <span> 60.00 تومان </span></p>
+                                            </div>
+                                            <div class="cart_remove">
+                                            <a href="#"><i class="ion-android-close"></i></a>
+                                            </div>
+                                            </div>*@
                                             @*<div class="cart_item">
-                                                <div class="cart_img">
-                                                <a href="#">
-                                                <img src="assets/img/s-product/product2.jpg"
-                                                alt="">
-                                                </a>
-                                                </div>
-                                                <div class="cart_info">
-                                                <a href="#">عنوان محصول</a>
-                                                <p> تعداد: 1 عدد <span> 60.00 تومان </span></p>
-                                                </div>
-                                                <div class="cart_remove">
-                                                <a href="#"><i class="ion-android-close"></i></a>
-                                                </div>
-                                                </div>*@
+                                            <div class="cart_img">
+                                            <a href="#">
+                                            <img src="assets/img/s-product/product2.jpg"
+                                            alt="">
+                                            </a>
+                                            </div>
+                                            <div class="cart_info">
+                                            <a href="#">عنوان محصول</a>
+                                            <p> تعداد: 1 عدد <span> 60.00 تومان </span></p>
+                                            </div>
+                                            <div class="cart_remove">
+                                            <a href="#"><i class="ion-android-close"></i></a>
+                                            </div>
+                                            </div>*@
                                             @* <div class="mini_cart_table">
-                                                <div class="cart_total">
-                                                <span>مجموع فرعی:</span>
-                                                <span class="price">138.00 تومان</span>
-                                                </div>
-                                                <div class="cart_total mt-10">
-                                                <span>جمع کل:</span>
-                                                <span class="price">138.00 تومان</span>
-                                                </div>
-                                                </div>*@
+                                            <div class="cart_total">
+                                            <span>مجموع فرعی:</span>
+                                            <span class="price">138.00 تومان</span>
+                                            </div>
+                                            <div class="cart_total mt-10">
+                                            <span>جمع کل:</span>
+                                            <span class="price">138.00 تومان</span>
+                                            </div>
+                                            </div>*@
                                         </div>
                                         <div class="mini_cart_footer">
                                             <div class="cart_button">

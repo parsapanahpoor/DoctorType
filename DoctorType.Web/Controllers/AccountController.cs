@@ -39,7 +39,7 @@ namespace DoctorType.Web.Controllers
 
         [HttpGet("Register")]
         [RedirectHomeIfLoggedInActionFilter]
-        public IActionResult Register(string? mobile)
+        public IActionResult Register(string? mobile , bool? IsUserExpert)
         {
             #region Redirect Mobile 
 
@@ -55,11 +55,20 @@ namespace DoctorType.Web.Controllers
 
             #endregion
 
+            #region Is User Expert
+
+            if (IsUserExpert == true)
+            {
+                ViewBag.IsUserExpert = true;
+            }
+
+            #endregion
+
             return View();
         }
 
         [HttpPost("Register"), ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterUserViewModel register)
+        public async Task<IActionResult> Register(RegisterUserViewModel register , bool? IsUserExpert)
         {
             #region Model State Validations
 
@@ -73,7 +82,7 @@ namespace DoctorType.Web.Controllers
 
             #region Register User Methods
 
-            var result = await _userService.RegisterUser(register);
+            var result = await _userService.RegisterUser(register , IsUserExpert);
 
             switch (result)
             {

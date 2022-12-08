@@ -12,9 +12,20 @@ namespace DoctorType.Web.Areas.UserPanel.ViewComponents
 
     public class UserPanelSideBarViewComponent : ViewComponent
     {
+        #region Ctor
+        
+        private readonly IUserService _userService;
+
+        public UserPanelSideBarViewComponent(IUserService userService)
+        {
+            _userService = userService;
+        }
+
+        #endregion
+
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View("UserPanelSideBar");
+            return View("UserPanelSideBar" , await _userService.GetUserById(User.GetUserId()));
         }
     }
 

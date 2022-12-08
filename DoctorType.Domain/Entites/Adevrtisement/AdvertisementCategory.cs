@@ -32,6 +32,8 @@ namespace DoctorType.Domain.Entites.Adevrtisement
         [ForeignKey("ParentId")]
         public ICollection<AdvertisementCategory> CategoryParent { get; set; }
 
+        public List<ExpertsSelectedSkils> ExpertsSelectedSkils { get; set; }
+
         #endregion
     }
 }

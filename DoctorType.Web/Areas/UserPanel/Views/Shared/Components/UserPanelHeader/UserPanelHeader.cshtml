@@ -31,14 +31,21 @@
                     @await Component.InvokeAsync("UserPanelUnReadEmails")
 
                     <li class="nav-item dropdown header-profile">
-                        <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                        <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                             <img src="@((string.IsNullOrEmpty(Model.Avatar))? PathTools.DefaultUserAvatar : PathTools.UserAvatarPathThumb + Model.Avatar )" width="20" alt="" />
                             <div class="header-info">
                                 <span>سلام <strong> @Model.Username  </strong></span>
                                 <small>پنل کاربری </small>
                             </div>
                         </a>
-                
+                        <div class="dropdown-menu dropdown-menu-right">
+                        
+                            <a asp-action="Logout" asp-area="" asp-controller="Account" class="dropdown-item ai-icon">
+                                <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" style="stroke-dasharray: 29px, 49px; stroke-dashoffset: 0px;"></path><path d="M16,17L21,12L16,7" style="stroke-dasharray: 15px, 35px; stroke-dashoffset: 0px;"></path><path d="M21,12L9,12" style="stroke-dasharray: 12px, 32px; stroke-dashoffset: 0px;"></path></svg>
+                                <span  class="ml-2"> خروج </span>
+                            </a>
+
+                        </div>
                     </li>
                     <li class="nav-item right-sidebar">
                         <a class="nav-link bell ai-icon" href="#">

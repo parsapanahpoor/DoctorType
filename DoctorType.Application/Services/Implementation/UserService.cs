@@ -174,7 +174,7 @@ namespace DoctorType.Application.Services.Implementation
                 .FirstOrDefaultAsync(s => s.Id == userId && !s.IsDelete);
         }
 
-        public async Task<RegisterUserResult> RegisterUser(RegisterUserViewModel register)
+        public async Task<RegisterUserResult> RegisterUser(RegisterUserViewModel register , bool? IsUserExpert)
         {
             //Fix Email Format
             var mobile = register.Mobile.Trim().ToLower().SanitizeText();
@@ -205,6 +205,11 @@ namespace DoctorType.Application.Services.Implementation
                 MobileActivationCode = new Random().Next(10000, 999999).ToString(),
                 ExpireMobileSMSDateTime = DateTime.Now
             };
+
+            if (IsUserExpert == true)
+            {
+                User.IsUserExpert = true;
+            }
 
             await _context.Users.AddAsync(User);
             await _context.SaveChangesAsync();

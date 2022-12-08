@@ -1,4 +1,5 @@
-﻿using DoctorType.Domain.Entities.Common;
+﻿using DoctorType.Domain.Entites.Adevrtisement;
+using DoctorType.Domain.Entities.Common;
 using DoctorType.Domain.Entities.Tariff;
 using System;
 using System.Collections.Generic;
@@ -83,6 +84,8 @@ namespace DoctorType.Domain.Entities.Account
         [Display(Name = "تاریخ انقضای تایم اس ام اس فعال سازی ")]
         public DateTime? ExpireMobileSMSDateTime { get; set; }
 
+        public bool IsUserExpert { get; set; }
+
         #endregion
 
         #region Relations
@@ -90,6 +93,8 @@ namespace DoctorType.Domain.Entities.Account
         public ICollection<UserRole> UserRoles { get; set; }
 
         public List<UserSelectedTariff> UserSelectedTariff { get; set; }
+
+        public List<ExpertsSelectedSkils> ExpertsSelectedSkils { get; set; }
 
         public List<Wallet.Wallet> Wallets { get; set; }
 

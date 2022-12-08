@@ -35,7 +35,7 @@ namespace DoctorType.Application.Services.Interfaces
 
         Task<User?> GetUserById(ulong userId);
 
-        Task<RegisterUserResult> RegisterUser(RegisterUserViewModel register);
+        Task<RegisterUserResult> RegisterUser(RegisterUserViewModel register, bool? IsUserExpert);
 
         Task<bool> IsExistsUserByEmail(string email);
 

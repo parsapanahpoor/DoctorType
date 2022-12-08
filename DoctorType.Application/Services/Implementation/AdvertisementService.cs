@@ -26,9 +26,51 @@ namespace DoctorType.Application.Services.Implementation
 
         #region Admin Side
 
+        public async Task<CreateAdsCategoryResult> AddAdsCategory(AdvertisementCategoryViewModel Category)
+        {
+            if (Category.ParentId != null && Category.ParentId != 0)
+            {
+                var myCategory = _adsCategory.GetAdvertisementCategoryById(Category.ParentId.Value);
+                if (myCategory == null) return CreateAdsCategoryResult.CategoryNotFound;
+            }
+
+            AdvertisementCategory Cat = new AdvertisementCategory
+            {
+                Title = Category.GroupName,
+                UrlName = Category.UrlName,
+                ParentId = ((Category.ParentId != null && Category.ParentId != 0) ? Category.ParentId : null),
+                IsDelete = false,
+                CreateDate = DateTime.Now,
+            };
+
+            await _adsCategory.AddAdsCategory(Cat);
+            await _adsCategory.Savechanges();
+
+            return CreateAdsCategoryResult.Success;
+        }
+
+        public async Task<CreateAdsCategoryResult> EditAdsCategory(AdvertisementCategoryViewModel category)
+        {
+            var cat = await _adsCategory.GetAdsCategory(category.CatgeoryId.Value);
+
+            cat.Title = category.GroupName;
+            cat.ParentId = cat.ParentId;
+            cat.UrlName = category.UrlName;
+
+            _adsCategory.UpdateAdsCategory(cat);
+            await _adsCategory.Savechanges();
+
+            return CreateAdsCategoryResult.Success;
+        }
+
         public async Task<List<AdvertisementCategory>?> FilterAdsCategory()
         {
             return await _adsCategory.FilterAdsCategory();
+        }
+
+        public async Task<List<AdvertisementCategory>?> FilterChildAdsCategory(ulong parentId)
+        {
+            return await _adsCategory.FilterChildAdsCategory(parentId);
         }
 
         public async Task<AdvertisementCategory> GetAdsCategory(ulong Id)

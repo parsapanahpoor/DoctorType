@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DoctorType.Domain.Entities.Account
 {
-    public  class User : BaseEntity
+    public class User : BaseEntity
     {
         #region properties
 

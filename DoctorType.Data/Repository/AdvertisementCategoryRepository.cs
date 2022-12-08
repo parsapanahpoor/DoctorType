@@ -30,7 +30,13 @@ namespace DoctorType.Data.Repository
 
         public async Task<List<AdvertisementCategory>?> FilterAdsCategory()
         {
-            return await _context.AdvertisementCategory.Where(p => !p.IsDelete).ToListAsync();
+            return await _context.AdvertisementCategory.Where(p => !p.IsDelete && p.ParentId == null)
+                            .OrderByDescending(p=> p.CreateDate).ToListAsync();
+        }
+
+        public async Task<List<AdvertisementCategory>?> FilterChildAdsCategory(ulong parentId)
+        {
+            return await _context.AdvertisementCategory.Where(p => !p.IsDelete && p.ParentId == parentId).ToListAsync();
         }
 
         public async Task Savechanges()

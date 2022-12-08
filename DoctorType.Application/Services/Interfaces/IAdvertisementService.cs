@@ -10,8 +10,13 @@ namespace DoctorType.Application.Services.Interfaces
 {
     public interface IAdvertisementCategoryService
     {
-
         #region Admin Side
+
+        Task<List<AdvertisementCategory>?> FilterChildAdsCategory(ulong parentId);
+
+        Task<CreateAdsCategoryResult> AddAdsCategory(AdvertisementCategoryViewModel Category);
+
+        Task<CreateAdsCategoryResult> EditAdsCategory(AdvertisementCategoryViewModel category);
 
         Task<List<AdvertisementCategory>?> FilterAdsCategory();
 

@@ -13,6 +13,8 @@ namespace DoctorType.Domain.Interfaces.EfCore
     {
         #region Admin Side
 
+        Task<List<AdvertisementCategory>?> FilterChildAdsCategory(ulong parentId);
+
         Task<List<AdvertisementCategory>?> FilterAdsCategory();
 
         Task Savechanges();

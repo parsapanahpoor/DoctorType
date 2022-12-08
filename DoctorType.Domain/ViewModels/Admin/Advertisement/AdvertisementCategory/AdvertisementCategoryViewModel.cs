@@ -17,9 +17,8 @@ namespace DoctorType.Domain.ViewModels.Advertisement.AdvertisementCategory
         public string GroupName { get; set; }
 
         [Display(Name = " نام لاتین دسته بندی    ")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(300, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد .")]
-        public string UrlName { get; set; }
+        public string? UrlName { get; set; }
 
         public ulong? ParentId { get; set; }
 

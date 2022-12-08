@@ -1,0 +1,68 @@
+﻿@model DoctorType.Domain.ViewModels.Advertisement.AdvertisementCategory.AdvertisementCategoryViewModel
+
+@{
+    ViewData["Title"] = "افزودن دسته بندی خدمات  ";
+}
+
+@using DoctorType.Application.Utils
+@using DoctorType.Domain.ViewModels.Admin
+@using DoctorType.Domain.Entities.Account
+
+@section scripts{
+    <partial name="_JqueryValidators" />
+}
+
+    @section Breadcrumbs{
+    <div class="col-sm-6 p-md-0">
+        <div class="welcome-text">
+            <h4>@ViewData["Title"]</h4>
+        </div>
+    </div>
+    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-area="Admin" asp-controller="Home"> داشبورد ادمین </a></li>
+            <li class="breadcrumb-item"><a asp-action="Index" asp-area="Admin" asp-controller="AdvertisementCategory"> مدیریت دسته بندی </a></li>
+        </ol>
+    </div>
+}
+
+        <form asp-controller="AdvertisementCategory" asp-area="Admin" asp-action="CreateCategory" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="ParentId" value="@ViewBag.ParentId"/>
+            <div class="row">
+
+                <div class="col-xl-12 col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>اطلاعات دسته بندی   </h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="basic-form">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                <div class="form-row">
+
+                                    <div class="form-group col-md-6">
+                                        <label> عنوان فارسی  </label>
+                                        <input asp-for="GroupName" type="text" class="form-control" placeholder=" عنوان فارسی را وارد کنید ">
+                                        <span asp-validation-for="GroupName" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label>  URL Name  </label>
+                                        <input asp-for="UrlName" type="text" class="form-control" placeholder=" URL Name را وارد کنید ">
+                                        <span asp-validation-for="UrlName" class="text-danger"></span>
+                                    </div>
+
+                                </div>
+
+                                <button type="submit" class="btn btn-outline-primary">ارسال</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </form>
+
+

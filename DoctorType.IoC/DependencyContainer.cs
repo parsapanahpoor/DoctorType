@@ -27,6 +27,7 @@ namespace DoctorType.IoC
             services.AddScoped<IPermissionService, PermissionService>();
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<ITariffService, TariffService>();
+            services.AddScoped<IAdvertisementCategoryService, AdvertisementCategoryService>();
 
             #endregion
 
@@ -36,6 +37,7 @@ namespace DoctorType.IoC
             services.AddScoped<ISiteSettingRepository, SiteSettingRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<ITariffRepository, TariffRepository>();
+            services.AddScoped<IAdvertisementCategoryRepository, AdvertisementCategoryRepository>();
 
             #endregion
         }

@@ -29,7 +29,7 @@
     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a asp-action="Index" asp-area="Admin" asp-controller="Home"> داشبورد ادمین </a></li>
-            <li class="breadcrumb-item"><a asp-action="ListOfRoles" asp-area="Admin" asp-controller="Role"> مدیریت تعرفه </a></li>
+            <li class="breadcrumb-item"><a asp-action="FilterTariff" asp-area="Admin" asp-controller="Tariff"> مدیریت تعرفه </a></li>
         </ol>
     </div>
 }
@@ -40,7 +40,7 @@
                 <div class="card-header">
                     <h4 class="card-title">تعرفه ها</h4>
 
-                    <a asp-area="Admin" asp-controller="Role" asp-action="CreateRole" title="افزودن" class="btn btn-rounded btn-primary"><span class="btn-icon-left text-primary"><i class="fa fa-plus color-primary"></i></span>افزودن</a>
+                    <a asp-area="Admin" asp-controller="Tariff" asp-action="CreateTariff" title="افزودن" class="btn btn-rounded btn-primary"><span class="btn-icon-left text-primary"><i class="fa fa-plus color-primary"></i></span>افزودن</a>
                 </div>
                 <div class="card-body">
                 @if (Model != null && Model.Any())
@@ -48,7 +48,7 @@
                     <div class="table-responsive">
                         <div id="example5_wrapper" class="dataTables_wrapper no-footer">
 
-                            <table id="example5" class="display dataTable no-footer" style="min-width: 845px" role="grid" aria-describedby="example5_info">
+                            <table id="example5" class="display dataTable no-footer" style="min-width: 845px" Tariff="grid" aria-describedby="example5_info">
                                 <thead>
                                     <tr role="row">
                                         <th class="sorting_asc" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" style="width: 51.1333px;" aria-sort="ascending" aria-label=":  ">عنوان تعرفه</th>
@@ -71,8 +71,8 @@
 
                                             <td>
                                                 <div class="d-flex">
-                                                    <a title="ویرایش" asp-area="Admin" asp-controller="Role" asp-action="EditRole" asp-route-roleId="@tariff.Id" class="btn btn-warning shadow btn-xs sharp m-1"><i class="fa fa-edit"></i></a>
-                                                    <a ajax-url-button="@tariff.Id" title="حذف" asp-area="Admin" asp-controller="Role" asp-action="DeleteRole" asp-route-roleId="@tariff.Id" class="btn btn-danger shadow btn-xs sharp m-1"><i class="fa fa-trash"></i></a>
+                                                    <a title="ویرایش" asp-area="Admin" asp-controller="Tariff" asp-action="EditTariff" asp-route-tariffId="@tariff.Id" class="btn btn-warning shadow btn-xs sharp m-1"><i class="fa fa-edit"></i></a>
+                                                    <a ajax-url-button="@tariff.Id" title="حذف" asp-area="Admin" asp-controller="Tariff" asp-action="DeleteTariff" asp-route-tariffId="@tariff.Id" class="btn btn-danger shadow btn-xs sharp m-1"><i class="fa fa-trash"></i></a>
                                                 </div>
                                             </td>
                                         </tr>

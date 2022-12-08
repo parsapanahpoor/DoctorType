@@ -1,4 +1,5 @@
-﻿using DoctorType.Domain.Entities;
+﻿using DoctorType.Domain.Entites.Adevrtisement;
+using DoctorType.Domain.Entities;
 using DoctorType.Domain.Entities.Account;
 using DoctorType.Domain.Entities.SiteSetting;
 using DoctorType.Domain.Entities.Tariff;
@@ -60,6 +61,12 @@ namespace DoctorType.Data.DbContext
         public DbSet<Tariff> Tariffs { get; set; }
 
         public DbSet<UserSelectedTariff> UserSelectedTariffs { get; set; }
+
+        #endregion
+
+        #region Advertisement
+
+        public DbSet<AdvertisementCategory> AdvertisementCategory { get; set; }
 
         #endregion
 

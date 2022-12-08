@@ -1,8 +1,8 @@
 ﻿@using DoctorType.Domain.Entities.Account
-@model DoctorType.Domain.ViewModels.Admin.Tariff.CreateTariffViewModel
+@model DoctorType.Domain.Entities.Tariff.Tariff
 
 @{
-    ViewData["Title"] = "افزودن تعرفه ها";
+    ViewData["Title"] = "ویرایش تعرفه ها";
 }
 
 @section scripts{
@@ -19,13 +19,13 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a asp-action="Index" asp-area="Admin" asp-controller="Home"> داشبورد ادمین </a></li>
             <li class="breadcrumb-item"><a asp-action="FilterTariff" asp-area="Admin" asp-controller="Tariff"> میدیریت تعرفه ها </a></li>
-            <li class="breadcrumb-item active"><a asp-action="CreateTariff" asp-area="Admin" asp-controller="Tariff">@ViewData["Title"]</a></li>
+            <li class="breadcrumb-item active"><a asp-action="EditTariff" asp-area="Admin" asp-controller="Tariff">@ViewData["Title"]</a></li>
         </ol>
     </div>
 }
 
-    <form asp-area="Admin" asp-controller="Tariff" asp-action="CreateTariff" method="post">
-
+    <form asp-area="Admin" asp-controller="Tariff" asp-action="EditTariff" method="post">
+        <input asp-for="Id" type="hidden"/>
         <div class="row">
 
             <div class="col-xl-12 col-lg-12">
@@ -65,8 +65,8 @@
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label> مدت زمان تعرفه (برحسب روز) </label>
-                                    <input asp-for="TariffDuration" type="number" class="form-control" placeholder=" مدت زمان تعرفه را وارد کنید ">
-                                    <span asp-validation-for="TariffDuration" class="text-danger"></span>
+                                    <input asp-for="tariffDuration" type="number" class="form-control" placeholder=" مدت زمان تعرفه را وارد کنید ">
+                                    <span asp-validation-for="tariffDuration" class="text-danger"></span>
                                 </div>
                             </div>
 
@@ -75,6 +75,6 @@
                     </div>
                 </div>
             </div>
-    </div>
+        </div>
 
-</form>
+    </form>

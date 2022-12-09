@@ -22,6 +22,15 @@ builder.Services.AddMvc();
 
 #endregion
 
+#region IIS
+
+builder.Services.Configure<IISServerOptions>(options =>
+{
+    options.MaxRequestBodySize = 2147483648;
+});
+
+#endregion
+
 #region Session
 
 builder.Services.AddSession();

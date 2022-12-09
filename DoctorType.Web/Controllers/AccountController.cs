@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Win32;
 using NuGet.Protocol.Plugins;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DoctorType.Web.Controllers
 {
@@ -470,6 +471,28 @@ namespace DoctorType.Web.Controllers
 
             TempData[SuccessMessage] = "عملیات با موفقیت انجام شده است ";
             return Redirect("/");
+        }
+
+        #endregion
+
+        #region Be Expert
+
+        [Authorize]
+        public async Task<IActionResult> BeExpert()
+        {
+            #region Be Expert Method 
+
+            var res = await _userService.BeExpert(User.GetUserId());
+            if (res)
+            {
+                TempData[SuccessMessage] = "عملیات باموفقیت انجام شده است.";
+                return RedirectToAction("Index", "Home");
+            }
+
+            #endregion
+
+            TempData[ErrorMessage] = "عملیات باشکست مواجه شده است.";
+            return RedirectToAction("Index" , "Home");
         }
 
         #endregion

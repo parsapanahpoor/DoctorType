@@ -982,6 +982,37 @@ namespace DoctorType.Application.Services.Implementation
             return ChangeUserPasswordResponse.Success;
         }
 
+        //Be Expert 
+        public async Task<bool> BeExpert(ulong userId)
+        {
+            #region Get User By User Id 
+
+            var user = await GetUserById(userId);
+            if (user == null) return false;
+
+            #endregion
+
+            #region Check User Validation 
+
+            if (user.IsUserExpert)
+            {
+                return false;
+            }
+
+            #endregion
+
+            #region Be Expert 
+
+            user.IsUserExpert = true;
+
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
+
+            #endregion
+
+            return true;
+        }
+
         #endregion
     }
 }

@@ -54,7 +54,7 @@
                             {
                                 <li><a asp-action="Login" asp-area="" asp-controller="Account">ورود</a></li>
                                 <li><a asp-action="Register" asp-area="" asp-controller="Account">ثبت نام</a></li>
-                                <li><a  asp-action="Register" asp-area="" asp-controller="Account" asp-route-IsUserExpert="@true">فریلنسر شو</a></li>
+                                <li><a asp-action="Register" asp-area="" asp-controller="Account" asp-route-IsUserExpert="@true">فریلنسر شو</a></li>
                             }
                             else
                             {
@@ -62,6 +62,7 @@
                                 <li><a asp-action="Logout" asp-area="" asp-controller="Account">خروج</a></li>
                                 <li><a asp-action="Index" asp-area="UserPanel" asp-controller="Home">ورورد به پنل کاربری</a></li>
                                 <li><a href="#">@User.Identity.Name خوش آمدید</a></li>
+                                <li><a asp-action="BeExpert" asp-area="" asp-controller="Account" >فریلنسر شو</a></li>
                             }
 
                             <li><a href="cart.html"> ایجاد پروژه  </a></li>
@@ -232,12 +233,13 @@
                                 {
                                     <li><a asp-action="Login" asp-area="" asp-controller="Account">ورود</a></li>
                                     <li><a asp-action="Register" asp-area="" asp-controller="Account">ثبت نام</a></li>
-                                                                    <li><a  asp-action="Register" asp-area="" asp-controller="Account" asp-route-IsUserExpert="@true">فریلنسر شو</a></li>
+                                    <li><a asp-action="Register" asp-area="" asp-controller="Account" asp-route-IsUserExpert="@true">فریلنسر شو</a></li>
                                 }
                                 else
                                 {
                                     <li><a asp-action="Index" asp-area="Admin" asp-controller="Home">@User.Identity.Name</a></li>
                                     <li><a asp-action="Logout" asp-area="" asp-controller="Account">خروج</a></li>
+                                    <li><a asp-action="BeExpert" asp-area="" asp-controller="Account">فریلنسر شو</a></li>
                                 }
                                 <li><a href="cart.html"><i class="fa fa-plus"></i> ایجاد پروژه  </a></li>
                             </ul>

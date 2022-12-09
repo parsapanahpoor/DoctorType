@@ -139,6 +139,9 @@ namespace DoctorType.Application.Services.Interfaces
         //Get List Of Admins and Supporters 
         Task<List<string>?> GetAllAdminsAndSupportersNotification();
 
+        //Be Expert 
+        Task<bool> BeExpert(ulong userId);
+
         #endregion
     }
 }

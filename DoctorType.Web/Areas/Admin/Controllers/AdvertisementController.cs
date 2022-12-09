@@ -24,5 +24,21 @@ namespace DoctorType.Web.Areas.Admin.Controllers
         }
 
         #endregion
+
+        #region Show Advertisement Detail
+
+        public async Task<IActionResult> ShowAdvertisementDetail(ulong advertisementId)
+        {
+            #region Fill Model
+
+            var model = await _advertisementService.FillShowAdvertisementDetailAdminSideViewModel(advertisementId);
+            if (model == null) return NotFound();
+
+            #endregion
+
+            return View(model) ;
+        }
+
+        #endregion
     }
 }

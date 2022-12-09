@@ -3,7 +3,7 @@
 @using DoctorType.Application.Extensions
 
 @{
-    ViewData["Title"] = "لیست آگهی ها ";
+    ViewData["Title"] = "لیست پروژه ها ";
 }
 
 @section styles{
@@ -28,8 +28,8 @@
     </div>
     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a asp-action="Index" asp-area="Admin" asp-controller="Home"> داشبورد  </a></li>
-            <li class="breadcrumb-item"><a asp-action="ListOfAdvertisements" asp-area="Admin" asp-controller="Advertisement"> لیست آگهی ها </a></li>
+            <li class="breadcrumb-item">< asp-action="Index" asp-area="UserPanel" asp-controller="Home"> داشبورد  </></li>
+            <li class="breadcrumb-item"><a asp-action="ListOfProjects" asp-area="UserPanel" asp-controller="Projects"> لیست پروژه ها </a></li>
         </ol>
     </div>
 }
@@ -38,7 +38,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">لیست آگهی ها</h4>
+                    <h4 class="card-title">لیست پروژه ها</h4>
                 </div>
                 <div class="card-body">
                 @if (Model != null && Model.Any())
@@ -72,22 +72,11 @@
                                                 }
                                             </td>
                                             <td>@ads.Title</td>
-                                            @if (ads.AdvertismenetState == DoctorType.Domain.Enums.Advertisement.AdvertismenetState.SelectedFromExpert)
-                                            {
-                                                <td><span class="badge light badge-success"> پذیرفته شده توسط مجری </span></td>
-                                            }
-                                            else
-                                            {
-                                                <td><span class="badge light badge-warning">در انتظار مجری</span></td>
-                                            }
+                                            <td><span class="badge light badge-warning">در انتظار مجری</span></td>
                                             <td>@ads.CreateDate.ToShamsi()</td>
                                             <td>
                                                 <div class="d-flex">
                                                     <a asp-action="ShowAdvertisementDetail" asp-area="Admin" asp-controller="Advertisement" asp-route-advertisementId="@ads.Id" class="btn btn-warning shadow btn-xs sharp mr-1"><i class="fa fa-eye"></i></a>
-                                                    @if (ads.AdvertismenetState == DoctorType.Domain.Enums.Advertisement.AdvertismenetState.WithoutRequestForWork)
-                                                    {
-                                                        <a ajax-url-button="@ads.Id" title="حذف" asp-area="Admin" asp-controller="Advertisement" asp-action="DeleteAdvertisement" asp-route-advertisementId="@ads.Id" class="btn btn-danger shadow btn-xs sharp "><i class="fa fa-trash"></i></a>
-                                                    }
                                                 </div>
                                             </td>
                                         </tr>

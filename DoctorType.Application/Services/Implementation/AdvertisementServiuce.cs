@@ -5,6 +5,7 @@ using DoctorType.Application.StaticTools;
 using DoctorType.Data.DbContext;
 using DoctorType.Domain.Entites.Adevrtisement;
 using DoctorType.Domain.Entities.Account;
+using DoctorType.Domain.ViewModels.Admin.Advertisement;
 using DoctorType.Domain.ViewModels.UserPanel.Advertisement;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -24,7 +25,7 @@ namespace DoctorType.Application.Services.Implementation
 
         private readonly IUserService _userService;
 
-        public AdvertisementService(DoctorTypeDbContext context , IUserService userService)
+        public AdvertisementService(DoctorTypeDbContext context, IUserService userService)
         {
             _context = context;
             _userService = userService;
@@ -42,7 +43,7 @@ namespace DoctorType.Application.Services.Implementation
             CreateAdvertisementUserPanelSideViewModel model = new CreateAdvertisementUserPanelSideViewModel()
             {
                 UserId = userId,
-                AdvertisementCategories = await _context.AdvertisementCategory.Where(p=> !p.IsDelete).ToListAsync()
+                AdvertisementCategories = await _context.AdvertisementCategory.Where(p => !p.IsDelete).ToListAsync()
             };
 
             #endregion
@@ -68,7 +69,7 @@ namespace DoctorType.Application.Services.Implementation
                 UserId = user.Id,
                 Description = model.Description,
                 AdvertismenetState = Domain.Enums.Advertisement.AdvertismenetState.WithoutRequestForWork
-            } ;
+            };
 
             #region Upload File 
 
@@ -83,7 +84,7 @@ namespace DoctorType.Application.Services.Implementation
 
             //Add Advertisement To Data Base 
             await _context.Advertisemenets.AddAsync(advertisement);
-            await _context.SaveChangesAsync(); 
+            await _context.SaveChangesAsync();
 
             #region Selected Skills
 
@@ -100,7 +101,7 @@ namespace DoctorType.Application.Services.Implementation
                     });
                 }
 
-                await _context.AdvertisementSelectedSkills.AddRangeAsync(selectedSkills) ;
+                await _context.AdvertisementSelectedSkills.AddRangeAsync(selectedSkills);
                 await _context.SaveChangesAsync();
             }
 
@@ -121,11 +122,11 @@ namespace DoctorType.Application.Services.Implementation
 
             #endregion
 
-            return await _context.Advertisemenets.Where(p => !p.IsDelete && p.UserId == userId).ToListAsync(); 
+            return await _context.Advertisemenets.Where(p => !p.IsDelete && p.UserId == userId).ToListAsync();
         }
 
         //Edit Advertisement From User Panel 
-        public async Task<EditAdvertisementUserPanelViewModel?> FillEditAdvertisementUserPanelViewModel(ulong advertisementId , ulong userId)
+        public async Task<EditAdvertisementUserPanelViewModel?> FillEditAdvertisementUserPanelViewModel(ulong advertisementId, ulong userId)
         {
             #region Get User By ID 
 
@@ -159,7 +160,7 @@ namespace DoctorType.Application.Services.Implementation
         }
 
         //Edit Advertisement From User Panel 
-        public async Task<bool> EditAdvertisementFromUserPanel(EditAdvertisementUserPanelViewModel model , ulong userId)
+        public async Task<bool> EditAdvertisementFromUserPanel(EditAdvertisementUserPanelViewModel model, ulong userId)
         {
             #region Get User By ID 
 
@@ -234,7 +235,7 @@ namespace DoctorType.Application.Services.Implementation
         }
 
         //Delete Advertisement From User Panel 
-        public async Task<bool> DeleteAdvertisementFromUserPanel(ulong advertisementId , ulong userId)
+        public async Task<bool> DeleteAdvertisementFromUserPanel(ulong advertisementId, ulong userId)
         {
             #region Get User By ID 
 
@@ -267,7 +268,46 @@ namespace DoctorType.Application.Services.Implementation
 
             #endregion
 
-            return true; 
+            return true;
+        }
+
+        //List OF Projects For Working On 
+        public async Task<List<Advertisemenet>?> ListOfProjectForWorkingOnInUserPanel(ulong userId)
+        {
+            #region Get User By Id 
+
+            var user = await _userService.GetUserById(userId) ;
+            if (user == null) return null;
+
+            #endregion
+
+            #region Get User Skills 
+
+            if (!await _context.ExpertsSelectedSkils.AnyAsync(p=> !p.IsDelete && p.UserId == userId))
+            {
+                 return null;
+            }
+
+            var userSkills = await _context.ExpertsSelectedSkils.Where(p => !p.IsDelete && p.UserId == userId).OrderByDescending(p => p.CreateDate)
+                                     .Select(p => p.AdvertisementCategoryId)
+                                            .ToListAsync();
+
+            #endregion
+
+            #region list Of Advertisements 
+
+            List<Advertisemenet> model = new List<Advertisemenet>();
+
+            foreach (var skills in userSkills)
+            {
+                model.AddRange(await _context.AdvertisementSelectedSkills.Include(p => p.Advertisement).ThenInclude(p=> p.User)
+                                .Where(p => !p.IsDelete && p.AdvertisementCategoryId == skills && p.Advertisement.IsDelete == false && p.Advertisement.AdvertismenetState == Domain.Enums.Advertisement.AdvertismenetState.WithoutRequestForWork)
+                                      .Select(p => p.Advertisement).OrderByDescending(p=> p.CreateDate).ToListAsync());
+            }
+
+            #endregion
+
+            return model;
         }
 
         #endregion
@@ -279,6 +319,67 @@ namespace DoctorType.Application.Services.Implementation
         {
             return await _context.Advertisemenets.Include(p => p.User).Where(p => !p.IsDelete)
                                                     .OrderByDescending(p => p.CreateDate).ToListAsync();
+        }
+
+        //Show Advertisement Detail Admin Side 
+        public async Task<ShowAdvertisementDetailAdminSideViewModel?> FillShowAdvertisementDetailAdminSideViewModel(ulong advertisementId)
+        {
+            #region Get Advertisement 
+
+            var advertisement = await _context.Advertisemenets.Include(p => p.User).FirstOrDefaultAsync(p => !p.IsDelete && p.Id == advertisementId);
+            if (advertisement == null) return null;
+
+            #endregion
+
+            #region Fill Model
+
+            ShowAdvertisementDetailAdminSideViewModel model = new ShowAdvertisementDetailAdminSideViewModel()
+            {
+                AdvertisementId = advertisementId,
+                Description = advertisement.Description,
+                File = advertisement.File,
+                Title = advertisement.Title,
+                User = advertisement.User,
+                AdvertisementCategories = await _context.AdvertisementSelectedSkills.Include(p => p.AdvertisementCategory)
+                                                        .Where(p => p.AdvertisementId == advertisementId).Select(p => p.AdvertisementCategory).ToListAsync(),
+                CountOfUserAdvertisement = await _context.Advertisemenets.CountAsync(p=> !p.IsDelete && p.UserId == advertisement.UserId),
+                CountOfAcceptedUserAdvertisement = await _context.Advertisemenets.CountAsync(p=> !p.IsDelete && p.UserId == advertisement.UserId && p.AdvertismenetState == Domain.Enums.Advertisement.AdvertismenetState.SelectedFromExpert),
+                CountOFWaitingUserAdvertisement = await _context.Advertisemenets.CountAsync(p=> !p.IsDelete && p.UserId == advertisement.UserId && p.AdvertismenetState == Domain.Enums.Advertisement.AdvertismenetState.WithoutRequestForWork),
+                CreateDate = advertisement.CreateDate
+            };
+
+            #endregion
+
+            return model;
+        }
+
+        //Delete Advertisement From Admin Side  
+        public async Task<bool> DeleteAdvertisementFromAdminPanel(ulong advertisementId)
+        {
+            #region Get Advertisement 
+
+            var advertisement = await _context.Advertisemenets.FirstOrDefaultAsync(p => !p.IsDelete && p.Id == advertisementId);
+            if (advertisement == null) return false;
+            if (advertisement.AdvertismenetState == Domain.Enums.Advertisement.AdvertismenetState.SelectedFromExpert) return false;
+
+            #endregion
+
+            #region Delete Advertisement 
+
+            advertisement.IsDelete = true;
+
+            #endregion
+
+            #region Remove Advertisement Skills
+
+            var removeSkills = await _context.AdvertisementSelectedSkills.Where(p => !p.IsDelete && p.AdvertisementId == advertisement.Id).ToListAsync();
+
+            _context.AdvertisementSelectedSkills.RemoveRange(removeSkills);
+            await _context.SaveChangesAsync();
+
+            #endregion
+
+            return true;
         }
 
         #endregion

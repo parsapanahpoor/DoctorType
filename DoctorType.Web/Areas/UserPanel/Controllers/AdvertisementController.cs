@@ -35,6 +35,7 @@ namespace DoctorType.Web.Areas.UserPanel.Controllers
         {
             return View(await _advertisementService.FillCreateAdvertisementUserPanelSideViewModel(User.GetUserId()));
         }
+
         [HttpPost , ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateAdvertisement(CreateAdvertisementUserPanelSideViewModel model)
         {

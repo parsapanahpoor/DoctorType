@@ -1,4 +1,5 @@
 ﻿using DoctorType.Domain.Entites.Adevrtisement;
+using DoctorType.Domain.ViewModels.Admin.Advertisement;
 using DoctorType.Domain.ViewModels.UserPanel.Advertisement;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,15 @@ namespace DoctorType.Application.Services.Interfaces
 
         //List Of Advertisement Admin Side
         Task<List<Advertisemenet>?> ListOfAdvertisementAdminSide();
+
+        //Show Advertisement Detail Admin Side 
+        Task<ShowAdvertisementDetailAdminSideViewModel?> FillShowAdvertisementDetailAdminSideViewModel(ulong advertisementId);
+
+        //Delete Advertisement From Admin Side  
+        Task<bool> DeleteAdvertisementFromAdminPanel(ulong advertisementId);
+
+        //List OF Projects For Working On 
+        Task<List<Advertisemenet>?> ListOfProjectForWorkingOnInUserPanel(ulong userId);
 
         #endregion
     }

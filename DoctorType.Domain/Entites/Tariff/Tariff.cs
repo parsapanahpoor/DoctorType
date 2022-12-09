@@ -19,6 +19,8 @@ namespace DoctorType.Domain.Entities.Tariff
 
         public int tariffDuration { get; set; }
 
+        public string ColorName { get; set; }
+
         #endregion
 
         #region relations

@@ -24,6 +24,8 @@ namespace DoctorType.Domain.ViewModels.Admin.Tariff
         [Display(Name = "مدت زمان تعرفه")]
         public int TariffDuration { get; set; }
 
+        public string ColorName { get; set; }
+
         #endregion
     }
 }

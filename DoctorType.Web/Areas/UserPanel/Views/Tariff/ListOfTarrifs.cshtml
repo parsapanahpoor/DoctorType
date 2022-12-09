@@ -26,20 +26,18 @@
 
     @if (Model != null && Model.Any())
     {
-        int i = 0;
-
         foreach (var tariff in Model)
         {
             <div class="col-xl-6">
-                <div class="card text-white bg-secondary">
+                <div class="card text-white bg-@tariff.ColorName">
                     <div class="card-header">
-                        <h5 class="card-title text-white">عنوان کارت ثانویه</h5>
+                        <h5 class="card-title text-white">@tariff.TariffName</h5>
                     </div>
                     <div class="card-body mb-0">
-                        <p class="card-text">چند متن سریع برای ساختن عنوان کارت و قسمت عمده محتوای کارت.</p><a href="javascript:void()" class="btn btn-dark btn-card">برو یه جایی</a>
-                    </div>
-                    <div class="card-footer bg-transparent border-0 text-white">
-                        آخرین آپدیت 4 دقیقه پیش
+                        <p class="card-text">مدت زمان اعتبار اشتراک : @tariff.tariffDuration روز</p>
+                        <p class="card-text">مبلغ اشتراک : @tariff.TariffPrice.ToString("#,000") ریال</p>
+                        <p class="card-text"> تعداد پروژه قابل پذیرفتن : @tariff.CountOfAcceptRequest</p>
+                        <a href="javascript:void()" class="btn btn-dark btn-card">پرداخت و دریافت اشتراک</a>
                     </div>
                 </div>
             </div>

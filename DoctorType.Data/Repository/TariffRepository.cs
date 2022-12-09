@@ -75,7 +75,8 @@ namespace DoctorType.Data.Repository
         //Show List Of Tarrifs In User Panel
         public async Task<List<Tariff>> ShowListOfTarrifsInUserPanel()
         {
-            return await _context.Tariffs.Where(p => !p.IsDelete).ToListAsync();
+            return await _context.Tariffs.Where(p => !p.IsDelete)
+                                .OrderBy(p=> p.tariffDuration).ToListAsync();
         }
 
         #endregion

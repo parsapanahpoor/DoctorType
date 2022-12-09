@@ -70,11 +70,26 @@
                                 </div>
                             </div>
 
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label>رنگ نمایش کادر تعرفه </label>
+                                    <div class="dropdown bootstrap-select form-control">
+                                        <select asp-for="ColorName" class="form-control" id="sel1" tabindex="-98">
+                                            <option value="primary">primary</option>
+                                            <option value="secondary">secondary</option>
+                                            <option value="success">success</option>
+                                            <option value="warning">warning</option>
+                                            <option value="info">info</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
                             <button type="submit" class="btn btn-outline-success">@ViewData["Title"]</button>
                         </div>
                     </div>
                 </div>
             </div>
-    </div>
+        </div>
 
-</form>
+    </form>

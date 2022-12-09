@@ -25,7 +25,7 @@
 }
 
     <form asp-area="Admin" asp-controller="Tariff" asp-action="EditTariff" method="post">
-        <input asp-for="Id" type="hidden"/>
+        <input asp-for="Id" type="hidden" />
         <div class="row">
 
             <div class="col-xl-12 col-lg-12">
@@ -70,11 +70,70 @@
                                 </div>
                             </div>
 
-                            <button type="submit" class="btn btn-outline-success">@ViewData["Title"]</button>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label>رنگ نمایش کادر تعرفه </label>
+                                    <div class="dropdown bootstrap-select form-control">
+                                        <select asp-for="ColorName" class="form-control" id="sel1" tabindex="-98">
+                                        @if (Model.ColorName == "primary")
+                                        {
+                                            <option selected="selected" value="primary">primary</option>
+                                            <option value="secondary">secondary</option>
+                                            <option value="success">success</option>
+                                            <option value="warning">warning</option>
+                                            <option value="info">info</option>
+                                        }
+                                        @if (Model.ColorName == "secondary")
+                                        {
+                                            <option value="primary">primary</option>
+                                            <option selected="selected" value="secondary">secondary</option>
+                                            <option value="success">success</option>
+                                            <option value="warning">warning</option>
+                                            <option value="info">info</option>
+                                        }
+                                        @if (Model.ColorName == "success")
+                                        {
+                                            <option value="primary">primary</option>
+                                            <option value="secondary">secondary</option>
+                                            <option selected="selected" value="success">success</option>
+                                            <option value="warning">warning</option>
+                                            <option value="info">info</option>
+                                        }
+                                        @if (Model.ColorName == "warning")
+                                        {
+                                            <option value="primary">primary</option>
+                                            <option value="secondary">secondary</option>
+                                            <option value="success">success</option>
+                                            <option selected="selected" value="warning">warning</option>
+                                            <option value="info">info</option>
+                                        }
+                                        @if (Model.ColorName == "info")
+                                        {
+                                            <option value="primary">primary</option>
+                                            <option value="secondary">secondary</option>
+                                            <option value="success">success</option>
+                                            <option value="warning">warning</option>
+                                            <option selected="selected" value="info">info</option>
+                                        }
+                                        @if (string.IsNullOrEmpty(Model.ColorName))
+                                        {
+                                            <option value="primary">primary</option>
+                                            <option value="secondary">secondary</option>
+                                            <option value="success">success</option>
+                                            <option value="warning">warning</option>
+                                            <option value="info">info</option>
+                                        }
+
+                                    </select>
+                                </div>
+                            </div>
                         </div>
+
+                        <button type="submit" class="btn btn-outline-success">@ViewData["Title"]</button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-    </form>
+</form>

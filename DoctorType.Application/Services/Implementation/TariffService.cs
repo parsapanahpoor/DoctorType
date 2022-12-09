@@ -40,6 +40,7 @@ namespace DoctorType.Application.Services.Implementation
                 TariffName = model.TariffName,
                 TariffPrice = model.TariffPrice,
                 CountOfAcceptRequest = model.CountOfAcceptRequest,
+                ColorName = model.ColorName,
             };
 
             #endregion
@@ -75,6 +76,7 @@ namespace DoctorType.Application.Services.Implementation
             tariff.TariffName = model.TariffName;
             tariff.tariffDuration = model.tariffDuration;
             tariff.CountOfAcceptRequest = model.CountOfAcceptRequest;
+            tariff.ColorName = model.ColorName;
 
             #endregion
 

@@ -125,5 +125,15 @@ namespace DoctorType.Application.Services.Implementation
         }
 
         #endregion
+
+        #region User Panel 
+
+        //Show List Of Tarrifs In User Panel
+        public async Task<List<Tariff>> ShowListOfTarrifsInUserPanel()
+        {
+            return await _tariff.ShowListOfTarrifsInUserPanel(); 
+        }
+
+        #endregion
     }
 }

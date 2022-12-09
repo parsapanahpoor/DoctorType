@@ -1,0 +1,49 @@
+﻿@using DoctorType.Domain.Entities.Account
+@model List<DoctorType.Domain.Entities.Tariff.Tariff>
+
+@{
+    ViewData["Title"] = "لیست تعرفه های سایت";
+}
+
+@section scripts{
+    <partial name="_JqueryValidators" />
+}
+
+    @section Breadcrumbs{
+    <div class="col-sm-6 p-md-0">
+        <div class="welcome-text">
+            <h4>@ViewData["Title"]</h4>
+        </div>
+    </div>
+    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-area="UserPanel" asp-controller="Home"> داشبورد  </a></li>
+        </ol>
+    </div>
+}
+
+    <div class="row">
+
+    @if (Model != null && Model.Any())
+    {
+        int i = 0;
+
+        foreach (var tariff in Model)
+        {
+            <div class="col-xl-6">
+                <div class="card text-white bg-secondary">
+                    <div class="card-header">
+                        <h5 class="card-title text-white">عنوان کارت ثانویه</h5>
+                    </div>
+                    <div class="card-body mb-0">
+                        <p class="card-text">چند متن سریع برای ساختن عنوان کارت و قسمت عمده محتوای کارت.</p><a href="javascript:void()" class="btn btn-dark btn-card">برو یه جایی</a>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 text-white">
+                        آخرین آپدیت 4 دقیقه پیش
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+</div>

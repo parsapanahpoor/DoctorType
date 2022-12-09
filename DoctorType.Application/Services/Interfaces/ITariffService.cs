@@ -32,5 +32,12 @@ namespace DoctorType.Application.Services.Interfaces
         Task<List<Tariff>> ShowTariffInHomePage();
 
         #endregion
+
+        #region User Panel 
+
+        //Show List Of Tarrifs In User Panel
+        Task<List<Tariff>> ShowListOfTarrifsInUserPanel();
+
+        #endregion
     }
 }

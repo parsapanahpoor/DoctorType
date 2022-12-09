@@ -1,0 +1,211 @@
+﻿@using DoctorType.Domain.Entities.Account
+@model DoctorType.Domain.ViewModels.UserPanel.Project.ShowAdvertisementDetailUserPanelSideViewModel
+@using DoctorType.Application.Convertors
+@using DoctorType.Application.Extensions
+@using DoctorType.Application.StaticTools
+
+@{
+    ViewData["Title"] = "نمایش اطلاعات پروژه";
+}
+
+@section scripts{
+    <partial name="_JqueryValidators" />
+}
+
+    @section Breadcrumbs{
+    <div class="col-sm-6 p-md-0">
+        <div class="welcome-text">
+            <h4>@ViewData["Title"]</h4>
+        </div>
+    </div>
+    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-area="UserPanel" asp-controller="Home"> داشبورد  </a></li>
+            <li class="breadcrumb-item"><a asp-action="ListOfAdvertisements" asp-area="UserPanel" asp-controller="Advertisement"> لیست پروژه ها </a></li>
+        </ol>
+    </div>
+}
+
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="profile card card-body px-3 pt-3 pb-0">
+                <div class="profile-head">
+                    <div class="photo-content">
+                        <div class="cover-photo"></div>
+                    </div>
+                    <div class="profile-info">
+                    @if (string.IsNullOrEmpty(Model.User.Avatar))
+                    {
+                        <div class="profile-photo">
+                            <img src="/AdminContent/images/profile/pic1.png" class="img-fluid rounded-circle" alt="">
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="profile-photo">
+                            <img src="@Model.User.GetUserAvatar()" class="img-fluid rounded-circle" alt="">
+                        </div>
+                    }
+
+                    <div class="profile-details">
+                        <div class="profile-name px-3 pt-2">
+                            <h4 class="text-primary mb-0">@Model.User.Username</h4>
+                            <p>
+                                @((string.IsNullOrEmpty(Model.User.Mobile)) ? ".وارد نشده است" : Model.User.Mobile)
+                            </p>
+                        </div>
+                        <div class="profile-email px-2 pt-2">
+                            <h4 class="text-muted mb-0">@((string.IsNullOrEmpty(Model.User.Email)) ? ".وارد نشده است" : Model.User.Email)</h4>
+                        </div>
+                        <div class="dropdown ml-auto">
+                            <a href="#" class="btn btn-primary light sharp" data-toggle="dropdown" aria-expanded="true"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg></a>
+                            <ul class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-169px, 30px, 0px);">
+                                <li class="dropdown-item"><i class="fa fa-user-circle text-primary mr-2"></i> نمایش پروفایل</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-xl-4">
+
+        <div class="card overflow-hidden" style="height: auto !important;">
+            <div class="text-center p-5 overlay-box" style="background-image: url(AdminContent/images/big/img5.jpg);">
+                @if (string.IsNullOrEmpty(Model.User.Avatar))
+                {
+                    <img src="/AdminContent/images/profile/pic1.png" class="img-fluid rounded-circle" alt="" width="100">
+                }
+                else
+                {
+                    <img src="@Model.User.GetUserAvatar()" class="img-fluid rounded-circle" alt="" width="100">
+                }
+                <h3 class="mt-3 mb-0 text-white">@Model.User.Username</h3>
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-12">
+                        <div class="bgl-primary rounded p-4">
+                            <h4 class="mb-0">@Model.CountOfUserAdvertisement</h4>
+                            <small>تعداد پروژه های این کاربر </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-center mt-4">
+                    <div class="col-12">
+                        <div class="bgl-success rounded p-3">
+                            <h4 class="mb-0">@Model.CountOfAcceptedUserAdvertisement</h4>
+                            <small>تعداد پروژه های قبول شده توسط مجری</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-center mt-4">
+                    <div class="col-12">
+                        <div class="bgl-warning rounded p-3">
+                            <h4 class="mb-0">@Model.CountOFWaitingUserAdvertisement</h4>
+                            <small>تعداد پروژه های در انتظار مجری </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer mt-0">
+                <button class="btn btn-primary btn-lg btn-block">نمایش پروفایل</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-xl-8">
+        <div class="card">
+            <div class="card-body">
+                <div class="profile-tab">
+                    <div class="custom-tab-1">
+                        <ul class="nav nav-tabs">
+
+                            <li class="nav-item">
+                                <a href="#my-posts" data-toggle="tab" class="nav-link show active">اطلاعات پروژه </a>
+                            </li>
+
+                        </ul>
+                        <div class="tab-content">
+
+                            <div id="my-posts" class="tab-pane fade active show">
+
+                                <div class="pt-4 profile-personal-info">
+                                    <div class="row mb-2">
+                                        <div class="col-3">
+                                            <h5 class="f-w-500">
+                                                عنوان <span class="pull-right">:</span>
+                                            </h5>
+                                        </div>
+                                        <div class="col-9">
+                                            <span>@Model.Title</span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col-3">
+                                            <h5 class="f-w-500">
+                                                تاریخ ایجاد <span class="pull-right">:</span>
+                                            </h5>
+                                        </div>
+                                        @if (Model.CreateDate != null)
+                                        {
+                                            <div class="col-9">
+                                                <span>@Model.CreateDate.ToStringShamsiDate()</span>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+
+                                @if (!string.IsNullOrEmpty(Model.Description))
+                                {
+                                    <div class="profile-about-me">
+                                        <div class="pt-4 border-bottom-1 pb-3">
+                                            <h4 class="text-primary">توضیحات تکمیلی</h4>
+                                            <p class="mb-2">@Model.Description</p>
+                                        </div>
+                                    </div>
+                                }
+
+                                <div class="pt-2 profile-skills pb-3">
+                                    <h4 class="text-primary mb-2">دانلود فایل پروژه </h4>
+                                    @if (!string.IsNullOrEmpty(Model.File))
+                                    {
+                                        <a style="color: white;" class="btn btn-rounded mb-2 btn-success" target="_blank"
+                                       href="@PathTools.AdvertisementPath@Model.File">
+                                            <span class="btn-icon-left text-success">
+                                                <i class="fa fa-download color-warning"></i>
+                                            </span>دانلود
+                                        </a>
+                                    }
+                                </div>
+
+
+                                <div class="pt-2 profile-skills ">
+                                    <h4 class="text-primary mb-2">درخواست های پروژه </h4>
+                                    @if (Model.AdvertisementCategories != null && Model.AdvertisementCategories.Any())
+                                    {
+                                        foreach (var item in Model.AdvertisementCategories)
+                                        {
+                                            <button type="button" class="btn btn-warning mb-2">@item.Title</button>
+                                        }
+                                    }
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

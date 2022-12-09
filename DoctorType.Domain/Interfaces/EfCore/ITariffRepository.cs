@@ -30,5 +30,12 @@ namespace DoctorType.Domain.Interfaces.EfCore
         Task<List<Tariff>> FilterTariff();
 
         #endregion
+
+        #region User Panel 
+
+        //Show List Of Tarrifs In User Panel
+        Task<List<Tariff>> ShowListOfTarrifsInUserPanel();
+
+        #endregion
     }
 }

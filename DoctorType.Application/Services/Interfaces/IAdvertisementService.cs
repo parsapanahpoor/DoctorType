@@ -33,7 +33,7 @@ namespace DoctorType.Application.Services.Interfaces
         Task<bool> DeleteAdvertisementFromUserPanel(ulong advertisementId, ulong userId);
 
         //Show Advertisement Detail User Panel Side 
-        Task<ShowAdvertisementDetailUserPanelSideViewModel?> FillShowAdvertisementDetailUserSideViewModel(ulong advertisementId);
+        Task<ShowAdvertisementDetailUserPanelSideViewModel?> FillShowAdvertisementDetailUserSideViewModel(ulong advertisementId, ulong userId);
 
         #endregion
 

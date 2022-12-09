@@ -74,6 +74,8 @@ namespace DoctorType.Data.DbContext
 
         public DbSet<Advertisemenet> Advertisemenets { get; set; }
 
+        public DbSet<LogExpertsSeeProjectsDetail> LogExpertsSeeProjectsDetail { get; set; }
+
         #endregion
 
         #endregion

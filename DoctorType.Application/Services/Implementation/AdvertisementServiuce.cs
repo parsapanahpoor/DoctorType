@@ -312,12 +312,34 @@ namespace DoctorType.Application.Services.Implementation
         }
 
         //Show Advertisement Detail User Panel Side 
-        public async Task<ShowAdvertisementDetailUserPanelSideViewModel?> FillShowAdvertisementDetailUserSideViewModel(ulong advertisementId)
+        public async Task<ShowAdvertisementDetailUserPanelSideViewModel?> FillShowAdvertisementDetailUserSideViewModel(ulong advertisementId , ulong userId)
         {
             #region Get Advertisement 
 
             var advertisement = await _context.Advertisemenets.Include(p => p.User).FirstOrDefaultAsync(p => !p.IsDelete && p.Id == advertisementId);
             if (advertisement == null) return null;
+
+            #endregion
+
+            #region Get User By Id 
+
+            var user = await _userService.GetUserById(userId);
+            if (user == null) return null;
+
+            #endregion
+
+            #region Log For Experts
+
+            //check That Is Exist Any Log For This Expert
+            if (!await _context.LogExpertsSeeProjectsDetail.AnyAsync(p=> !p.IsDelete && p.AdvertisementId == advertisementId && p.UserId == userId))
+            {
+                await _context.LogExpertsSeeProjectsDetail.AddAsync(new LogExpertsSeeProjectsDetail() { 
+                    AdvertisementId = advertisementId,
+                    UserId = userId
+                });
+
+                await _context.SaveChangesAsync();
+            }
 
             #endregion
 

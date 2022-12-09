@@ -1,4 +1,5 @@
 ﻿using DoctorType.Data.DbContext;
+using DoctorType.Domain.Entities.Account;
 using DoctorType.Domain.Entities.Tariff;
 using DoctorType.Domain.Interfaces.EfCore;
 using Microsoft.EntityFrameworkCore;
@@ -65,6 +66,16 @@ namespace DoctorType.Data.Repository
                 .Where(a => !a.IsDelete)
                 .OrderByDescending(s => s.CreateDate)
                 .ToListAsync();
+        }
+
+        #endregion
+
+        #region User Panel 
+
+        //Show List Of Tarrifs In User Panel
+        public async Task<List<Tariff>> ShowListOfTarrifsInUserPanel()
+        {
+            return await _context.Tariffs.Where(p => !p.IsDelete).ToListAsync();
         }
 
         #endregion

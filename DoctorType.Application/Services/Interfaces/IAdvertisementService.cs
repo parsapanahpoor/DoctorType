@@ -1,4 +1,5 @@
-﻿using DoctorType.Domain.ViewModels.UserPanel.Advertisement;
+﻿using DoctorType.Domain.Entites.Adevrtisement;
+using DoctorType.Domain.ViewModels.UserPanel.Advertisement;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,11 +18,24 @@ namespace DoctorType.Application.Services.Interfaces
         //Create Advertisement From User Panel 
         Task<bool> CreateAdvertisementFromUserPanel(CreateAdvertisementUserPanelSideViewModel model);
 
+        //Filter Advertisement From User Panel 
+        Task<List<Advertisemenet>?> FilterAdvertisementFromUserPanel(ulong userId);
+
+        //Edit Advertisement From User Panel 
+        Task<EditAdvertisementUserPanelViewModel?> FillEditAdvertisementUserPanelViewModel(ulong advertisementId, ulong userId);
+
+        //Edit Advertisement From User Panel 
+        Task<bool> EditAdvertisementFromUserPanel(EditAdvertisementUserPanelViewModel model, ulong userId);
+
+        //Delete Advertisement From User Panel 
+        Task<bool> DeleteAdvertisementFromUserPanel(ulong advertisementId, ulong userId);
+
         #endregion
 
         #region Admin Side 
 
-
+        //List Of Advertisement Admin Side
+        Task<List<Advertisemenet>?> ListOfAdvertisementAdminSide();
 
         #endregion
     }

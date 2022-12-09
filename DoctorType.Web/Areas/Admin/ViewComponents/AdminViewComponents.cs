@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DoctorType.Application.Extensions;
+using DoctorType.Application.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -21,9 +23,20 @@ namespace DoctorType.Web.Areas.Admin.ViewComponents
 
     public class AdminHeaderViewComponent : ViewComponent
     {
+        #region Ctor
+
+        private readonly IUserService _userService;
+
+        public AdminHeaderViewComponent(IUserService userService)
+        {
+            _userService = userService;
+        }
+
+        #endregion
+
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View("AdminHeader");
+            return View("AdminHeader", await _userService.GetUserById(User.GetUserId()));
         }
     }
 

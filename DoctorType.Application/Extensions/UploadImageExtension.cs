@@ -66,6 +66,15 @@ namespace DoctorType.Application.Extensions
             }
         }
 
+        public static void DeleteFile(this string imageName, string OriginPath)
+        {
+            if (!string.IsNullOrEmpty(imageName))
+            {
+                if (File.Exists(OriginPath + imageName))
+                    File.Delete(OriginPath + imageName);
+            }
+        }
+
         public static bool AddFileToServer(this IFormFile image, string fileName, string orginalPath, string deletefileName = null)
         {
             if (image != null )

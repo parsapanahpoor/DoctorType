@@ -1,6 +1,7 @@
 ﻿using DoctorType.Domain.Entites.Adevrtisement;
 using DoctorType.Domain.ViewModels.Admin.Advertisement;
 using DoctorType.Domain.ViewModels.UserPanel.Advertisement;
+using DoctorType.Domain.ViewModels.UserPanel.Project;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,9 @@ namespace DoctorType.Application.Services.Interfaces
 
         //Delete Advertisement From User Panel 
         Task<bool> DeleteAdvertisementFromUserPanel(ulong advertisementId, ulong userId);
+
+        //Show Advertisement Detail User Panel Side 
+        Task<ShowAdvertisementDetailUserPanelSideViewModel?> FillShowAdvertisementDetailUserSideViewModel(ulong advertisementId);
 
         #endregion
 

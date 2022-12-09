@@ -7,6 +7,7 @@ using DoctorType.Domain.Entites.Adevrtisement;
 using DoctorType.Domain.Entities.Account;
 using DoctorType.Domain.ViewModels.Admin.Advertisement;
 using DoctorType.Domain.ViewModels.UserPanel.Advertisement;
+using DoctorType.Domain.ViewModels.UserPanel.Project;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -304,6 +305,38 @@ namespace DoctorType.Application.Services.Implementation
                                 .Where(p => !p.IsDelete && p.AdvertisementCategoryId == skills && p.Advertisement.IsDelete == false && p.Advertisement.AdvertismenetState == Domain.Enums.Advertisement.AdvertismenetState.WithoutRequestForWork)
                                       .Select(p => p.Advertisement).OrderByDescending(p=> p.CreateDate).ToListAsync());
             }
+
+            #endregion
+
+            return model;
+        }
+
+        //Show Advertisement Detail User Panel Side 
+        public async Task<ShowAdvertisementDetailUserPanelSideViewModel?> FillShowAdvertisementDetailUserSideViewModel(ulong advertisementId)
+        {
+            #region Get Advertisement 
+
+            var advertisement = await _context.Advertisemenets.Include(p => p.User).FirstOrDefaultAsync(p => !p.IsDelete && p.Id == advertisementId);
+            if (advertisement == null) return null;
+
+            #endregion
+
+            #region Fill Model
+
+            ShowAdvertisementDetailUserPanelSideViewModel model = new ShowAdvertisementDetailUserPanelSideViewModel()
+            {
+                AdvertisementId = advertisementId,
+                Description = advertisement.Description,
+                File = advertisement.File,
+                Title = advertisement.Title,
+                User = advertisement.User,
+                AdvertisementCategories = await _context.AdvertisementSelectedSkills.Include(p => p.AdvertisementCategory)
+                                                        .Where(p => p.AdvertisementId == advertisementId).Select(p => p.AdvertisementCategory).ToListAsync(),
+                CountOfUserAdvertisement = await _context.Advertisemenets.CountAsync(p => !p.IsDelete && p.UserId == advertisement.UserId),
+                CountOfAcceptedUserAdvertisement = await _context.Advertisemenets.CountAsync(p => !p.IsDelete && p.UserId == advertisement.UserId && p.AdvertismenetState == Domain.Enums.Advertisement.AdvertismenetState.SelectedFromExpert),
+                CountOFWaitingUserAdvertisement = await _context.Advertisemenets.CountAsync(p => !p.IsDelete && p.UserId == advertisement.UserId && p.AdvertismenetState == Domain.Enums.Advertisement.AdvertismenetState.WithoutRequestForWork),
+                CreateDate = advertisement.CreateDate
+            };
 
             #endregion
 

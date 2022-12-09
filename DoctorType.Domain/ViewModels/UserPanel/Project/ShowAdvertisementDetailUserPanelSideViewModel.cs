@@ -1,6 +1,5 @@
-﻿using DoctorType.Domain.Entities.Account;
-using DoctorType.Domain.Entities.Common;
-using DoctorType.Domain.Enums.Advertisement;
+﻿using DoctorType.Domain.Entites.Adevrtisement;
+using DoctorType.Domain.Entities.Account;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,37 +8,35 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace DoctorType.Domain.Entites.Adevrtisement
+namespace DoctorType.Domain.ViewModels.UserPanel.Project
 {
-    public class Advertisemenet : BaseEntity
+    public class ShowAdvertisementDetailUserPanelSideViewModel
     {
         #region properties
+
+        public ulong AdvertisementId { get; set; }
+
+        public User User { get; set; }
 
         [Display(Name = " عنوان آگهی")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(500, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد .")]
         public string Title { get; set; }
 
-        public ulong UserId { get; set; }
-
-        public AdvertismenetState AdvertismenetState { get; set; }
-
-        public string? Price { get; set; }
-
         [Display(Name = " توضیح کامل ")]
         public string? Description { get; set; }
 
         public string File { get; set; }
 
-        #endregion
+        public DateTime CreateDate { get; set; }
 
-        #region relation
+        public int CountOfUserAdvertisement { get; set; }
 
-        public User User { get; set; }
+        public int CountOfAcceptedUserAdvertisement { get; set; }
 
-        public ICollection<AdvertisementSelectedSkill> AdvertisementSelectedSkills { get; set; }
+        public int CountOFWaitingUserAdvertisement { get; set; }
 
-        public ICollection<LogExpertsSeeProjectsDetail> LogExpertsSeeProjectsDetail { get; set; }
+        public List<AdvertisementCategory> AdvertisementCategories { get; set; }
 
         #endregion
     }

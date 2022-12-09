@@ -100,6 +100,8 @@ namespace DoctorType.Domain.Entities.Account
 
         public List<Wallet.Wallet> Wallets { get; set; }
 
+        public ICollection<LogExpertsSeeProjectsDetail> LogExpertsSeeProjectsDetail { get; set; }
+
         #endregion
     }
 }

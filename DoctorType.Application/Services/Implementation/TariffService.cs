@@ -1,13 +1,18 @@
 ﻿
 using DoctorType.Application.Services.Interfaces;
+using DoctorType.Data.DbContext;
+using DoctorType.Domain.Entities.Account;
 using DoctorType.Domain.Entities.Tariff;
 using DoctorType.Domain.Interfaces.EfCore;
 using DoctorType.Domain.ViewModels.Admin.Tariff;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace DoctorType.Application.Services.Implementation
 {
@@ -19,10 +24,13 @@ namespace DoctorType.Application.Services.Implementation
 
         private readonly IUserService _userService;
 
-        public TariffService(ITariffRepository tariffRepository, IUserService userService)
+        private readonly DoctorTypeDbContext _context;
+
+        public TariffService(ITariffRepository tariffRepository, IUserService userService , DoctorTypeDbContext context)
         {
             _tariff = tariffRepository;
             _userService = userService;
+            _context = context;
         }
 
         #endregion
@@ -139,6 +147,22 @@ namespace DoctorType.Application.Services.Implementation
         //Get Tariff From User
         public async Task GetTariffFromUser(ulong userId , Tariff tariff)
         {
+            #region Cencel Any User Selected Tariff
+
+            var tariffs = await _context.UserSelectedTariffs.Where(p => !p.IsDelete && p.UserId == userId && p.CurrentTarriff).ToListAsync();
+
+            if (tariffs != null)
+            {
+                foreach (var item in tariffs)
+                {
+                    item.CurrentTarriff = false;
+                }
+
+                await _context.SaveChangesAsync();
+            }
+
+            #endregion
+
             #region Register On Tariff
 
             UserSelectedTariff model = new UserSelectedTariff()
@@ -153,6 +177,47 @@ namespace DoctorType.Application.Services.Implementation
 
             //Add To The Data Base 
             await _tariff.AddUserSelectedTariffToTheDataBase(model);
+
+            #endregion
+        }
+
+        //Get User Tariff Detail For Show in Header 
+        public async Task<UserSelectedTariff?> GetUserTariffDetailForShowinHeader(ulong userId)
+        {
+            #region Get User By Id
+
+            var user = await _userService.GetUserById(userId);
+            if (user == null) return null;
+
+            #endregion
+
+            #region Get User Tarrifs 
+
+            var lastTariff = await _context.UserSelectedTariffs.Include(p => p.Tariff)
+                                      .Where(p => !p.IsDelete && p.UserId == userId
+                                          && ((p.Startdate.Year <= DateTime.Now.Year && p.EndDate.Year > DateTime.Now.Year)
+                                          || (p.Startdate.Year == DateTime.Now.Year
+                                               && p.Startdate.DayOfYear <= DateTime.Now.DayOfYear
+                                               && p.EndDate.Year == DateTime.Now.Year
+                                               && p.EndDate.DayOfYear >= DateTime.Now.DayOfYear))).FirstOrDefaultAsync();
+
+            #endregion
+
+            return lastTariff;
+        }
+
+        //Some Thing looks like triger for update user selected tariff 
+        public async Task SomeThinglooksliketrigerforupdateuserselectedtariff(ulong userId)
+        {
+            #region Get User By Id
+
+            var user = await _userService.GetUserById(userId);
+
+            #endregion
+
+            #region Get User Tariffs
+
+            var userTariffs = await _context.UserSelectedTariffs.Where(p => !p.IsDelete && p.UserId == userId).ToListAsync();
 
             #endregion
         }

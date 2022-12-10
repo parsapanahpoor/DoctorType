@@ -1,4 +1,5 @@
 ﻿
+using DoctorType.Application.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,18 +10,14 @@ namespace DoctorType.Web.Areas.Admin.Controllers
 {
     public class HomeController : AdminBaseController
     {
-        #region Constructor
+        #region Ctor
 
-        //private readonly IAdminHomeIndexService _adminHomeIndex;
-        //private readonly IAdvertisementService _advertisementService;
-        //private readonly IAdsCategoryService _adsCategoryService;
-        //public HomeController(IAdminHomeIndexService adminHomeIndex, IAdvertisementService advertisementService
-        //    , IAdsCategoryService adsCategoryService)
-        //{
-        //    _adminHomeIndex = adminHomeIndex;
-        //    _advertisementService = advertisementService;
-        //    _adsCategoryService = adsCategoryService;
-        //}
+        private readonly IDashboardService _dashboardService;
+
+        public HomeController(IDashboardService dashboardService)
+        {
+            _dashboardService = dashboardService;
+        }
 
         #endregion
 
@@ -28,8 +25,7 @@ namespace DoctorType.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            //var model = await _adminHomeIndex.SetAdminHomeIndexViewModel();
-            return View();
+            return View(await _dashboardService.FillAdminPanelDashboard());
         }
 
         #endregion

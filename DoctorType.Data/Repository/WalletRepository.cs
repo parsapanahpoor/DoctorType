@@ -31,6 +31,7 @@ namespace DoctorType.Data.Repository
         {
             var query = _context.Wallets
                 .Include(w => w.User).Where(w => w.IsFinally)
+                .OrderByDescending(p=> p.CreateDate)
                 .AsQueryable();
 
             #region Order

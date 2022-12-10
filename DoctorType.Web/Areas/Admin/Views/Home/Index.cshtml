@@ -1,10 +1,10 @@
-﻿@*@model DoctorType.Domain.ViewModels.AdminHome.AdminHomeIndexViewModel
-*@@using DoctorType.Application.Extensions
+﻿@model DoctorType.Domain.ViewModels.Admin.Dashboard.AdminDashboardViewModel
+@using DoctorType.Application.Extensions
 @using DoctorType.Application.Utils
+
 @{
     ViewData["Title"] = "پنل ادمین";
 }
-
 
 @section scripts{
 
@@ -28,174 +28,52 @@
 }
 
     @section Breadcrumbs{
+    <div class="col-sm-6 p-md-0">
+        <div class="welcome-text">
+            <h4>@ViewData["Title"] </h4>
+        </div>
+    </div>
+    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-area="Admin" asp-controller="Home"> داشبورد ادمین </a></li>
+        </ol>
+    </div>
 }
 
     <div class="row">
 
+        @*This List Is About Users*@
+        <partial name="_CountBox" model="Model" />
+
         <div class="col-md-12">
+
             <div class="row">
 
-                <div class="col-xl-3 col-lg-6 col-sm-6">
-                    <div class="widget-stat card bg-success">
-                        <div class="card-body  p-4">
-                            <a asp-area="Admin" asp-controller="Users" asp-action="Index">
-                                <div class="media">
-                                    <span class="mr-3">
-                                        <i class="la la-users"></i>
-                                    </span>
-                                    <div class="media-body text-white">
-                                        <p class="mb-1">کل کاربران </p>
-                                        @*                                        <h3 class="text-white">@Model.ALLUsers</h3>
-                                    *@
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                @*Count Of Waitig For Expert Advertisement*@
+                <partial name="_CountOfWaitigForExpertAdvertisement" model="Model.CountOfWaitigForExpertAdvertisement" />
 
-                <div class="col-xl-3 col-lg-6 col-sm-6">
-                    <div class="widget-stat card bg-primary">
-                        <div class="card-body  p-4">
-                            <a asp-area="Admin" asp-controller="Users" asp-action="Index" asp-route-UserState="1">
-                                <div class="media">
-                                    <span class="mr-3">
-                                        <i class="la la-users"></i>
-                                    </span>
-                                    <div class="media-body text-white">
-                                        <p class="mb-1"> کاربران فعال </p>
-                                        @*                                        <h3 class="text-white">@Model.ActivatedUsers</h3>
-                                    *@
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                @*Count Of Selected From Expert Advertisement*@
+                <partial name="_CountOfSelectedFromExpertAdvertisement" model="Model.CountOfSelectedFromExpertAdvertisement" />
 
-                <div class="col-xl-3 col-lg-6 col-sm-6" id="scrollTrigger">
-                    <div class="widget-stat card bg-warning">
-                        <div class="card-body  p-4">
-                            <div class="media">
-                                <span class="mr-3">
-                                    <i class="la la-users"></i>
-                                </span>
-                                <div class="media-body text-white">
-                                    <p class="mb-1"> ثبت نامی های امروز </p>
-                                    @*                                    <h3 class="text-white">@Model.TodayRegisteredUsers</h3>
-                                *@
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xl-3 col-lg-6 col-sm-6">
-                    <div class="widget-stat card bg-danger">
-                        <div class="card-body  p-4">
-                            <a asp-area="Admin" asp-controller="Users" asp-action="Index" asp-route-UserState="2">
-                                <div class="media">
-                                    <span class="mr-3">
-                                        <i class="la la-users"></i>
-                                    </span>
-                                    <div class="media-body text-white">
-                                        <p class="mb-1"> کاربران فعال نشده </p>
-                                        @*                                        <h3 class="text-white">@Model.WaitingForActiveUsers</h3>
-                                    *@
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xl-3 col-lg-6 col-sm-6">
-                    <div class="widget-stat card bg-success">
-                        <div class="card-body  p-4">
-                            <a asp-area="Admin" asp-controller="Advertisement" asp-action="Index">
-                                <div class="media">
-                                    <span class="mr-3">
-                                        <i class="la la-users"></i>
-                                    </span>
-                                    <div class="media-body text-white">
-                                        <p class="mb-1">کل آگهی ها </p>
-                                        @*                                        <h3 class="text-white">@Model.AllAdvertisement</h3>
-                                    *@
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xl-3 col-lg-6 col-sm-6">
-                    <div class="widget-stat card bg-info">
-                        <div class="card-body  p-4">
-                            <a asp-area="Admin" asp-controller="Advertisement" asp-action="Index" asp-route-FilterAdvertisementActiveState="3">
-                                <div class="media">
-                                    <span class="mr-3">
-                                        <i class="la la-users"></i>
-                                    </span>
-                                    <div class="media-body text-white">
-                                        <p class="mb-1"> آگهی های در انتظار تایید </p>
-                                        @*                                        <h3 class="text-white">@Model.WaitingForAcceptAdvertisements</h3>
-                                    *@
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xl-3 col-lg-6 col-sm-6">
-                    <div class="widget-stat card bg-warning">
-                        <div class="card-body  p-4">
-                            <a asp-area="Admin" asp-controller="Advertisement" asp-action="Index" asp-route-FilterAdvertisementActiveState="2">
-                                <div class="media">
-                                    <span class="mr-3">
-                                        <i class="la la-users"></i>
-                                    </span>
-                                    <div class="media-body text-white">
-                                        <p class="mb-1"> آگهی های رد شده </p>
-                                        @*                                        <h3 class="text-white">@Model.RejectedAdvertisement</h3>
-                                    *@
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xl-3 col-lg-6 col-sm-6">
-                    <div class="widget-stat card bg-danger">
-                        <div class="card-body  p-4">
-                            <a asp-area="Admin" asp-controller="Advertisement" asp-action="Index" asp-route-FilterAdvertisementActiveState="4">
-                                <div class="media">
-                                    <span class="mr-3">
-                                        <i class="la la-users"></i>
-                                    </span>
-                                    <div class="media-body text-white">
-                                        <p class="mb-1"> منقضی شده </p>
-                                        @*                                        <h3 class="text-white">@Model.ExpiredAdvertisement</h3>
-                                    *@
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
             </div>
+
         </div>
+
+        <div class="col-md-12">
+
+            <div class="row">
+
+                @*Lastest Advsertisement Without Expert*@
+                <partial name="_LastestAdvsertisementWithoutExpert" model="Model.LastestAdvsertisementWithoutExpert" />
+
+                @*Lastest Advsertisement With Expert*@
+                <partial name="_LastestAdvsertisementWithExpert" model="Model.LastestAdvsertisementWithExpert" />
+
+            </div>
+
+        </div>
+
     </div>
 
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="ProductModal" tabindex="-1" aria-labelledby="ProductModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content" id="ProductModalContent">
-            </div>
-        </div>
-    </div>
 
 

@@ -41,6 +41,9 @@ namespace DoctorType.Application.Services.Interfaces
         //Get Tariff From User
         Task GetTariffFromUser(ulong userId, Tariff tariff);
 
+        //Get User Tariff Detail For Show in Header 
+        Task<UserSelectedTariff?> GetUserTariffDetailForShowinHeader(ulong userId);
+
         #endregion
     }
 }

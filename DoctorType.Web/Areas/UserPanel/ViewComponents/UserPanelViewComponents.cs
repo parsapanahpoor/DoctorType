@@ -120,4 +120,27 @@ namespace DoctorType.Web.Areas.UserPanel.ViewComponents
     }
 
     #endregion
+
+    #region User Panel Account Detail
+
+    public class ExpertUserAccountDetailViewComponent : ViewComponent
+    {
+        #region Ctor
+
+        private readonly ITariffService _tariffService;
+
+        public ExpertUserAccountDetailViewComponent(ITariffService tariffService)
+        {
+            _tariffService = tariffService;
+        }
+
+        #endregion
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            return View("ExpertUserAccountDetail", await _tariffService.GetUserTariffDetailForShowinHeader(User.GetUserId()));
+        }
+    }
+
+    #endregion
 }

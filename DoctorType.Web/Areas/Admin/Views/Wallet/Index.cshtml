@@ -41,7 +41,7 @@
                     <h4 class="card-title">لیست پرداختی های وب سایت</h4>
                 </div>
                 <div class="card-body">
-                @if (Model != null )
+                @if (Model != null)
                 {
                     <div class="table-responsive">
                         <div id="example5_wrapper" class="dataTables_wrapper no-footer">
@@ -49,8 +49,9 @@
                             <table id="example5" class="display dataTable no-footer" style="min-width: 845px" Tariff="grid" aria-describedby="example5_info">
                                 <thead>
                                     <tr role="row">
-                                        <th class="sorting_asc" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" style="width: 51.1333px;" aria-sort="ascending" aria-label=":  ">#</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" style="width: 51.1333px;"  aria-label=":  ">#</th>
                                         <th class="sorting_asc" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" style="width: 51.1333px;" aria-sort="ascending" aria-label=":  ">کاربر</th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" style="width: 51.1333px;" aria-sort="ascending" aria-label=":  ">نام کاربر</th>
                                         <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" style="width: 108.817px;" aria-label="نام: فعال کنید تا ستون صعودی مرتب شود">مبلغ  </th>
                                         <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" style="width: 108.817px;" aria-label="نام: فعال کنید تا ستون صعودی مرتب شود">تاریخ درج </th>
                                         <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" style="width: 84.4px;" aria-label="اقدامات: فعال کنید تا ستون صعودی مرتب شود">نوع </th>
@@ -59,14 +60,25 @@
                                 </thead>
                                 <tbody>
 
-                                    @foreach (var tariff in Model.Entities.Where(p=> !p.IsDelete))
+                                    @foreach (var tariff in Model.Entities.Where(p => !p.IsDelete))
                                     {
                                         <tr role="row" class="odd" remove-ajax-item="@tariff.Id">
 
                                             <td>@tariff.Id</td>
 
                                             <td>
-                                                @tariff.User.Username 
+                                                @if (string.IsNullOrEmpty(tariff.User.Avatar))
+                                                {
+                                                    <img class="rounded-circle" src="/AdminContent/images/profile/pic1.png" alt="" width="35">
+                                                }
+                                                else
+                                                {
+                                                    <img class="rounded-circle" src="@tariff.User.GetUserAvatar()" alt="" width="35">
+                                                }
+                                            </td>
+
+                                            <td>
+                                                @tariff.User.Username
                                             </td>
 
                                             <td>
@@ -78,11 +90,16 @@
                                             </td>
 
                                             <td>
-                                                @tariff.TransactionType.GetEnumName()
+                                                <span class="badge badge-rounded badge-success">
+                                                    @tariff.TransactionType.GetEnumName()
+                                                </span>
                                             </td>
 
                                             <td>
-                                                @tariff.PaymentType.GetEnumName()
+                                                <span class="badge badge-rounded badge-warning">
+                                                    @tariff.PaymentType.GetEnumName()
+                                                </span>
+
                                             </td>
                                         </tr>
                                     }

@@ -1,0 +1,58 @@
+﻿@model List<DoctorType.Domain.Entites.Adevrtisement.Advertisemenet>
+@using DoctorType.Application.Extensions
+@using DoctorType.Application.Convertors
+@using DoctorType.Application.Utils
+
+<div class="col-xl-6 col-xxl-6 col-lg-6 col-md-6">
+    <div class="card">
+        <div class="card-header border-0 pb-0">
+            <h4 class="card-title">جدیدترین پروژه های دریافت شده توسط مجری </h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-responsive-sm mb-0">
+                    <thead>
+                        <tr>
+
+                            <th><strong> آواتار </strong></th>
+                            <th><strong> نام کاربر </strong></th>
+                            <th><strong> عنوان </strong></th>
+                            <th><strong>تاریخ درج </strong></th>
+                            <th><strong>امکانات </strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var ads in Model)
+                            {
+                                <tr id="ajax-url-item-@ads.Id">
+
+                                    <td>
+                                        @if (string.IsNullOrEmpty(ads.User.Avatar))
+                                        {
+                                            <img class="rounded-circle" src="/AdminContent/images/profile/pic1.png" alt="" width="35">
+                                        }
+                                        else
+                                        {
+                                            <img class="rounded-circle" src="@ads.User.GetUserAvatar()" alt="" width="35">
+                                        }
+                                    </td>
+                                    <td> @ads.User.Username</td>
+                                    <td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 200px;"> @ads.Title</td>
+                                    <td>
+                                        <div> @ads.CreateDate.ToShamsiDate()</div>
+                                    </td>
+                                    <td>
+                                        <a asp-action="ShowAdvertisementDetail" asp-area="Admin" asp-controller="Advertisement" asp-route-advertisementId="@ads.Id" class="btn btn-warning shadow btn-xs sharp mr-1"><i class="fa fa-eye"></i></a>
+                                    </td>
+                                </tr>
+
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

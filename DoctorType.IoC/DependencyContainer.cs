@@ -30,6 +30,7 @@ namespace DoctorType.IoC
             services.AddScoped<IAdvertisementCategoryService, AdvertisementCategoryService>();
             services.AddScoped<IAdvertisementService, AdvertisementService>();
             services.AddScoped<IWalletService, WalletService>();
+            services.AddScoped<IDashboardService, DashboardService>();
 
             #endregion
 

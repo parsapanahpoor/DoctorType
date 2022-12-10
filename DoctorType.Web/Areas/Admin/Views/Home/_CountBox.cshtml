@@ -1,0 +1,75 @@
+﻿@model DoctorType.Domain.ViewModels.Admin.Dashboard.AdminDashboardViewModel
+
+<div class="col-md-12">
+    <div class="row">
+
+        <div class="col-xl-3 col-lg-6 col-sm-6">
+            <div class="widget-stat card bg-success">
+                <div class="card-body  p-4">
+                    <div class="media">
+                        <span class="mr-3">
+                            <i class="la la-users"></i>
+                        </span>
+                        <div class="media-body text-white">
+                            <p class="mb-1">تعداد کاربران : </p>
+                            <h3 class="text-white">@Model.CountOfUsers</h3>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-6 col-sm-6">
+            <div class="widget-stat card bg-primary">
+                <div class="card-body  p-4">
+                    <div class="media">
+                        <span class="mr-3">
+                            <i class="la la-users"></i>
+                        </span>
+                        <div class="media-body text-white">
+                            <p class="mb-1"> تعداد کارفرماهای سایت : </p>
+                            <h3 class="text-white">@Model.CountOfCustomers</h3>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-6 col-sm-6">
+            <div class="widget-stat card bg-warning">
+                <div class="card-body  p-4">
+                    <div class="media">
+                        <span class="mr-3">
+                            <i class="la la-users"></i>
+                        </span>
+                        <div class="media-body text-white">
+                            <p class="mb-1"> تعداد متخصصان سایت : </p>
+                            <h3 class="text-white">@Model.CountOfExperts</h3>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-6 col-sm-6">
+            <div class="widget-stat card bg-danger">
+                <div class="card-body  p-4">
+                    <div class="media">
+                        <span class="mr-3">
+                            <i class="la la-users"></i>
+                        </span>
+                        <div class="media-body text-white">
+                            <p class="mb-1"> تعداد کاربران غیر فعال : </p>
+                            <h3 class="text-white">@Model.CountOfDisActiveUsers</h3>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

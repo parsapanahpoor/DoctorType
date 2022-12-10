@@ -1,5 +1,4 @@
-﻿@*@model DoctorType.Domain.ViewModels.AdminHome.AdminHomeIndexViewModel
-*@
+﻿@model DoctorType.Domain.ViewModels.UserPanel.Dashboard.UserPanelDashboardViewModel
 @using DoctorType.Application.Extensions
 @using DoctorType.Application.Utils
 
@@ -12,18 +11,50 @@
 }
 
     @section Breadcrumbs{
-}
-
-    <div class="row">
-
-        <div class="col-md-12">
-            <div class="row">
-
-
-
-            </div>
+    <div class="col-sm-6 p-md-0">
+        <div class="welcome-text">
+            <h4>@ViewData["Title"]</h4>
         </div>
     </div>
+    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-area="UserPanel" asp-controller="Home"> داشبورد  </a></li>
+        </ol>
+    </div>
+}
+
+@if (Model.User.IsUserExpert)
+{
+    <div class="row">
+
+        @*This List Is About Advertisement*@
+        <partial name="_CountBox" model="Model" />
+
+        <div class="col-md-12">
+
+            <div class="row">
+
+                @*Lastest Advsertisement Without Expert*@
+                <partial name="_CountOfYourProjects" model="Model.CountOfYourProjects" />
+
+            </div>
+
+        </div>
+
+    </div>
+}
+else
+{
+    <div class="row">
+
+        @*This List Is About Advertisement*@
+        <partial name="_CountBox" model="Model" />
+
+    </div>
+
+}
+
+
 
 
 

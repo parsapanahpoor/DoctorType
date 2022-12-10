@@ -1,4 +1,5 @@
 ﻿using DoctorType.Domain.ViewModels.Admin.Dashboard;
+using DoctorType.Domain.ViewModels.UserPanel.Dashboard;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,12 @@ namespace DoctorType.Application.Services.Interfaces
 
         //Fill Admin Panel Dashboard
         Task<AdminDashboardViewModel> FillAdminPanelDashboard();
+
+        #endregion
+
+        #region User Panel 
+
+        Task<UserPanelDashboardViewModel> FillUserPanelDashboardViewModel(ulong userId);
 
         #endregion
     }

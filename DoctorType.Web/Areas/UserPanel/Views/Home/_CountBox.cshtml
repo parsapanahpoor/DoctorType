@@ -1,0 +1,58 @@
+﻿@model DoctorType.Domain.ViewModels.UserPanel.Dashboard.UserPanelDashboardViewModel
+
+<div class="col-md-12">
+    <div class="row">
+
+        <div class="col-xl-4 col-lg-6 col-sm-6">
+            <div class="widget-stat card bg-primary">
+                <div class="card-body  p-4">
+                    <div class="media">
+                        <span class="mr-3">
+                            <i class="la la-users"></i>
+                        </span>
+                        <div class="media-body text-white">
+                            <p class="mb-1">تعداد آگهی های شما </p>
+                            <h3 class="text-white">@Model.CountOfYourAdvertisement</h3>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-4 col-lg-6 col-sm-6">
+            <div class="widget-stat card bg-success">
+                <div class="card-body  p-4">
+                    <div class="media">
+                        <span class="mr-3">
+                            <i class="la la-users"></i>
+                        </span>
+                        <div class="media-body text-white">
+                            <p class="mb-1"> تعداد آگهی های همراه با مجری شما :  </p>
+                            <h3 class="text-white">@Model.CountOfSelectedAdvertisements</h3>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-4 col-lg-6 col-sm-6">
+            <div class="widget-stat card bg-warning">
+                <div class="card-body  p-4">
+                    <div class="media">
+                        <span class="mr-3">
+                            <i class="la la-users"></i>
+                        </span>
+                        <div class="media-body text-white">
+                            <p class="mb-1"> تعداد آگهی های درانتظار مجری شما :  </p>
+                            <h3 class="text-white">@Model.CountOfYourWaitingAdvertisement</h3>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DoctorType.Application.Extensions;
+using DoctorType.Application.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,12 @@ namespace DoctorType.Web.Areas.UserPanel.Controllers
     {
         #region Ctor
 
+        private readonly IDashboardService _dashboardService;
 
+        public HomeController(IDashboardService dashboardService)
+        {
+            _dashboardService = dashboardService;
+        }
 
         #endregion
 
@@ -18,7 +25,7 @@ namespace DoctorType.Web.Areas.UserPanel.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View();
+            return View(await _dashboardService.FillUserPanelDashboardViewModel(User.GetUserId()));
         }
 
         #endregion

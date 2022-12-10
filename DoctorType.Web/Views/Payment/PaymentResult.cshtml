@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "پرداخت مبلغ";
+}
+
+<div class="page-content">
+
+    <!--coming soon start-->
+
+    <section class="fullscreen-banner p-0">
+        <div class="container-fluid p-0 h-100">
+            <div class="row h-100">
+                <div class="col-lg-5 col-md-12 h-100 d-flex align-items-center text-center">
+                    <div class="w-100">
+                        <a class="logo" href="index.html">
+                            <img id="logo-img" class="img-center" src="images/logo.png" alt="">
+                        </a>
+
+                        @if (ViewBag.IsSuccess == true)
+                        {
+                            <h1 class="mt-4 mb-2 font-w-7"> تراکنش موفقیت آمیز بوده است . </h1>
+                            <h3 class="mt-4 mb-2 font-w-7"> @ViewBag.refId : کد رهگیری تراکنش </h3>
+                        }
+                        else
+                        {
+                            <h1 class="mt-4 mb-2 font-w-7"> تراکنش ناموفق بوده است .. </h1>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--coming soon end-->
+
+</div>
+

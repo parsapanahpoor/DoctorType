@@ -72,6 +72,13 @@ namespace DoctorType.Data.Repository
 
         #region User Panel 
 
+        //Add User Selected Tariff To The Data Base 
+        public async Task AddUserSelectedTariffToTheDataBase(UserSelectedTariff model)
+        {
+            await _context.UserSelectedTariffs.AddAsync(model);
+            await _context.SaveChangesAsync();
+        }
+
         //Show List Of Tarrifs In User Panel
         public async Task<List<Tariff>> ShowListOfTarrifsInUserPanel()
         {

@@ -4,10 +4,10 @@ namespace DoctorType.Domain.Entities.Wallet;
 
 public enum PaymentType
 {
-    [Display(Name = "Charge Wallet")]
+    [Display(Name = "شارژ حساب")]
     ChargeWallet = 0,
 
-    [Display(Name = "Buy")]
+    [Display(Name = "خرید")]
     Buy = 1,
 
     [Display(Name = "HomeVisit")]
@@ -28,7 +28,7 @@ public enum PaymentType
     [Display(Name = "HomePharmacy")]
     HomePharmacy = 7,
 
-    [Display(Name = "Reservation")]
+    [Display(Name = "خرید اشتراک")]
     Reservation = 8,
 
     [Display(Name = "OnlineVisit")]

@@ -136,6 +136,27 @@ namespace DoctorType.Application.Services.Implementation
             return await _tariff.ShowListOfTarrifsInUserPanel(); 
         }
 
+        //Get Tariff From User
+        public async Task GetTariffFromUser(ulong userId , Tariff tariff)
+        {
+            #region Register On Tariff
+
+            UserSelectedTariff model = new UserSelectedTariff()
+            {
+                CurrentTarriff = true,
+                CreateDate = DateTime.Now,
+                EndDate = DateTime.Now.AddDays(tariff.tariffDuration),
+                Startdate = DateTime.Now,
+                TariffId = tariff.Id,
+                UserId = userId
+            };
+
+            //Add To The Data Base 
+            await _tariff.AddUserSelectedTariffToTheDataBase(model);
+
+            #endregion
+        }
+
         #endregion
     }
 }

@@ -37,7 +37,7 @@
                         <p class="card-text">مدت زمان اعتبار اشتراک : @tariff.tariffDuration روز</p>
                         <p class="card-text">مبلغ اشتراک : @tariff.TariffPrice.ToString("#,000") ریال</p>
                         <p class="card-text"> تعداد پروژه قابل پذیرفتن : @tariff.CountOfAcceptRequest</p>
-                        <a href="javascript:void()" class="btn btn-dark btn-card">پرداخت و دریافت اشتراک</a>
+                        <a asp-action="BeforeBuyTariff" asp-area="UserPanel" asp-controller="Tariff" asp-route-tariffId="@tariff.Id" class="btn btn-dark btn-card">پرداخت و دریافت اشتراک</a>
                     </div>
                 </div>
             </div>

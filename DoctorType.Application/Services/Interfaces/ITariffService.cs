@@ -38,6 +38,9 @@ namespace DoctorType.Application.Services.Interfaces
         //Show List Of Tarrifs In User Panel
         Task<List<Tariff>> ShowListOfTarrifsInUserPanel();
 
+        //Get Tariff From User
+        Task GetTariffFromUser(ulong userId, Tariff tariff);
+
         #endregion
     }
 }

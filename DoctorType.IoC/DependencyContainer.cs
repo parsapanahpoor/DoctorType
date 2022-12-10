@@ -29,6 +29,7 @@ namespace DoctorType.IoC
             services.AddScoped<ITariffService, TariffService>();
             services.AddScoped<IAdvertisementCategoryService, AdvertisementCategoryService>();
             services.AddScoped<IAdvertisementService, AdvertisementService>();
+            services.AddScoped<IWalletService, WalletService>();
 
             #endregion
 
@@ -38,6 +39,7 @@ namespace DoctorType.IoC
             services.AddScoped<ISiteSettingRepository, SiteSettingRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<ITariffRepository, TariffRepository>();
+            services.AddScoped<IWalletRepository, WalletRepository>();
             services.AddScoped<IAdvertisementCategoryRepository, AdvertisementCategoryRepository>();
 
             #endregion

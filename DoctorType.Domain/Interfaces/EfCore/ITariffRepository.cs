@@ -36,6 +36,9 @@ namespace DoctorType.Domain.Interfaces.EfCore
         //Show List Of Tarrifs In User Panel
         Task<List<Tariff>> ShowListOfTarrifsInUserPanel();
 
+        //Add User Selected Tariff To The Data Base 
+        Task AddUserSelectedTariffToTheDataBase(UserSelectedTariff model);
+
         #endregion
     }
 }
